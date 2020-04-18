@@ -11,7 +11,7 @@ public class MyBatisPlusConfiguration
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor page = new PaginationInterceptor();
         page.setDialectType("mysql");
-        return page;//1212312
+        return page;//12123121
     }
 
     
