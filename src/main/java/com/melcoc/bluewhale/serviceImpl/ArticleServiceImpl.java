@@ -1,13 +1,14 @@
-package com.melcoc.bluewhale.servicesImpl;
+package com.melcoc.bluewhale.serviceImpl;
 
 import com.melcoc.bluewhale.dao.ArticleDao;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class ArticleServicesImpl implements ArticleService {
+@Service
+public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleDao articleDao;
