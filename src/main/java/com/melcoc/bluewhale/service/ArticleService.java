@@ -2,6 +2,7 @@ package com.melcoc.bluewhale.service;
 
 
 import com.melcoc.bluewhale.domain.Article;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
