@@ -13,23 +13,24 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleDao articleDao;
 
+
     @Override
-    public List<Article> selectall() {
+    public List<Article> selectArticleAll() {
         return articleDao.selectList(null);
     }
 
     @Override
-    public int insert(Article article) {
+    public int insertArticle(Article article) {
         return articleDao.insert(article);
     }
 
     @Override
-    public int update(Article article) {
+    public int updateArticle(Article article) {
         return articleDao.updateById(article);
     }
 
     @Override
-    public int delete(Integer id) {
+    public int deleteArticle(Integer id) {
         return articleDao.deleteById(id);
     }
 }

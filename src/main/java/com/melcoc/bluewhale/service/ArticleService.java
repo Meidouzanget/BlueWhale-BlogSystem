@@ -11,17 +11,17 @@ public interface ArticleService {
      * 全查
      * @return
      */
-    List<Article> selectall();
+    List<Article> selectArticleAll();
     /**
      * 添加
      */
-    int insert(Article article);
+    int insertArticle(Article article);
     /**
      * 修改
      */
-    int update(Article article);
+    int updateArticle(Article article);
     /**
      * 删除
      */
-    int delete(Integer id);
+    int deleteArticle(Integer id);
 }
