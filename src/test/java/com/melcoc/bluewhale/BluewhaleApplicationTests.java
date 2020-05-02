@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @SpringBootTest
@@ -18,13 +19,19 @@ class BluewhaleApplicationTests {
     @Test
     void testInsert() {
         Article article=new Article();
-        article.setA_id(1);
+
         article.setUser_id(1001);
         article.setCreate_time(LocalDateTime.now());
         article.setContent("你们在干嘛？");
         article.setDeleted(1);
-       int i=  articleService.insert(article);
+        int i=  articleService.insertArticle(article);
         System.out.println(i);
+    }
+    @Test
+    void testAll() {
+       List<Article> list= articleService.selectArticleAll();
+       list.stream().forEach(article -> System.out.println(article));
+
     }
 
 }
