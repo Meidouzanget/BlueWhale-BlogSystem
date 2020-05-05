@@ -9,8 +9,6 @@ spring:
     password: 56GrciF87xKH3cZM
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-
-
 #show sql
 logging:
   level:
@@ -18,3 +16,7 @@ logging:
       hp:
         dao:
           DEBUG
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true

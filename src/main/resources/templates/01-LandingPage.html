@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-	<title>Landing Page</title>
+	<title>蓝鲸博客 - 登录</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
@@ -263,7 +263,7 @@
 			<div class="landing-content">
 				<h1>欢迎来到来到蓝鲸博客</h1>
 				<p>
-					我们是全球最好、最大的社交网络，在全球拥有50亿活跃用户。通过简单的账户注册，您马上就可以写博客，与朋友分享您的思想与所见所闻~~~
+					我们尝试与您一起做到最好！
 				</p>
 				<a href="#" class="btn btn-md btn-border c-white">马上注册!</a>
 			</div>
@@ -291,18 +291,12 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-pane active" id="home" role="tabpanel" data-mh="log-tab">
-						<div class="title h6">注册你的蓝鲸博客账户</div>
+						<div class="title h6">注册你的蓝鲸博客</div>
 						<form class="content">
 							<div class="row">
-								<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+								<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 									<div class="form-group label-floating">
-										<label class="control-label">名字/First Name</label>
-										<input class="form-control" placeholder="" type="text">
-									</div>
-								</div>
-								<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-									<div class="form-group label-floating">
-										<label class="control-label">家族姓名/Last Name</label>
+										<label class="control-label">你的昵称</label>
 										<input class="form-control" placeholder="" type="text">
 									</div>
 								</div>
@@ -325,10 +319,11 @@
 									</div>
 			
 									<div class="form-group label-floating is-select">
-										<label class="control-label">Your Gender</label>
+										<label class="control-label">性别</label>
 										<select class="selectpicker form-control">
-											<option value="MA">雄</option>
-											<option value="FE">雌</option>
+											<option value="MA">男</option>
+											<option value="FE">女</option>
+											<option value="NONE">未指定</option>
 										</select>
 									</div>
 			
@@ -348,7 +343,7 @@
 					</div>
 			
 					<div class="tab-pane" id="profile" role="tabpanel" data-mh="log-tab">
-						<div class="title h6">登陆账户</div>
+						<div class="title h6"账户登录</div>
 						<form class="content">
 							<div class="row">
 								<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -366,7 +361,7 @@
 										<div class="checkbox">
 											<label>
 												<input name="optionsCheckboxes" type="checkbox">
-												记住账户
+												记住我（公用电脑请勿选中）
 											</label>
 										</div>
 										<a href="#" class="forgot" data-toggle="modal" data-target="#restore-password">忘记密码？</a>
@@ -374,14 +369,10 @@
 			
 									<a href="#" class="btn btn-lg btn-primary full-width">登录</a>
 			
-									<div class="or"></div>
-			
-									<a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
-			
-									<a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
+<!--									<div class="or"></div>-->
 			
 			
-									<p>还没有账户？ <a href="#">立刻注册！</a> 只需要些简单的信息填写，马上就好！</p>
+									<p>还没有账户？ <a href="#">立刻注册！</a> 只需要填写一些简单的信息，马上就好！</p>
 								</div>
 							</div>
 						</form>
