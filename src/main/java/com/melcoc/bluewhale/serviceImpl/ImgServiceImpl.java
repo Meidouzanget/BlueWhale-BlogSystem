@@ -1,5 +1,6 @@
 package com.melcoc.bluewhale.serviceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.melcoc.bluewhale.dao.ImgDao;
 import com.melcoc.bluewhale.domain.Img;
 import com.melcoc.bluewhale.service.ImgService;

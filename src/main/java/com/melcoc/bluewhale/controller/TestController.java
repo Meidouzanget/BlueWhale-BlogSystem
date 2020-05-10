@@ -7,5 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
-
+    @RequestMapping("/index")
+    public String hello(){
+        return "03-Newsfeed";
+    }
 }

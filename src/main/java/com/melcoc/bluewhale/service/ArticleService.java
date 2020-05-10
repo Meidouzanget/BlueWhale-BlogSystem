@@ -2,6 +2,7 @@ package com.melcoc.bluewhale.service;
 
 
 import com.melcoc.bluewhale.domain.Article;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,4 +25,8 @@ public interface ArticleService {
      * 删除
      */
     int deleteArticle(Integer id);
+    /**
+     * 查询文章ID
+     */
+    int selectAid(Article article);
 }

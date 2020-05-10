@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Img {
-    private int img_id;
+    private int imgId;
     private String url;
-    private int a_id;
-    private int u_id;
-    private LocalDateTime create_time;
+    private int aId;
+    private int uId;
+    private LocalDateTime createTime;
 }

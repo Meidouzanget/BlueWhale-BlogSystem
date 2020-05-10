@@ -1,5 +1,6 @@
 package com.melcoc.bluewhale.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Img;
