@@ -1,5 +1,7 @@
 package com.melcoc.bluewhale.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,9 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
-    private int a_id; //信息编号
-    private int user_id;//用户编号
-    private LocalDateTime create_time;//发布日期
+    @TableId(type = IdType.INPUT)
+    private int aId; //信息编号
+    private int userId;//用户编号
+    private LocalDateTime createTime;//发布日期
     private String content;//内容
     private int deleted;//逻辑删除
 

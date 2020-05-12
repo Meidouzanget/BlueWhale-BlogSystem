@@ -20,9 +20,19 @@
 				families: ['Roboto:300,400,500,700:latin']
 			}
 		});
+
+
+
+
+
+
 		$(function () {
+
+
+
+
 			$.ajax({
-				url:"http://localhost:8080/allArticle",
+				url:"http://localhost:8080/article/allArticle",
 				type:"post",
 				dataType: "json",
 				success: function(data) {
@@ -68,7 +78,7 @@
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t<p>"+content+
 								"\t\t\t\t\t\t</p><div class=\"post-thumb\">\n" +
-								"\t\t\t\t\t\t\t<img src=\"img/post__thumb11.jpg\" alt=\"photo\">\n" +
+								"\t\t\t\t\t\t\t<img src=\"http://q9slxcds5.bkt.clouddn.com/cc002052-e956-4a1d-860b-a0cefd0bb80f.jpeg?e=1588672105&token=KYz-15Ci2roaDFzoh7bj_vPN_4VJLVqGpsKmWApF:OKctAdzhYYV454_c4nYv8MrPKcU=\" alt=\"photo\">\n" +
 								"\t\t\t\t\t\t</div>\n" +
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t<div class=\"post-additional-info inline-items\">\n" +
@@ -2337,17 +2347,20 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-							<form th:action="@{/addArticle}">
+							<form th:action="@{/article/addArticle}" method="post">
 								<div class="author-thumb">
 									<img src="img/author-page.jpg" alt="author">
 								</div>
 								<div class="form-group with-icon label-floating is-empty" >
 									<label class="control-label">分享你的动态...</label>
-									<textarea class="form-control" placeholder=""  ></textarea>
+									<textarea class="form-control" placeholder=""  th:name="content"></textarea>
 								</div>
 								<div class="add-options-message">
-									<input type="file" th:name="url">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="添加相片">
+									<span id='uploadSpan'>
+    									<input type="file" name="imageURL" id="file" unselectable="on" onchange='checkFileType(this.value);' th:name="url"/>
+    										<span style="color: red;">*</span><span style="color: silver;">新闻预览图片,只支持.jpg .jif .png图片格式</span>
+								</span>
+									<a href="#" class="options-mess  age" data-toggle="tooltip" data-placement="top"   data-original-title="添加相片">
 										<svg class="olymp-camera-icon" ><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
 									</a>
 									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="@你的好友">
@@ -2358,7 +2371,7 @@
 										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
 									</a>
 
-									<button class="btn btn-primary btn-md-2">发表</button>
+									<button class="btn btn-primary btn-md-2" type="submit">发表</button>
 									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">预览</button>
 
 								</div>
