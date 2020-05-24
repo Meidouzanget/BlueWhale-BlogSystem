@@ -27,10 +27,7 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.insertArticle(article);
     }
 
-    @Override
-    public int updateArticle(Article article) {
-        return articleDao.updateById(article);
-    }
+
 
     @Override
     public int deleteArticle(Integer id) {
@@ -38,10 +35,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public int selectAid(Article article) {
-        ArticleServiceImpl articleService = new ArticleServiceImpl();
-        articleDao.insert(article);
-
-        return article.getAId();
+    public List<Article> selectAll() {
+        return articleDao.selectAll();
     }
+
+    @Override
+    public Article findByIdForUpdate(int aid) {
+        return articleDao.updateById(aid);
+    }
+
+
 }

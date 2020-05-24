@@ -18,15 +18,16 @@ public interface ArticleService {
      */
     int insertArticle(Article article);
     /**
-     * 修改
-     */
-    int updateArticle(Article article);
-    /**
      * 删除
      */
     int deleteArticle(Integer id);
     /**
-     * 查询文章ID
+     * 查询文章
      */
-    int selectAid(Article article);
+    List<Article> selectAll();
+    /**
+     * 修改点赞数
+     */
+    Article findByIdForUpdate(int aid);
+
 }

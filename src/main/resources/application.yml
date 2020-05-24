@@ -4,7 +4,7 @@ spring:
       prefix: /
       suffix: .html
   datasource:
-    url: jdbc:mysql://202.81.231.187/bluewhale?useTimezone=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://202.81.237.45/bluewhale?useTimezone=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: bluewhale
     password: 56GrciF87xKH3cZM
     driver-class-name: com.mysql.cj.jdbc.Driver

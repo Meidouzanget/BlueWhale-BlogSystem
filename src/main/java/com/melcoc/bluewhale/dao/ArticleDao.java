@@ -2,10 +2,8 @@ package com.melcoc.bluewhale.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.melcoc.bluewhale.domain.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import com.melcoc.bluewhale.domain.Img;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,7 +14,9 @@ public interface ArticleDao extends BaseMapper<Article> {
     int insertArticle(Article article);
 
 
-    @Select("select * from article as a left join img  as i on a.a_id=i.a_id ")
-    List selectAll();
+    @Select("select * FROM article  as a   left JOIN img as i  on a.deleted=1 and a.a_id=i.a_id")
+    List<Article> selectAll();
 
+    @Update("UPDATE article SET greatnum=#{greatnum} where aid=#{aId}")
+    Article updateById(int aid);
 }

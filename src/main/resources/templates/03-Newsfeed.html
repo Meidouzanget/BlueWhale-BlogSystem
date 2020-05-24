@@ -28,7 +28,21 @@
 
 		$(function () {
 
+			//图片加载
+			$("#imgBut").change(function () {
+				var file=$("#imgBut").get(0).files[0];//获取文件对象
+				console.log(file);//创建文件读取对象
+				var fileReader=new FileReader(); //创建文件读取对象
+				fileReader.readAsDataURL(file);//读取文件对象
+				fileReader.onload=function (e) {//触发读取事件
+					var res=e.target.result;//获取base64加密的图片
+					var base64= res.toString();//调整图转为base64加密的jpeg图片
+					console.log(base64);
+					// $("#image").attr("src",result);//设置img的属性来显示图片
 
+				}
+
+			})
 
 
 			$.ajax({
@@ -162,6 +176,8 @@
 
 			})
 		});
+
+
 
 	</script>
 
@@ -2346,7 +2362,7 @@
 
 					<!-- Tab panes -->
 					<div class="tab-content">
-						<div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+						<div class="tab-pane active" id="home-1" th:onclick="dfile()" role="tabpanel" aria-expanded="true">
 							<form th:action="@{/article/addArticle}" method="post">
 								<div class="author-thumb">
 									<img src="img/author-page.jpg" alt="author">
@@ -2357,7 +2373,7 @@
 								</div>
 								<div class="add-options-message">
 									<span id='uploadSpan'>
-    									<input type="file" name="imageURL" id="file" unselectable="on" onchange='checkFileType(this.value);' th:name="url"/>
+    									<input  id="imgBut" name="imgCut" th:type="file" th:name="url" >
     										<span style="color: red;">*</span><span style="color: silver;">新闻预览图片,只支持.jpg .jif .png图片格式</span>
 								</span>
 									<a href="#" class="options-mess  age" data-toggle="tooltip" data-placement="top"   data-original-title="添加相片">
@@ -3541,6 +3557,7 @@
 <script defer src="fonts/fontawesome-all.js"></script>
 
 <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+
 
 </body>
 </html>
