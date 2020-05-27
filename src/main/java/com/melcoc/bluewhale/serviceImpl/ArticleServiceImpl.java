@@ -41,7 +41,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article findByIdForUpdate(int aid) {
-        return articleDao.updateById(aid);
+
+        return articleDao.findByIdForUpdate(aid);
+    }
+
+    @Override
+    public Article saveAndFlush(Article article) {
+        return articleDao.saveAndFlush(article);
     }
 
 

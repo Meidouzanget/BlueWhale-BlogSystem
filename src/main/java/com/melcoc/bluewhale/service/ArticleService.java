@@ -2,8 +2,6 @@ package com.melcoc.bluewhale.service;
 
 
 import com.melcoc.bluewhale.domain.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -27,7 +25,14 @@ public interface ArticleService {
     List<Article> selectAll();
     /**
      * 修改点赞数
+     * @return
      */
     Article findByIdForUpdate(int aid);
 
+    /**
+     * 添加点赞数
+     * @param article
+     * @return
+     */
+    Article saveAndFlush(Article article);
 }

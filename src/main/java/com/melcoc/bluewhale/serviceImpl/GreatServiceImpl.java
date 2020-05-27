@@ -21,8 +21,8 @@ public class GreatServiceImpl implements GreatService {
     @Override
     public List<Great> findByAidAndUid(int aId, int uId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
-        wrapper.eq("aId",aId);
-        wrapper.eq("uId",uId);
+        wrapper.eq("a_id",aId);
+        wrapper.eq("u_id",uId);
         return greatDao.selectList(wrapper);
     }
     /**

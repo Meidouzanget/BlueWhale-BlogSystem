@@ -44,7 +44,7 @@ public class ArticleController {
      * 首页
      */
     @RequestMapping("/index")
-    public String index(){
+    public  String index(){
         return "03-Newsfeed";
     }
 
@@ -95,34 +95,36 @@ public class ArticleController {
     /**
      * 点赞
      */
-    @Transactional
+//    @Transactional
     @RequestMapping("/great")
-    public String great(@Param("aid") int aid, @Param("uid") int uid, Model model){
+    public String great(@Param("aId") int aId, @Param("uId") int uId, Model model){
         //查询是否有该用户对该文章的点赞记录
-        List<Great> list=greatService.findByAidAndUid(aid,uid);
+        List<Great> list=greatService.findByAidAndUid(aId,uId);
         if (list!=null && list.size()>0){
             //如果找到了这条记录，则删除该记录，同时文章的点赞数减1
             Great great=list.get(0);
             //删除记录
             greatService.delete(great.getId());
             //文章点赞数减1，查询时使用Mysql行级锁解决并发覆盖问题
-            Article article=articleService.findByIdForUpdate(aid);
+            Article article=articleService.findByIdForUpdate(aId);
             article.setGreatNum(article.getGreatNum()-1);
-            //articleService.saveAndFlush(article);
+            articleService.saveAndFlush(article);
         }else {
             //如果没有找到这条记录，则添加这条记录，同时文章点赞数加1
             Great great=new Great();
-            great.setaId(aid);
-            great.setuId(uid);
+            great.setaId(aId);
+            great.setuId(uId);
             //添加记录
             greatService.saveAndFlush(great);
             //文章点赞数加1，查询时使用Mysql行级锁解决并发覆盖问题
-            Article article=articleService.findByIdForUpdate(aid);
+            Article article=articleService.findByIdForUpdate(aId);
+            System.out.println(article);
             article.setGreatNum(article.getGreatNum()+1);
-            //articleService.saveAndFlush(article);
+            articleService.saveAndFlush(article);
+            System.out.println(1);
         }
-        model.addAttribute("details",articleService.selectAll());
-        return "detail";
+       // model.addAttribute("details",articleService.selectAll());
+        return null;//"details"
     }
 
 }

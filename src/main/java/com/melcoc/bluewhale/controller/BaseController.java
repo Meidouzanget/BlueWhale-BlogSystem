@@ -14,8 +14,9 @@ public class BaseController<GreatRepository, ArticleRepository> {
         this.articleRepository=articleRepository;
     }
 
-    @RequestMapping({"/","/index"})
-    public String index(){
-        return "index";
-    }
+//    @RequestMapping({"/","/index"})
+//    public String index(){
+//        return "index";
+//    }
+
 }
