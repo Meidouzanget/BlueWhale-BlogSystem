@@ -20,7 +20,7 @@ public class Swagger {
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包路径
-                .apis(RequestHandlerSelectors.basePackage("com.melcoc.bluewhale.Controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.melcoc.bluewhale.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
