@@ -19,9 +19,20 @@ public interface ArticleDao extends BaseMapper<Article> {
     @Select("select * FROM article  as a   left JOIN img as i  on a.deleted=1 and a.a_id=i.a_id")
     List<Article> selectAll();
 
+    /**
+     * 点赞模块
+     * @param aid
+     * @return
+     */
     @Lock(value = LockModeType.PESSIMISTIC_WRITE)
     @Select("select * from article where a_id=#{aId}")
     Article findByIdForUpdate(int aid);
-    @Select("UPDATE article SET greatNum=#{greatNum} where a_id=#{aId};")
+    @Update("UPDATE article SET greatNum=#{greatNum} where a_id=#{aId};")
     Article saveAndFlush(Article article);
+
+    /**
+     * 逻辑删除
+     */
+    @Update("UPDATE article SET deleted=0 where a_id=#{aId};")
+    int deletedArticle(Integer aId);
 }

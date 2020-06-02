@@ -9,4 +9,6 @@ public class Follow {
     private byte check_status;
     private Timestamp create_time;
     private Timestamp modify_time;
+
+
 }

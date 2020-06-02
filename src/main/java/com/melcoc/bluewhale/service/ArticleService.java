@@ -16,9 +16,9 @@ public interface ArticleService {
      */
     int insertArticle(Article article);
     /**
-     * 删除
+     * 逻辑删除
      */
-    int deleteArticle(Integer id);
+    int deletedArticle(Integer aId);
     /**
      * 查询文章
      */

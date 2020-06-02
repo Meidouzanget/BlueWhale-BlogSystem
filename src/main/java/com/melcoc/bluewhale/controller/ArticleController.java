@@ -127,6 +127,14 @@ public class ArticleController {
         return null;//"details"
     }
 
+    /**
+     * 逻辑删除
+     */
+    public String deldeArticle(@Param("aId") int aId){
+        articleService.deletedArticle(aId);
+        return "删除成功";
+    }
+
 }
 
 
