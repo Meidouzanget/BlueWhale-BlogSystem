@@ -5,9 +5,13 @@ import com.melcoc.bluewhale.serviceImpl.CommentServiceImpl;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/comment")
@@ -44,5 +48,16 @@ public class CommentController {
     public String deletedComment(@Param("commentId") int commentId){
         commentService.deletedComment(commentId);
         return "删除成功";
+    }
+    /**
+     *查询
+     */
+    @RequestMapping("/selectAllComment")
+    public  String selectAllComment(@Param("answerId") int answerId, Model model){
+       List<Comment> list= commentService.selectCommentAll(answerId);
+     Model model1=model.addAttribute("commentList",list);
+        System.out.println(list);
+        System.out.println(model1);
+        return "";
     }
 }

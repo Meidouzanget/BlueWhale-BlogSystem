@@ -11,7 +11,7 @@ public interface CommentService {
      * 全查
      * @return
      */
-    List<Comment> selectCommentAll();
+    List<Comment> selectCommentAll(int answerId);
     /**
      * 添加
      */

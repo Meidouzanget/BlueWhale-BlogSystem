@@ -86,7 +86,7 @@ public class ArticleController {
      * 查询所有微博
      */
     @RequestMapping("/allArticle")
-    public @ResponseBody List<Article> allArticle(){
+    public  List<Article> allArticle(){
 
         List<Article> list=articleService.selectAll();
 

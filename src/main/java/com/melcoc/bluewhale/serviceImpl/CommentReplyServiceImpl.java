@@ -1,7 +1,9 @@
 package com.melcoc.bluewhale.serviceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.melcoc.bluewhale.dao.CommentDao;
 import com.melcoc.bluewhale.dao.CommentReplyDao;
+import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Comment;
 import com.melcoc.bluewhale.domain.CommentReply;
 import com.melcoc.bluewhale.service.CommentReplyService;
@@ -18,12 +20,21 @@ public class CommentReplyServiceImpl implements CommentReplyService {
 
 
     @Override
-    public List<CommentReply> selectCommentReplyAll() {
-        return commentReplyDao.selectList(null);
+    public List<CommentReply> selectCommentReplyAll(int commentId,int userId) {
+        QueryWrapper wrapper = new QueryWrapper<Article>();
+        wrapper.eq("comment_id",commentId);
+        wrapper.eq("user_id",userId);
+        wrapper.eq("deleted",1);
+        return commentReplyDao.selectList(wrapper);
     }
 
     @Override
     public int insertCommentReply(CommentReply commentReply) {
         return commentReplyDao.insert(commentReply);
     }
+
+//    @Override
+//    public int deletedCommentReply(Integer userId) {
+//        return commentReplyDao.deletedCommentReply(userId);
+//    }
 }
