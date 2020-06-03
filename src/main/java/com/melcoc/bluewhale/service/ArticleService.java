@@ -34,5 +34,5 @@ public interface ArticleService {
      * @param article
      * @return
      */
-    Article saveAndFlush(Article article);
+    int saveAndFlush(Article article);
 }

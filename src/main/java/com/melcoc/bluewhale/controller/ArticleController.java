@@ -53,7 +53,7 @@ public class ArticleController {
      * @@return
      */
     @RequestMapping("/addArticle")
-    public String addArticle(Article article,Img img) throws IOException {
+    public String addArticle(Article article,Img img,Model model) throws IOException {
 //       article.setAId(article.getAId());//信息编号
         article.setUserId(1);//获取用户编号
         article.setCreateTime(LocalDateTime.now());//获取当前发布时间
@@ -64,7 +64,7 @@ public class ArticleController {
 
         System.out.println("url:"+img.getUrl());
 
-        if (img.getUrl()!=""){//判断用户是否发布图文微博
+        if (img.getUrl()!=null){//判断用户是否发布图文微博
            System.out.println("图片加文字");
 //            FileReader fileReader=new FileReader(img.getUrl());
 //            System.out.println("fileReader:"+fileReader);
@@ -77,8 +77,9 @@ public class ArticleController {
             imgService.insertImg(img);//获取图片地址
 
         }
-        System.out.println(article);
-
+        List<Article> list=articleService.selectArticleAll();
+        System.out.println(list);
+        model.addAttribute("articlelist",list);
         return "03-Newsfeed";
     }
 
@@ -86,11 +87,12 @@ public class ArticleController {
      * 查询所有微博
      */
     @RequestMapping("/allArticle")
-    public  List<Article> allArticle(){
+    public  String allArticle(Model model){
 
-        List<Article> list=articleService.selectAll();
-
-        return list;
+        List<Article> list=articleService.selectArticleAll();
+        System.out.println(list);
+        model.addAttribute("articlelist",list);
+        return "03-Newsfeed";
     }
     /**
      * 点赞
@@ -118,13 +120,13 @@ public class ArticleController {
             greatService.saveAndFlush(great);
             //文章点赞数加1，查询时使用Mysql行级锁解决并发覆盖问题
             Article article=articleService.findByIdForUpdate(aId);
-            System.out.println(article);
             article.setGreatNum(article.getGreatNum()+1);
             articleService.saveAndFlush(article);
-            System.out.println(1);
+
         }
-       // model.addAttribute("details",articleService.selectAll());
-        return null;//"details"
+        List<Article> list2=articleService.selectArticleAll();
+        model.addAttribute("articlelist",list2);
+        return "03-Newsfeed";//"details"
     }
 
     /**
