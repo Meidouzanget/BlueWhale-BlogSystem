@@ -13,7 +13,7 @@
 
 	<!-- Main Font -->
 	<script th:src="@{https://libs.baidu.com/jquery/1.3.2/jquery.min.js}"></script>
-	<script src="@{js/libs/webfontloader.min.js"}></script>
+	<script th:src="@{js/libs/webfontloader.min.js}"></script>
 	<script>
 		// WebFont.load({
 		// 	google: {
@@ -60,7 +60,7 @@
 								"\t\t\t\t\t<article class=\"hentry post has-post-thumbnail\">\n" +
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-								"\t\t\t\t\t\t\t<img src=\"@{img/avatar5-sm.jpg\" alt=\"author\"}>\n" +
+								"\t\t\t\t\t\t\t<img th:src="@{/avatar5-sm.jpg}" alt=\"author\">\n" +
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t\t<div class=\"author-date\">\n" +
 								"\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">Green Goo Rock</a>\n" +
@@ -92,7 +92,7 @@
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t<p>"+content+
 								"\t\t\t\t\t\t</p><div class=\"post-thumb\">\n" +
-								"\t\t\t\t\t\t\t<img src=\"http://q9slxcds5.bkt.clouddn.com/cc002052-e956-4a1d-860b-a0cefd0bb80f.jpeg?e=1588672105&token=KYz-15Ci2roaDFzoh7bj_vPN_4VJLVqGpsKmWApF:OKctAdzhYYV454_c4nYv8MrPKcU=\" alt=\"photo\">\n" +
+								"\t\t\t\t\t\t\t<img th:src=\"http://q9slxcds5.bkt.clouddn.com/cc002052-e956-4a1d-860b-a0cefd0bb80f.jpeg?e=1588672105&token=KYz-15Ci2roaDFzoh7bj_vPN_4VJLVqGpsKmWApF:OKctAdzhYYV454_c4nYv8MrPKcU=\" alt=\"photo\">\n" +
 								"\t\t\t\t\t\t</div>\n" +
 								"\t\t\t\t\t\n" +
 								"\t\t\t\t\t\t<div class=\"post-additional-info inline-items\">\n" +
@@ -105,27 +105,27 @@
 								"\t\t\t\t\t\t\t<ul class=\"friends-harmonic\">\n" +
 								"\t\t\t\t\t\t\t\t<li>\n" +
 								"\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-								"\t\t\t\t\t\t\t\t\t\t<img src=\"@{img/friend-harmonic9.jpg\" alt=\"friend\"}>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<img th:src="@{/friend-harmonic9.jpg}" alt=\"friend\">\n" +
 								"\t\t\t\t\t\t\t\t\t</a>\n" +
 								"\t\t\t\t\t\t\t\t</li>\n" +
 								"\t\t\t\t\t\t\t\t<li>\n" +
 								"\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-								"\t\t\t\t\t\t\t\t\t\t<img src=\"@{img/friend-harmonic10.jpg\" alt=\"friend\"}>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<img th:src="@{/friend-harmonic10.jpg}" alt=\"friend\">\n" +
 								"\t\t\t\t\t\t\t\t\t</a>\n" +
 								"\t\t\t\t\t\t\t\t</li>\n" +
 								"\t\t\t\t\t\t\t\t<li>\n" +
 								"\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-								"\t\t\t\t\t\t\t\t\t\t<img src=\"@{img/friend-harmonic7.jpg\" alt=\"friend\"}>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<img th:src="@{/friend-harmonic7.jpg}" alt=\"friend\">\n" +
 								"\t\t\t\t\t\t\t\t\t</a>\n" +
 								"\t\t\t\t\t\t\t\t</li>\n" +
 								"\t\t\t\t\t\t\t\t<li>\n" +
 								"\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-								"\t\t\t\t\t\t\t\t\t\t<img src=\"@{img/friend-harmonic8.jpg\" alt=\"friend\"}>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<img th:src="@{/friend-harmonic8.jpg}" alt=\"friend\">\n" +
 								"\t\t\t\t\t\t\t\t\t</a>\n" +
 								"\t\t\t\t\t\t\t\t</li>\n" +
 								"\t\t\t\t\t\t\t\t<li>\n" +
 								"\t\t\t\t\t\t\t\t\t<a href=\"#\">\n" +
-								"\t\t\t\t\t\t\t\t\t\t<img src=\"@{img/friend-harmonic11.jpg\" alt=\"friend\"}>\n" +
+								"\t\t\t\t\t\t\t\t\t\t<img th:src="@{/friend-harmonic11.jpg}" alt=\"friend\">\n" +
 								"\t\t\t\t\t\t\t\t\t</a>\n" +
 								"\t\t\t\t\t\t\t\t</li>\n" +
 								"\t\t\t\t\t\t\t</ul>\n" +
@@ -231,7 +231,7 @@
 
 		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img src="@{img/logo.png" alt="Olympus"}>
+				<img th:src="@{img/logo.png}" alt="Olympus">
 			</div>
 		</a>
 
@@ -265,7 +265,7 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
 		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img src="@{img/logo.png" alt="Olympus"}>
+				<img th:src="@{img/logo.png}" alt="Olympus">
 			</div>
 			<div class="title-block">
 				<h6 class="logo-title">蓝鲸博客</h6>
@@ -312,7 +312,7 @@
 
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
 		<a href="#" class="logo js-sidebar-open">
-			<img src="@{img/logo.png" alt="Olympus"}>
+			<img th:src="@{img/logo.png}" alt="Olympus">
 		</a>
 
 	</div>
@@ -320,7 +320,7 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
 		<a href="#" class="logo">
 			<div class="img-wrap">
-				<img src="@{img/logo.png" alt="Olympus"}>
+				<img th:src="@{img/logo.png}" alt="Olympus">
 			</div>
 			<div class="title-block">
 				<h6 class="logo-title">蓝鲸博客</h6>
@@ -332,7 +332,7 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/author-page.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/author-page.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 					<a href="02-ProfilePage.html" class="author-name fn">
@@ -448,71 +448,71 @@
 			<ul class="chat-users">
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar67-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar67-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar62-sm.jpg" class="avatar"}>
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar68-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar62-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar69-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar68-sm.jpg}" class="avatar">
+						<span class="icon-status online"></span>
+					</div>
+				</li>
+
+				<li class="inline-items js-chat-open">
+					<div class="author-thumb">
+						<img alt="author" th:src="@{img/avatar69-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar70-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar70-sm.jpg}" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar64-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar64-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar63-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar63-sm.jpg}" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
@@ -544,7 +544,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar67-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar67-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -575,7 +575,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar62-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar62-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -608,7 +608,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="{/static/img/avatar68-sm.jpg" class="avatar">
+						<img alt="author" th:src="{/static/img/avatar68-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -642,7 +642,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar69-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar69-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -676,7 +676,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar70-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar70-sm.jpg}" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 
@@ -717,7 +717,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar64-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar64-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -756,7 +756,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -788,7 +788,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -819,7 +819,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar63-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar63-sm.jpg}" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 
@@ -849,7 +849,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -879,7 +879,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -959,7 +959,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar67-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar67-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -990,7 +990,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar62-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar62-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1023,7 +1023,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar68-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar68-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1057,7 +1057,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar69-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar69-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -1091,7 +1091,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar70-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar70-sm.jpg}" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 
@@ -1132,7 +1132,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar64-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar64-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1171,7 +1171,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1203,7 +1203,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -1234,7 +1234,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar63-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar63-sm.jpg}" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 
@@ -1264,7 +1264,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar72-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar72-sm.jpg}" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -1294,7 +1294,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" src="@{img/avatar71-sm.jpg" class="avatar"}>
+						<img alt="author" th:src="@{img/avatar71-sm.jpg}" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1388,7 +1388,7 @@
 						<ul class="notification-list friend-requests">
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar55-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar55-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Tamara Romanoff</a>
@@ -1416,7 +1416,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar56-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar56-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Tony Stevens</a>
@@ -1444,7 +1444,7 @@
 
 							<li class="accepted">
 								<div class="author-thumb">
-									<img src="@{img/avatar57-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar57-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									You and <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="#" class="notification-link">her wall</a>.
@@ -1461,7 +1461,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar58-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar58-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Stagg Clothing</a>
@@ -1509,7 +1509,7 @@
 						<ul class="notification-list chat-message">
 							<li class="message-unread">
 								<div class="author-thumb">
-									<img src="@{img/avatar59-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar59-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Diana Jameson</a>
@@ -1526,7 +1526,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar60-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar60-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Jake Parker</a>
@@ -1543,7 +1543,7 @@
 							</li>
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar61-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar61-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
@@ -1560,10 +1560,10 @@
 
 							<li class="chat-group">
 								<div class="author-thumb">
-									<img src="@{img/avatar11-sm.jpg" alt="author"}>
-									<img src="@{img/avatar12-sm.jpg" alt="author"}>
-									<img src="@{img/avatar13-sm.jpg" alt="author"}>
-									<img src="@{img/avatar10-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar11-sm.jpg}" alt="author">
+									<img th:src="@{img/avatar12-sm.jpg}" alt="author">
+									<img th:src="@{img/avatar13-sm.jpg}" alt="author">
+									<img th:src="@{img/avatar10-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
@@ -1601,7 +1601,7 @@
 						<ul class="notification-list">
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar62-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar62-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
@@ -1619,7 +1619,7 @@
 
 							<li class="un-read">
 								<div class="author-thumb">
-									<img src="@{img/avatar63-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar63-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<div>You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.</div>
@@ -1637,7 +1637,7 @@
 
 							<li class="with-comment-photo">
 								<div class="author-thumb">
-									<img src="@{img/avatar64-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar64-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.</div>
@@ -1648,7 +1648,7 @@
 									</span>
 
 								<div class="comment-photo">
-									<img src="@{img/comment-photo1.jpg" alt="photo"}>
+									<img th:src="@{img/comment-photo1.jpg}" alt="photo">
 									<span>“She looks incredible in that outfit! We should see each...”</span>
 								</div>
 
@@ -1660,7 +1660,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar65-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar65-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.</div>
@@ -1678,7 +1678,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img src="@{img/avatar66-sm.jpg" alt="author"}>
+									<img th:src="@{img/avatar66-sm.jpg}" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
@@ -1702,7 +1702,7 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" src="@{img/author-page.jpg" class="avatar"}>
+					<img alt="author" th:src="@{img/author-page.jpg}" class="avatar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -1884,7 +1884,7 @@
 				<ul class="notification-list friend-requests">
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar55-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar55-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Tamara Romanoff</a>
@@ -1911,7 +1911,7 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar56-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar56-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Tony Stevens</a>
@@ -1938,7 +1938,7 @@
 					</li>
 					<li class="accepted">
 						<div class="author-thumb">
-							<img src="@{img/avatar57-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar57-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							You and <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="#" class="notification-link">her wall</a>.
@@ -1954,7 +1954,7 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar58-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar58-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Stagg Clothing</a>
@@ -1997,7 +1997,7 @@
 				<ul class="notification-list chat-message">
 					<li class="message-unread">
 						<div class="author-thumb">
-							<img src="@{img/avatar59-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar59-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Diana Jameson</a>
@@ -2014,7 +2014,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar60-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar60-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Jake Parker</a>
@@ -2031,7 +2031,7 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar61-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar61-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
@@ -2048,10 +2048,10 @@
 
 					<li class="chat-group">
 						<div class="author-thumb">
-							<img src="@{img/avatar11-sm.jpg" alt="author"}>
-							<img src="@{img/avatar12-sm.jpg" alt="author"}>
-							<img src="@{img/avatar13-sm.jpg" alt="author"}>
-							<img src="@{img/avatar10-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar11-sm.jpg}" alt="author">
+							<img th:src="@{img/avatar12-sm.jpg}" alt="author">
+							<img th:src="@{img/avatar13-sm.jpg}" alt="author">
+							<img th:src="@{img/avatar10-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
@@ -2085,7 +2085,7 @@
 				<ul class="notification-list">
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar62-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar62-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
@@ -2103,7 +2103,7 @@
 
 					<li class="un-read">
 						<div class="author-thumb">
-							<img src="@{img/avatar63-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar63-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<div>You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.</div>
@@ -2121,7 +2121,7 @@
 
 					<li class="with-comment-photo">
 						<div class="author-thumb">
-							<img src="@{img/avatar64-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar64-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.</div>
@@ -2132,7 +2132,7 @@
 										</span>
 
 						<div class="comment-photo">
-							<img src="@{img/comment-photo1.jpg" alt="photo"}>
+							<img th:src="@{img/comment-photo1.jpg}" alt="photo">
 							<span>“She looks incredible in that outfit! We should see each...”</span>
 						</div>
 
@@ -2144,7 +2144,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar65-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar65-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.</div>
@@ -2162,7 +2162,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar66-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar66-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
@@ -2235,7 +2235,7 @@
 						<div class="tab-pane active" id="home-1"  role="tabpanel" aria-expanded="true">
 							<form  method="post">
 								<div class="author-thumb">
-									<img src="@{img/author-page.jpg" alt="author"}>
+									<img th:src="@{img/author-page.jpg}" alt="author">
 								</div>
 								<div class="form-group with-icon label-floating is-empty" >
 									<label class="control-label">分享你的动态...</label>
@@ -2268,7 +2268,7 @@
 						<div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
 							<form>
 								<div class="author-thumb">
-									<img src="@{img/author-page.jpg" alt="author"}>
+									<img th:src="@{img/author-page.jpg}" alt="author">
 								</div>
 								<div class="form-group with-icon label-floating is-empty">
 									<label class="control-label">Share what you are thinking here...</label>
@@ -2297,7 +2297,7 @@
 						<div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
 							<form>
 								<div class="author-thumb">
-									<img src="@{img/author-page.jpg" alt="author"}>
+									<img th:src="@{img/author-page.jpg}" alt="author">
 								</div>
 								<div class="form-group with-icon label-floating is-empty">
 									<label class="control-label">Share what you are thinking here...</label>
@@ -2338,7 +2338,7 @@
 				<article class="hentry post has-post-thumbnail">
 
 					<div class="post__author author vcard inline-items">
-						<img src="@{img/avatar5-sm.jpg" alt="author"}>
+						<img th:src="@{img/avatar5-sm.jpg}" alt="author">
 
 						<div class="author-date">
 							<a class="h6 post__author-name fn" href="#">Green Goo Rock</a>
@@ -2373,7 +2373,7 @@
 					</p>
 
 					<div class="post-thumb">
-						<img src="@{img/post__thumb1.jpg" alt="photo"}>
+						<img th:src="@{img/post__thumb1.jpg}" alt="photo">
 					</div>
 
 					<div class="post-additional-info inline-items">
@@ -2386,27 +2386,27 @@
 						<ul class="friends-harmonic">
 							<li>
 								<a href="#">
-									<img src="@{img/friend-harmonic9.jpg" alt="friend"}>
+									<img th:src="@{img/friend-harmonic9.jpg}" alt="friend">
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="@{img/friend-harmonic10.jpg" alt="friend"}>
+									<img th:src="@{img/friend-harmonic10.jpg}" alt="friend">
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="@{img/friend-harmonic7.jpg" alt="friend"}>
+									<img th:src="@{img/friend-harmonic7.jpg}" alt="friend">
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="@{img/friend-harmonic8.jpg" alt="friend"}>
+									<img th:src="@{img/friend-harmonic8.jpg}" alt="friend">
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="@{img/friend-harmonic11.jpg" alt="friend"}>
+									<img th:src="@{img/friend-harmonic11.jpg}" alt="friend">
 								</a>
 							</li>
 						</ul>
@@ -2546,7 +2546,7 @@
 				<ul class="widget w-friend-pages-added notification-list friend-requests">
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar38-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar38-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Francine Smith</a>
@@ -2563,7 +2563,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar39-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar39-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Hugh Wilson</a>
@@ -2580,7 +2580,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar40-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar40-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Karen Masters</a>
@@ -2612,7 +2612,7 @@
 				<ul class="widget w-friend-pages-added notification-list friend-requests">
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar41-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar41-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">The Marina Bar</a>
@@ -2628,7 +2628,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar42-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar42-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Tapronus Rock</a>
@@ -2644,7 +2644,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar43-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar43-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Pixel Digital Design</a>
@@ -2659,7 +2659,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar44-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar44-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Thompson’s Custom Clothing Boutique</a>
@@ -2675,7 +2675,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar45-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar45-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Crimson Agency</a>
@@ -2690,7 +2690,7 @@
 
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="@{img/avatar46-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar46-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Mannequin Angel</a>
@@ -2723,7 +2723,7 @@
 
 				<div class="widget w-action">
 
-					<img src="@{img/logo.png" alt="Olympus"}>
+					<img th:src="@{img/logo.png}" alt="Olympus">
 					<div class="content">
 						<h4 class="title">蓝鲸博客</h4>
 						<span>最棒的社区交流平台</span>
@@ -2747,7 +2747,7 @@
 				<ul class="widget w-activity-feed notification-list">
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar49-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar49-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Marina Polson</a> commented on Jason Mark’s <a href="#" class="notification-link">photo.</a>.
@@ -2757,7 +2757,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar9-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar9-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Jake Parker </a> liked Nicholas Grissom’s <a href="#" class="notification-link">status update.</a>.
@@ -2767,7 +2767,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar50-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar50-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Mary Jane Stark </a> added 20 new photos to her <a href="#" class="notification-link">gallery album.</a>.
@@ -2777,7 +2777,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar51-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar51-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Nicholas Grissom </a> updated his profile <a href="#" class="notification-link">photo</a>.
@@ -2786,7 +2786,7 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar48-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar48-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Marina Valentine </a> commented on Chris Greyson’s <a href="#" class="notification-link">status update</a>.
@@ -2796,7 +2796,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar52-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar52-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Green Goo Rock </a> posted a <a href="#" class="notification-link">status update</a>.
@@ -2805,7 +2805,7 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar10-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar10-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Elaine Dreyfuss  </a> liked your <a href="#" class="notification-link">blog post</a>.
@@ -2815,7 +2815,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar10-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar10-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Elaine Dreyfuss  </a> commented on your <a href="#" class="notification-link">blog post</a>.
@@ -2825,7 +2825,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{img/avatar53-sm.jpg" alt="author"}>
+							<img th:src="@{img/avatar53-sm.jpg}" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Bruce Peterson </a> changed his <a href="#" class="notification-link">profile picture</a>.
@@ -2920,7 +2920,7 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo1.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo1.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -2928,7 +2928,7 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo2.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo2.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -2936,32 +2936,7 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo3.jpg" alt="photo"}>
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="@{img/choose-photo4.jpg" alt="photo"}>
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="@{img/choose-photo5.jpg" alt="photo"}>
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img src="@{img/choose-photo6.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo3.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -2970,7 +2945,7 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo7.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo4.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -2978,7 +2953,7 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo8.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo5.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -2986,7 +2961,32 @@
 						<div class="choose-photo-item" data-mh="choose-item">
 							<div class="radio">
 								<label class="custom-radio">
-									<img src="@{img/choose-photo9.jpg" alt="photo"}>
+									<img th:src="@{img/choose-photo6.jpg}" alt="photo">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+
+						<div class="choose-photo-item" data-mh="choose-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img th:src="@{img/choose-photo7.jpg}" alt="photo">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item" data-mh="choose-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img th:src="@{img/choose-photo8.jpg}" alt="photo">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item" data-mh="choose-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img th:src="@{img/choose-photo9.jpg}" alt="photo">
 									<input type="radio" name="optionsRadios">
 								</label>
 							</div>
@@ -3001,7 +3001,7 @@
 
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo10.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo10.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">South America Vacations</a>
 									<span>Last Added: 2 hours ago</span>
@@ -3010,7 +3010,7 @@
 						</div>
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo11.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo11.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">Photoshoot Summer 2016</a>
 									<span>Last Added: 5 weeks ago</span>
@@ -3019,7 +3019,7 @@
 						</div>
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo12.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo12.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">Amazing Street Food</a>
 									<span>Last Added: 6 mins ago</span>
@@ -3029,7 +3029,7 @@
 
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo13.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo13.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">Graffity & Street Art</a>
 									<span>Last Added: 16 hours ago</span>
@@ -3038,7 +3038,7 @@
 						</div>
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo14.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo14.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">Amazing Landscapes</a>
 									<span>Last Added: 13 mins ago</span>
@@ -3047,7 +3047,7 @@
 						</div>
 						<div class="choose-photo-item" data-mh="choose-item">
 							<figure>
-								<img src="@{img/choose-photo15.jpg" alt="photo"}>
+								<img th:src="@{img/choose-photo15.jpg}" alt="photo">
 								<figcaption>
 									<a href="#">The Majestic Canyon</a>
 									<span>Last Added: 57 mins ago</span>
@@ -3070,7 +3070,7 @@
 
 
 <a class="back-to-top" href="#">
-	<img src="@{svg-icons/back-to-top.svg" alt="arrow" class="back-icon"}>
+	<img th:src="@{svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
 </a>
 
 
@@ -3094,7 +3094,7 @@
 				<ul class="notification-list chat-message chat-message-field">
 					<li>
 						<div class="author-thumb">
-							<img src="@{/img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded"}>
+							<img th:src="@{/img/avatar14-sm.jpg}" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -3104,7 +3104,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{/img/author-page.jpg" alt="author" class="mCS_img_loaded"}>
+							<img th:src="@{/img/author-page.jpg}" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Don’t worry Mathilda!</span>
@@ -3115,7 +3115,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img src="@{/img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded"}>
+							<img th:src="@{/img/avatar14-sm.jpg}" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -3141,137 +3141,137 @@
 							<ul class="more-dropdown more-with-triangle triangle-bottom-right">
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat1.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat1.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat2.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat2.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat3.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat3.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat4.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat4.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat5.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat5.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat6.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat6.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat7.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat7.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat8.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat8.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat9.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat9.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat10.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat10.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat11.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat11.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat12.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat12.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat13.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat13.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat14.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat14.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat15.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat15.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat16.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat16.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat17.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat17.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat18.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat18.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat19.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat19.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat20.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat20.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat21.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat21.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat22.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat22.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/icon-chat23.png" alt="icon"}>
+										<img th:src="@{/icon-chat23.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat24.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat24.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat25.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat25.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat26.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat26.png}" alt="icon">
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="@{/img/icon-chat27.png" alt="icon"}>
+										<img th:src="@{/img/icon-chat27.png}" alt="icon">
 									</a>
 								</li>
 							</ul>
