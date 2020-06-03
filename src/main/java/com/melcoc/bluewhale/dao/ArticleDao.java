@@ -27,8 +27,8 @@ public interface ArticleDao extends BaseMapper<Article> {
     @Lock(value = LockModeType.PESSIMISTIC_WRITE)
     @Select("select * from article where a_id=#{aId}")
     Article findByIdForUpdate(int aid);
-    @Update("UPDATE article SET greatNum=#{greatNum} where a_id=#{aId};")
-    Article saveAndFlush(Article article);
+    @Update("UPDATE article SET great_num=#{greatNum} where a_id=#{aId};")
+    int saveAndFlush(Article article);
 
     /**
      * 逻辑删除

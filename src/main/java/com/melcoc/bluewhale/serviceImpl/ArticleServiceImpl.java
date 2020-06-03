@@ -19,6 +19,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> selectArticleAll() {
       QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("deleted",1);
+        wrapper.orderByDesc("a_id");
         return articleDao.selectList(wrapper);
     }
 
@@ -47,9 +48,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article saveAndFlush(Article article) {
+    public int saveAndFlush(Article article) {
         return articleDao.saveAndFlush(article);
     }
+
 
 
 }

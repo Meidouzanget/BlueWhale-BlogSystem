@@ -1,6 +1,8 @@
 package com.melcoc.bluewhale.controller;
 
+import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Comment;
+import com.melcoc.bluewhale.serviceImpl.ArticleServiceImpl;
 import com.melcoc.bluewhale.serviceImpl.CommentServiceImpl;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class CommentController {
     @Autowired
     CommentServiceImpl commentService;
 
+    @Autowired
+    ArticleServiceImpl articleService;
+
 
     /**
      * 发表评论
@@ -28,7 +33,7 @@ public class CommentController {
     @RequestMapping("addComment")
     public String addComment(Comment comment){
        comment.setAnswerId(comment.getAnswerId());//文章ID
-        comment.setUserId(comment.getUserId());//用户ID
+        comment.setUserId(5);//用户ID
         comment.setContent(comment.getContent());//评论内容
         comment.setState(1);//状态
         comment.setGreatCount(0);//点赞数
@@ -38,8 +43,10 @@ public class CommentController {
 
         commentService.insertComment(comment);//发表评论
 
+        CommentServiceImpl commentService=new CommentServiceImpl();
+        commentService.selectCommentAll(comment.getAnswerId());
 
-        return "评论成功";
+        return "03-Newsfeed";
     }
     /**
      * 逻辑删除
@@ -55,9 +62,11 @@ public class CommentController {
     @RequestMapping("/selectAllComment")
     public  String selectAllComment(@Param("answerId") int answerId, Model model){
        List<Comment> list= commentService.selectCommentAll(answerId);
+        List<Article> list2=articleService.selectArticleAll();
+        model.addAttribute("articlelist",list2);
      Model model1=model.addAttribute("commentList",list);
         System.out.println(list);
         System.out.println(model1);
-        return "";
+        return "03-Newsfeed";
     }
 }
