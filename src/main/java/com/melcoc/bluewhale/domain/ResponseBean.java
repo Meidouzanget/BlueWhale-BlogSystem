@@ -1,4 +1,4 @@
-package com.melcoc.bluewhale.dao;
+package com.melcoc.bluewhale.domain;
 
 import lombok.Data;
 

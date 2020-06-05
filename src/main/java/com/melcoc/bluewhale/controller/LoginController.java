@@ -1,7 +1,7 @@
 package com.melcoc.bluewhale.controller;
 
-import com.melcoc.bluewhale.dao.ResponseBean;
 import com.melcoc.bluewhale.domain.LUser;
+import com.melcoc.bluewhale.domain.ResponseBean;
 import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.serviceImpl.UserService;
 import org.apache.shiro.SecurityUtils;

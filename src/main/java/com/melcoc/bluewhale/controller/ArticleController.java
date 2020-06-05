@@ -1,6 +1,5 @@
 package com.melcoc.bluewhale.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Great;
 import com.melcoc.bluewhale.domain.Img;
@@ -8,17 +7,12 @@ import com.melcoc.bluewhale.serviceImpl.*;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/article")
@@ -45,7 +39,7 @@ public class ArticleController {
      */
     @RequestMapping("/index")
     public  String index(){
-        return "03-Newsfeed";
+        return "MainPage";
     }
 
     /**
@@ -80,7 +74,7 @@ public class ArticleController {
         List<Article> list=articleService.selectArticleAll();
         System.out.println(list);
         model.addAttribute("articlelist",list);
-        return "03-Newsfeed";
+        return "MainPage";
     }
 
     /**

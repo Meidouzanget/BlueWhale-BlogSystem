@@ -1,6 +1,6 @@
 package com.melcoc.bluewhale.controller;
 
-import com.melcoc.bluewhale.dao.ResponseBean;
+import com.melcoc.bluewhale.domain.ResponseBean;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
