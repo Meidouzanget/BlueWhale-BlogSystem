@@ -11,12 +11,12 @@ import java.util.List;
 
 @Mapper
 public interface ArticleDao extends BaseMapper<Article> {
-    @Insert("INSERT INTO article(a_id,user_id,create_time,content,deleted) " +"VALUES(#{aId},#{userId},#{createTime},#{content},#{deleted})")
+    @Insert("INSERT INTO article(a_id,user_id,create_time,content,deleted,url) " +"VALUES(#{aId},#{userId},#{createTime},#{content},#{deleted},#{url})")
     @Options(useGeneratedKeys = true, keyProperty = "aId", keyColumn = "aId")
     int insertArticle(Article article);
 
 
-    @Select("select * FROM article  as a   left JOIN img as i  on a.deleted=1 and a.a_id=i.a_id")
+    @Select("select article.a_id,article.user_id,article.create_time,article.content,article.deleted,article.great_num,img.url from article,img where article.a_id=img.a_id")
     List<Article> selectAll();
 
     /**

@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,7 +44,7 @@ public class CommentController {
         CommentServiceImpl commentService=new CommentServiceImpl();
         commentService.selectCommentAll(comment.getAnswerId());
 
-        return "03-Newsfeed";
+        return "MainPage";
     }
     /**
      * 逻辑删除
@@ -67,6 +65,6 @@ public class CommentController {
      Model model1=model.addAttribute("commentList",list);
         System.out.println(list);
         System.out.println(model1);
-        return "03-Newsfeed";
+        return "MainPage";
     }
 }

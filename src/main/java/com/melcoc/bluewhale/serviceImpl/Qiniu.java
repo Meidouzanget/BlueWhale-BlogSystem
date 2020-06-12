@@ -29,7 +29,7 @@ public class Qiniu {
     private static String publicIMGURL = "IMGURL";
 
     // priviteIMGURL
-    private static String priviteIMGURL = "http://q9slxcds5.bkt.clouddn.com/";
+    private static String priviteIMGURL = "http://mbucket.qingwing.cn/";
 
 
     // 静态加载配置文件中的数据
@@ -66,7 +66,7 @@ public class Qiniu {
         Map<String,String> data = new HashMap<>();
 
         // 将上传凭证放入map中
-        data.put("token",getuplodTokenByKey(key));
+//        data.put("token",getuplodTokenByKey(key));
 
         // 图片地址
         data.put("url",getUrl(bocket,key));
@@ -80,7 +80,7 @@ public class Qiniu {
      * @param key 资源的key
      * @return 资源的访问地址
      */
-    public  String getUrl(int bocket,String key){
+    public  String getUrl(int bocket, String key){
         if(bocket == 0){
             return getstaticDownloadToken(priviteIMGURL+key);
         }else{
@@ -445,7 +445,7 @@ public class Qiniu {
 
 
     public static void main(String[] args) {
-        //System.out.println(Qiniu.getUploadToken(0, "cc002052-e956-4a1d-860b-a0cefd0bb80f.jpeg"));
+       // System.out.println(Qiniu.getUploadToken(0, "a4942305-e713-43f2-84f3-997ed0ef094a"));
 
     }
 

@@ -14,10 +14,7 @@ public class Article {
     private String content;//内容
     private int deleted;//逻辑删除
     private int greatNum;//点赞数
-
-    public int getaId() {
-        return aId;
-    }
+    private String url;//图片路径
 
     @Override
     public String toString() {
@@ -28,7 +25,12 @@ public class Article {
                 ", content='" + content + '\'' +
                 ", deleted=" + deleted +
                 ", greatNum=" + greatNum +
+                ", url='" + url + '\'' +
                 '}';
+    }
+
+    public int getaId() {
+        return aId;
     }
 
     public void setaId(int aId) {
@@ -75,15 +77,24 @@ public class Article {
         this.greatNum = greatNum;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public Article() {
     }
 
-    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum) {
+    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum, String url) {
         this.aId = aId;
         this.userId = userId;
         this.createTime = createTime;
         this.content = content;
         this.deleted = deleted;
         this.greatNum = greatNum;
+        this.url = url;
     }
 }
