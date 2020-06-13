@@ -5,6 +5,7 @@ spring:
       suffix: .html
 
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mariadb://202.81.237.45/bluewhale
     username: bluewhale
     password: 56GrciF87xKH3cZM
