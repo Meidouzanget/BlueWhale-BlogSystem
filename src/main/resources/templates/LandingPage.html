@@ -311,7 +311,7 @@
                 <div class="tab-content">
                     <div class="tab-pane" id="home" role="tabpanel" data-mh="log-tab">
                         <div class="title h6">注册你的蓝鲸博客</div>
-                        <form class="content" th:action="@{/api/Reg}" th:object="${user}" method="post">
+                        <form class="content" th:action="@{/api/Reg}"  method="post">
                             <div class="row">
                                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group label-floating">
@@ -367,16 +367,16 @@
 
                     <div class="tab-pane active" id="profile" role="tabpanel" data-mh="log-tab">
                         <div class="title h6"> 登录你的蓝鲸博客</div>
-                    <form class="content" th:action="@{/api/Login}" method="post">
+                    <form class="content" method="post">
                         <div class="row">
                             <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group label-floating">
                                     <label class="control-label">邮箱或用户名</label>
-                                    <input class="form-control" placeholder="" type="text" th:field="*{userName}">
+                                    <input class="form-control" placeholder="" type="text" >
                                 </div>
                                 <div class="form-group label-floating">
                                     <label class="control-label">密码</label>
-                                    <input class="form-control" placeholder="" type="password" th:field="*{passWord}">
+                                    <input class="form-control" placeholder="" type="password" >
                                 </div>
                                 <div class="remember">
 
@@ -390,9 +390,9 @@
                                        data-target="#restore-password">忘记密码？</a>
                                 </div>
 
-                                <div class="brand-danger">&nbsp;&nbsp;用户名已被使用</div>
+                                <div class="brand-danger">&nbsp;&nbsp;登录成功</div>
 
-                                <a href="#" class="btn btn-lg btn-primary full-width">登录</a>
+                                <a href="#" class="btn btn-lg btn-primary full-width" id="loginBtn">登录</a>
 
                                 <!--									<div class="or"></div>-->
 
@@ -482,7 +482,7 @@
 <!-- ... end Window Popup Main Search -->
 
 <!-- JS Scripts -->
-
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
 <script th:src="@{/js/jQuery/jquery-3.4.1.js}"></script>
 <script th:src="@{/js/libs/jquery.appear.js}"></script>
 <script th:src="@{/js/libs/jquery.mousewheel.js}"></script>
@@ -528,6 +528,7 @@ $(
 		function () {
 			$("#regNow").click(
 					function () {
+					    //注册区域切换逻辑
 						$("#home").toggleClass("active");
 						$("#profile").toggleClass("active");
 						$("#nav-reg").toggleClass("active");
@@ -535,13 +536,39 @@ $(
 					});
 			$("#loginNow").click(
 					function () {
+					    //登录区域切换逻辑
 						$("#home").toggleClass("active");
 						$("#profile").toggleClass("active");
 						$("#nav-reg").toggleClass("active");
 						$("#nav-login").toggleClass("active");
 					});
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data: { Username: 'admin', Password: 'admin' },
+                datatype: 'json',
+                success: function (data) {
+                    //成功时存入token
+                    if(data.code===200)
+                    {
+                        localStorage["BWtoken"]=data.token;
+                    }else if (data.code=== )
+                }
+            })
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: {  },
+                //从localStorage获取存储的token
+                headers : {'Authorization':localStorage["token"]},
+                datatype: 'json',
+                success: function (data) {
+
+                }
+            })
 		}
-)
+);
+
 </script>
 </body>
 </html>
