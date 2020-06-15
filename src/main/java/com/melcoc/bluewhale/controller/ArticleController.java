@@ -70,12 +70,12 @@ public class ArticleController {
         article.setContent(article.getContent());//获取内容
         article.setDeleted(1);//逻辑删除 0不显示，1显示
         article.setGreatNum(0);
-        System.out.println(base64Date);
+
 
 
         if (base64Date != null) {//判断用户是否发布图文微博
             System.out.println("图片加文字");
-            article.setUrl(qiniu.getUrl(0, qiniuService.put64image(base64Date)));
+            article.setUrl(qiniu.getPublicUrl( qiniuService.put64image(base64Date)));
 
 
         }

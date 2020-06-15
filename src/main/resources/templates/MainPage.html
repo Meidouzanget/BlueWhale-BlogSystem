@@ -19,62 +19,7 @@
 	<script th:src="@{/js/cropper.js}"></script>
 	<script th:src="@{/js/ajax.js}"></script>
 	<script th:src="@{https://cdn.jsdelivr.net/npm/vue/dist/vue.js}"></script>
-<!--	<script>-->
-<!--		$(function () {-->
 
-
-
-<!--			//图片加载-->
-<!--			$("#imgBut").change(function () {-->
-<!--				var file=$("#imgBut").get(0).files[0];//获取文件对象-->
-<!--				console.log(file);//创建文件读取对象-->
-<!--				var fileReader=new FileReader(); //创建文件读取对象-->
-<!--				fileReader.readAsDataURL(file);//读取文件对象-->
-<!--				fileReader.onload=function (e) {//触发读取事件-->
-<!--					var result=e.target.result;//获取base64加密的图片-->
-<!--					// $("#image").attr("src",result);//设置img的属性来显示图片-->
-<!--					$("#yulan").prop("src",result);//剪切之后进行图片预览-->
-<!--					console.log(result)-->
-<!--				}-->
-
-
-<!--			})-->
-
-<!--			$("#upload").on('click',function () {-->
-<!--				var content=$("#content").val();-->
-<!--				console.log(content)-->
-<!--				var file=$("#imgBut").get(0).files[0];//获取文件对象-->
-<!--				console.log(file);//创建文件读取对象-->
-<!--				fileReader=new FileReader(); //创建文件读取对象-->
-<!--				fileReader.readAsDataURL(file);//读取文件对象-->
-<!--				fileReader.onload=function (e) {//触发读取事件-->
-<!--					var result=e.target.result;//获取base64加密的图片-->
-<!--					// $("#image").attr("src",result);//设置img的属性来显示图片-->
-<!--					$("#yulan").prop("src",result);//剪切之后进行图片预览-->
-<!--					console.log(result)-->
-<!--					$.ajax({-->
-<!--						url: "/article/addArticle",-->
-<!--						type:"post",-->
-<!--						data:{-->
-<!--							base64Date:result,-->
-<!--							content:content-->
-<!--						},-->
-<!--						dataType:"json",-->
-<!--						success:function (data) {-->
-<!--							alert("上传成功！")-->
-<!--						}-->
-<!--					})-->
-<!--				}-->
-
-
-<!--			})-->
-
-<!--		})-->
-
-
-
-
-<!--	</script>-->
 
 
 	<!-- Bootstrap CSS -->
@@ -2277,47 +2222,49 @@
 
 						<a    class="post-add-icon inline-items" th:href="@{/article/great(aId=${li.getaId()},uId=${li.getUserId()})}"  >
 							<svg class="olymp-heart-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
+							<img th:src="@{/img/great.png}">
 							<span th:text="${li.greatNum}"></span>
 						</a>
 
-<!--						<ul class="friends-harmonic">-->
-<!--							<li>-->
-<!--								<a href="#">-->
-<!--									<img th:src="@{/friend-harmonic7.jpg}" alt="friend">-->
-<!--								</a>-->
-<!--							</li>-->
-<!--							<li>-->
-<!--								<a href="#">-->
-<!--									<img th:src="@{/friend-harmonic8.jpg}" alt="friend">-->
-<!--								</a>-->
-<!--							</li>-->
-<!--							<li>-->
-<!--								<a href="#">-->
-<!--									<img th:src="@{/friend-harmonic9.jpg}" alt="friend">-->
-<!--								</a>-->
-<!--							</li>-->
-<!--							<li>-->
-<!--								<a href="#">-->
-<!--									<img th:src="@{/friend-harmonic10.jpg}" alt="friend">-->
-<!--								</a>-->
-<!--							</li>-->
-<!--							<li>-->
-<!--								<a href="#">-->
-<!--									<img th:src="@{/friend-harmonic11.jpg}" alt="friend">-->
-<!--								</a>-->
-<!--							</li>-->
-<!--						</ul>-->
+						<!--						<ul class="friends-harmonic">-->
+						<!--							<li>-->
+						<!--								<a href="#">-->
+						<!--									<img th:src="@{/friend-harmonic7.jpg}" alt="friend">-->
+						<!--								</a>-->
+						<!--							</li>-->
+						<!--							<li>-->
+						<!--								<a href="#">-->
+						<!--									<img th:src="@{/friend-harmonic8.jpg}" alt="friend">-->
+						<!--								</a>-->
+						<!--							</li>-->
+						<!--							<li>-->
+						<!--								<a href="#">-->
+						<!--									<img th:src="@{/friend-harmonic9.jpg}" alt="friend">-->
+						<!--								</a>-->
+						<!--							</li>-->
+						<!--							<li>-->
+						<!--								<a href="#">-->
+						<!--									<img th:src="@{/friend-harmonic10.jpg}" alt="friend">-->
+						<!--								</a>-->
+						<!--							</li>-->
+						<!--							<li>-->
+						<!--								<a href="#">-->
+						<!--									<img th:src="@{/friend-harmonic11.jpg}" alt="friend">-->
+						<!--								</a>-->
+						<!--							</li>-->
+						<!--						</ul>-->
 
-<!--						<div class="names-people-likes">-->
-<!--							<a href="#">You</a>, <a href="#">Elaine</a> and-->
-<!--							<br>22 more liked this-->
-<!--						</div>-->
+						<!--						<div class="names-people-likes">-->
+						<!--							<a href="#">You</a>, <a href="#">Elaine</a> and-->
+						<!--							<br>22 more liked this-->
+						<!--						</div>-->
 
 
 						<div class="comments-shared" id="a">
-							<a  class="post-add-icon inline-items" @click="addcomment" th:href="@{/comment/selectAllComment(answerId=${li.getaId()})}" >
+							<a   class="post-add-icon inline-items" id="commentShow" th:href="@{/comment/selectAllComment(answerId=${li.getaId()})}"  >
 								<svg class="olymp-speech-balloon-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use></svg>
-								<span>17</span>
+								<img th:src="@{/img/comment.png}">
+								<span>查看评论</span>
 							</a>
 
 							<a href="#" class="post-add-icon inline-items">
@@ -2348,9 +2295,9 @@
 				</article>
 
 				<!-- Comments -->
-				<div id="a"  v-show="isShow" th:each="comments:${commentList}" th:if="${comments.getAnswerId()==li.getaId()}">
-					<ul class="comments-list" >
-						<li class="comment-item">
+				<div id="comments" >
+					<ul class="comments-list" th:each="comments:${commentList}" th:if="${comments.getAnswerId()==li.getaId()}">
+						<li class="comment-item" >
 							<div class="post__author author vcard inline-items">
 								<img th:src="@{author-page.jpg}" alt="author">
 
@@ -2385,12 +2332,13 @@
 
 					<!-- Comment Form  -->
 
-					<form class="comment-form inline-items" v-shou="flag" th:action="@{/comment/addComment(answerId=${li.getaId()})}" >
+					<form class="comment-form inline-items" v-shou="flag" th:action="@{/comment/addComment}" >
 
 						<div class="post__author author vcard inline-items">
 
 
 							<div class="form-group with-icon-right ">
+
 								<textarea class="form-control" placeholder=""  th:name="content"></textarea>
 								<div class="add-options-message">
 									<a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
@@ -2402,7 +2350,7 @@
 							</div>
 						</div>
 
-						<button class="btn btn-md-2 btn-primary">Post Comment</button>
+						<button class="btn btn-md-2 btn-primary" type="submit">发表评论</button>
 
 						<button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
 
@@ -3298,6 +3246,14 @@
 
 <script th:src="@{/Bootstrap/dist/js/bootstrap.bundle.js}"></script>
 
-
+<script>
+	$("#commentShow").click(function(){
+		$("#comments").show();
+	});
+	$("#commentShow").click(function(){
+		$("#comments").hide();
+	});
+</script>
 </body>
+
 </html>

@@ -442,7 +442,14 @@ public class Qiniu {
 
         return auth.uploadToken(publicBucket,null,(System.currentTimeMillis()/1000L+3600),putPolicy);
     }
-
+    //公有空间返回图片链接
+    public String getPublicUrl(String key){
+        String fileName = key;
+        String domainOfBucket = "http://mbucket.qingwing.cn";
+        String finalUrl = String.format("%s/%s", domainOfBucket, fileName);
+        System.out.println(finalUrl);
+        return finalUrl;
+    }
 
     public static void main(String[] args) {
        // System.out.println(Qiniu.getUploadToken(0, "a4942305-e713-43f2-84f3-997ed0ef094a"));

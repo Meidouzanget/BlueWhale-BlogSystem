@@ -29,8 +29,8 @@ public class CommentController {
      *
      */
     @RequestMapping("addComment")
-    public String addComment(Comment comment){
-       comment.setAnswerId(comment.getAnswerId());//文章ID
+    public String addComment(Comment comment,@Param("answerId") int answerId,Model model){
+       comment.setAnswerId(answerId);//文章ID
         comment.setUserId(5);//用户ID
         comment.setContent(comment.getContent());//评论内容
         comment.setState(1);//状态
@@ -40,10 +40,10 @@ public class CommentController {
         comment.setDeleted(1);//逻辑删除
 
         commentService.insertComment(comment);//发表评论
-
+        System.out.println(comment.toString());
         CommentServiceImpl commentService=new CommentServiceImpl();
-        commentService.selectCommentAll(comment.getAnswerId());
-
+        List<Comment> list=   commentService.selectCommentAll(answerId);
+            model.addAttribute("commentList",list);
         return "MainPage";
     }
     /**
