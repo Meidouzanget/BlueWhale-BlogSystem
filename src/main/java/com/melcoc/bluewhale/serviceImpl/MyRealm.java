@@ -22,11 +22,11 @@ import java.util.List;
 public class MyRealm extends AuthorizingRealm
 {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserServiceImpl(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     /**
@@ -43,7 +43,7 @@ public class MyRealm extends AuthorizingRealm
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = JWTUtil.getUsername(principals.toString());
-        LUser user = userService.getUserWithPermission(username);
+        LUser user = userServiceImpl.getUserWithPermission(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
         simpleAuthorizationInfo.addRole(user.getRole().getRname());
@@ -67,10 +67,10 @@ public class MyRealm extends AuthorizingRealm
         // 解密获得username，用于和数据库进行对比
         String username = JWTUtil.getUsername(token);
         if (username == null) {
-            throw new AuthenticationException("token invalid");
+            throw new AuthenticationException("Token invalid");
         }
 
-        LUser userBean = userService.getUserWithPermission(username);
+        LUser userBean = userServiceImpl.getUserWithPermission(username);
         if (userBean == null) {
             throw new AuthenticationException("User didn't existed!");
         }

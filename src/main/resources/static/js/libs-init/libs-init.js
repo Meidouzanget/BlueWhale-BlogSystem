@@ -31,20 +31,20 @@ CRUMINA.Bootstrap = function () {
 		var start = moment().subtract(29, 'days');
 
 		date_select_field.daterangepicker({
-			minDate: '12/05/1900',
+			minDate: '1900/01/01',
 			startDate: start,
 			autoUpdateInput: false,
 			singleDatePicker: true,
 			showDropdowns: true,
 			locale: {
-				format: 'DD/MM/YYYY'
+				format: 'YYYY/MM/DD'
 			}
 		});
 		date_select_field.on('focus', function () {
 			$(this).closest('.form-group').addClass('is-focused');
 		});
 		date_select_field.on('apply.daterangepicker', function (ev, picker) {
-			$(this).val(picker.startDate.format('DD/MM/YYYY'));
+			$(this).val(picker.startDate.format('YYYY/MM/DD'));
 			$(this).closest('.form-group').addClass('is-focused');
 		});
 		date_select_field.on('hide.daterangepicker', function () {

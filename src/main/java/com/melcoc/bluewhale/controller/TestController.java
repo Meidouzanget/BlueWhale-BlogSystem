@@ -9,7 +9,7 @@ public class TestController {
     /**
      * 首页
      */
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public  String index(){
         return "test";
     }

@@ -6,11 +6,10 @@ spring:
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mariadb://202.81.237.45/bluewhale
+    url: jdbc:mariadb://cdb-nw8cy66m.cd.tencentcdb.com:10098/bluewhale
     username: bluewhale
     password: 56GrciF87xKH3cZM
     driver-class-name: org.mariadb.jdbc.Driver
-
 
 #show sql
 logging:
