@@ -1,8 +1,18 @@
 package com.melcoc.bluewhale.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Data
+@TableName("user")
 public class User {
 
+  @TableId(value = "",type = IdType.AUTO)
   private long userId;
   private String name;
   private String nickName;
@@ -15,123 +25,10 @@ public class User {
   private java.sql.Timestamp updateTime;
   private String createIp;
   private long status;
+  @TableLogic
   private long deleted;
 
+  private LUser lUser;
 
-  public long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(long userId) {
-    this.userId = userId;
-  }
-
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public String getNickName() {
-    return nickName;
-  }
-
-  public void setNickName(String nickName) {
-    this.nickName = nickName;
-  }
-
-
-  public long getSex() {
-    return sex;
-  }
-
-  public void setSex(long sex) {
-    this.sex = sex;
-  }
-
-
-  public String getSignature() {
-    return signature;
-  }
-
-  public void setSignature(String signature) {
-    this.signature = signature;
-  }
-
-
-  public String getAvatar() {
-    return avatar;
-  }
-
-  public void setAvatar(String avatar) {
-    this.avatar = avatar;
-  }
-
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-
-  public java.sql.Timestamp getCreateTime() {
-    return createTime;
-  }
-
-  public void setCreateTime(java.sql.Timestamp createTime) {
-    this.createTime = createTime;
-  }
-
-
-  public java.sql.Timestamp getUpdateTime() {
-    return updateTime;
-  }
-
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
-    this.updateTime = updateTime;
-  }
-
-
-  public String getCreateIp() {
-    return createIp;
-  }
-
-  public void setCreateIp(String createIp) {
-    this.createIp = createIp;
-  }
-
-
-  public long getStatus() {
-    return status;
-  }
-
-  public void setStatus(long status) {
-    this.status = status;
-  }
-
-
-  public long getDeleted() {
-    return deleted;
-  }
-
-  public void setDeleted(long deleted) {
-    this.deleted = deleted;
-  }
 
 }

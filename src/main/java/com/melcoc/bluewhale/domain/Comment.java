@@ -1,5 +1,7 @@
 package com.melcoc.bluewhale.domain;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
+
 import java.time.LocalDateTime;
 
 public class Comment {
@@ -11,6 +13,7 @@ public class Comment {
     private int greatCount;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+    @TableLogic
     private int deleted;
 
     @Override
