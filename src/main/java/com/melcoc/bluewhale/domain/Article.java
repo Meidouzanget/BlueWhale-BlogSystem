@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 
 public class Article {
-    @TableId(type = IdType.INPUT)
+    @TableId(type = IdType.AUTO)
     private int aId; //信息编号
     private int userId;//用户编号
     private LocalDateTime createTime;//发布日期

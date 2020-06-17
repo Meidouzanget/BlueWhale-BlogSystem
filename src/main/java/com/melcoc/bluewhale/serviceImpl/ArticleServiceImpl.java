@@ -18,7 +18,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<Article> selectArticleAll() {
       QueryWrapper wrapper = new QueryWrapper<Article>();
-        wrapper.eq("deleted",1);
+        wrapper.eq("deleted",0);
         wrapper.orderByDesc("a_id");
         return articleDao.selectList(wrapper);
     }

@@ -24,20 +24,17 @@ public class CommentController {
     ArticleServiceImpl articleService;
 
 
+
     /**
      * 发表评论
      *
      */
     @RequestMapping("addComment")
-    public String addComment(Comment comment,@Param("answerId") int answerId,Model model){
-       comment.setAnswerId(answerId);//文章ID
-        comment.setUserId(5);//用户ID
-        comment.setContent(comment.getContent());//评论内容
-        comment.setState(1);//状态
-        comment.setGreatCount(0);//点赞数
-        comment.setCreateTime(LocalDateTime.now());//评论时间
-        comment.setUpdateTime(LocalDateTime.now());//更新时间
-        comment.setDeleted(1);//逻辑删除
+    public String addComment(@Param("userId") int userId,@Param("answerId") int answerId,String content,Model model){
+        Comment comment=new Comment();
+        comment.setAnswerId(answerId);//文章ID
+        comment.setUserId(userId);//用户ID
+        comment.setContent(content);//评论内容
 
         commentService.insertComment(comment);//发表评论
         System.out.println(comment.toString());

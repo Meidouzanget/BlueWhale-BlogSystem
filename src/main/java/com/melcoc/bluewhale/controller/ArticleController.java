@@ -1,5 +1,6 @@
 package com.melcoc.bluewhale.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Great;
@@ -54,7 +55,7 @@ public class ArticleController {
      */
     @RequestMapping("/index")
     public String index() {
-        return "03-Newsfeed";
+        return "MainPage";
     }
 
     /**
@@ -63,40 +64,44 @@ public class ArticleController {
      * @@return
      */
     @RequestMapping("/addArticle")
-    public String addArticle(Article article, String base64Date, Model model) throws Exception {
-//       article.setAId(article.getAId());//信息编号
-        article.setUserId(1);//获取用户编号
-        article.setCreateTime(LocalDateTime.now());//获取当前发布时间
-        article.setContent(article.getContent());//获取内容
-        article.setDeleted(1);//逻辑删除 0不显示，1显示
-        article.setGreatNum(0);
+    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date, Model model) throws Exception {
 
+        Article article=new Article();
+        article.setUserId(1);
+        article.setCreateTime(LocalDateTime.now());
+        article.setContent(content);
 
-
-        if (base64Date != null) {//判断用户是否发布图文微博
-            System.out.println("图片加文字");
-            article.setUrl(qiniu.getPublicUrl( qiniuService.put64image(base64Date)));
-
-
+        try {
+            System.out.println("base64Date:"+base64Date);
+            if (base64Date != null) {//判断用户是否发布图文微博
+                System.out.println("图片加文字");
+                article.setUrl(qiniu.getPublicUrl( qiniuService.put64image(base64Date)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("上传图片失败"+e);
         }
-        articleService.insertArticle(article);//发布微博
 
+
+        articleService.insertArticle(article);//发布微博
         List<Article> list = articleService.selectArticleAll();
         System.out.println(list);
-        model.addAttribute("articlelist", list);
-        return "MainPage";
+//        model.addAttribute("articlelist", list);
+
+        return article;
     }
 
     /**
      * 查询所有微博
      */
     @RequestMapping("/allArticle")
-    public String allArticle(Model model) {
+    public @ResponseBody List<Article> allArticle(Model model) {
 
         List<Article> list = articleService.selectArticleAll();
         System.out.println(list);
-        model.addAttribute("articlelist", list);
-        return "MainPage";
+//        model.addAttribute("articlelist", list);
+//        return "MainPage";
+        return list;
     }
 
     /**
@@ -104,7 +109,7 @@ public class ArticleController {
      */
 //    @Transactional
     @RequestMapping("/great")
-    public String great(@Param("aId") int aId, @Param("uId") int uId, Model model) {
+    public @ResponseBody String great(@Param("aId") int aId, @Param("uId") int uId) {
         //查询是否有该用户对该文章的点赞记录
         List<Great> list = greatService.findByAidAndUid(aId, uId);
         if (list != null && list.size() > 0) {
@@ -130,8 +135,7 @@ public class ArticleController {
 
         }
         List<Article> list2 = articleService.selectArticleAll();
-        model.addAttribute("articlelist", list2);
-        return "MainPage";
+        return "点赞成功";
     }
 
     /**
