@@ -1,10 +1,10 @@
 package com.melcoc.bluewhale.utils;
 
+import org.springframework.web.servlet.HandlerInterceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.web.servlet.HandlerInterceptor;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
@@ -23,7 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		{
 			//未登录
 			System.out.println("对不起！你还没有登录");
-			request.getRequestDispatcher("/Userinfo/login").forward(request, response);
+			request.getRequestDispatcher("/Landing").forward(request, response);
 			return false;
 		}else
 		{

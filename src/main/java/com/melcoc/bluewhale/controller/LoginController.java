@@ -6,10 +6,12 @@ import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class LoginController {
@@ -29,9 +31,16 @@ public class LoginController {
         }
 
         if (userBean.getPassword().equals(passwordHex)) {
-            return new ResponseBean(200, "登录成功", JWTUtil.sign(username, passwordHex));
+            return new ResponseBean(200, "登录成功", JWTUtil.sign(userBean.getName(), passwordHex));
         } else {
             throw new UnauthorizedException();
         }
+    }
+
+    @RequiresAuthentication
+    @PostMapping("/api/pTest")
+    public ResponseBean pTest(){
+
+        return new ResponseBean(200,"测试成功","");
     }
 }

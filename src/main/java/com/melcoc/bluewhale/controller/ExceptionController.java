@@ -24,7 +24,7 @@ public class ExceptionController
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseBean handle401() {
-        return new ResponseBean(401, "Unauthorized", null);
+        return new ResponseBean(401, "未授权", null);
     }
 
     // 捕捉其他所有异常

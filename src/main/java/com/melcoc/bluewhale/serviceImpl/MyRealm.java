@@ -72,11 +72,11 @@ public class MyRealm extends AuthorizingRealm
 
         LUser userBean = userServiceImpl.getUserWithPermission(username);
         if (userBean == null) {
-            throw new AuthenticationException("User didn't existed!");
+            throw new AuthenticationException("目标用户不存在");
         }
 
         if (! JWTUtil.verify(token, username, userBean.getPassword())) {
-            throw new AuthenticationException("Username or password error");
+            throw new AuthenticationException("用户名或密码错误");
         }
 
         return new SimpleAuthenticationInfo(token, token, "my_realm");

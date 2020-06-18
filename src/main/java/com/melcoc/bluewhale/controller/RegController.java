@@ -45,7 +45,7 @@ public class RegController {
                     System.out.println(lUserBean2.getUid()+" "+userBean.getUserId());
                     if (lUserBean2.getUid()==userBean2.getUserId()) {
                         userService.insertUserrole(new LUserrole(userBean2.getUserId(),1));
-                        return new ResponseBean(200, "注册成功", JWTUtil.sign(username, DigestUtils.sha256Hex(password)));
+                        return new ResponseBean(200, "注册成功", JWTUtil.sign(userBean.getName(), DigestUtils.sha256Hex(password)));
                     }else {
                         return new ResponseBean(500,"发生未知错误", null);
                     }
