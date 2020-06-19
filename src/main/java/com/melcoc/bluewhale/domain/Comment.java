@@ -16,6 +16,7 @@ public class Comment {
     @TableLogic
     private int deleted;
 
+
     @Override
     public String toString() {
         return "Comment{" +

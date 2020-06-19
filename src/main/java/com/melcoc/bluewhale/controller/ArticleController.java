@@ -38,9 +38,6 @@ public class ArticleController {
     ArticleServiceImpl articleService;
 
     @Autowired
-    ImgServiceImpl imgService;
-
-    @Autowired
     GreatServiceImpl greatService;
 
     @Autowired
@@ -64,16 +61,16 @@ public class ArticleController {
      * @@return
      */
     @RequestMapping("/addArticle")
-    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date, Model model) throws Exception {
+    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date) throws Exception {
 
         Article article=new Article();
-        article.setUserId(1);
+        article.setUserId(userId);
         article.setCreateTime(LocalDateTime.now());
         article.setContent(content);
 
         try {
             System.out.println("base64Date:"+base64Date);
-            if (base64Date != null) {//判断用户是否发布图文微博
+            if (base64Date != "") {//判断用户是否发布图文微博
                 System.out.println("图片加文字");
                 article.setUrl(qiniu.getPublicUrl( qiniuService.put64image(base64Date)));
             }
@@ -86,7 +83,6 @@ public class ArticleController {
         articleService.insertArticle(article);//发布微博
         List<Article> list = articleService.selectArticleAll();
         System.out.println(list);
-//        model.addAttribute("articlelist", list);
 
         return article;
     }
@@ -95,12 +91,10 @@ public class ArticleController {
      * 查询所有微博
      */
     @RequestMapping("/allArticle")
-    public @ResponseBody List<Article> allArticle(Model model) {
+    public @ResponseBody List<Article> allArticle() {
 
         List<Article> list = articleService.selectArticleAll();
         System.out.println(list);
-//        model.addAttribute("articlelist", list);
-//        return "MainPage";
         return list;
     }
 
