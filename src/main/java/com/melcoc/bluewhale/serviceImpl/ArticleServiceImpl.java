@@ -52,6 +52,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.saveAndFlush(article);
     }
 
+    @Override
+    public List<Article> selectUserAll(Integer userId) {
+        QueryWrapper wrapper=new QueryWrapper();
+        wrapper.eq("user_id",userId);
+        wrapper.eq("deleted",0);
+        wrapper.orderByDesc("a_id");
+        return articleDao.selectList(wrapper);
+    }
 
 
 }

@@ -35,4 +35,10 @@ public interface ArticleService {
      * @return
      */
     int saveAndFlush(Article article);
+
+    /**
+     * 单用户文章的全查询
+     * @return
+     */
+    List<Article> selectUserAll(Integer userId);
 }

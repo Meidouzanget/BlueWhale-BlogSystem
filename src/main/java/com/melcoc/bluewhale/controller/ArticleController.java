@@ -54,6 +54,14 @@ public class ArticleController {
     public String index() {
         return "MainPage";
     }
+    /**
+     * 首页
+     */
+    @RequestMapping("/profilePage")
+    public String profilePage() {
+        return "ProfilePage";
+    }
+
 
     /**
      * 发布微博
@@ -173,6 +181,19 @@ public class ArticleController {
         System.out.println(key);
         return key;
 
+    }
+
+
+
+    /**
+     * 单用户文章的全查询
+     * @return
+     */
+    @RequestMapping("/selectUserAll")
+    public @ResponseBody List<Article> selectUserAll(Integer userId){
+        List<Article> list = articleService.selectUserAll(userId);
+        System.out.println(list);
+        return list;
     }
 }
 

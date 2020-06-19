@@ -35,4 +35,10 @@ public interface ArticleDao extends BaseMapper<Article> {
      */
     @Update("UPDATE article SET deleted=0 where a_id=#{aId};")
     int deletedArticle(Integer aId);
+
+    /**
+     * 单用户文章的全查询
+     * @return
+     */
+    List<Article> selectUserAll(Integer userId);
 }
