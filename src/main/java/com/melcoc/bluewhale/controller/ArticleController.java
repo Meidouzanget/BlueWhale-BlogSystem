@@ -55,7 +55,7 @@ public class ArticleController {
         return "MainPage";
     }
     /**
-     * 首页
+     * 个人页
      */
     @RequestMapping("/profilePage")
     public String profilePage() {

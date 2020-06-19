@@ -1,33 +1,25 @@
-// function selectUserAll() {
-//     var uId2=2;
-//     $.ajax({
-//         url:"/article/selectUserAll",
-//         type:"get",
-//         data: {
-//
-//     },
-//         dataType:"json",
-//         success:function (data) {
-//
-//         }
-//     )}
-//
-// }
-
 $(function () {
+    select();
+})
+
+
 
 
 
 function select() {
+    var userId=2;
     $.ajax({
         url: "/article/selectUserAll",
         type: "get",
+        data:{
+            userId:userId
+        },
         dataType: "json",
         success: function (data)//回调
         {
             console.log(data)
             $.each(data, function (index, item) {
-                $("#d2").append("\t<div class=\"ui-block\" id=\"d3\">\n" +
+                $(".dUser").append("\t<div class=\"ui-block\" >\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -123,4 +115,3 @@ function select() {
 
 }
 
-})

@@ -14,6 +14,7 @@ function addcomment(answerId) {
         dataType: "json",
         success:function (data) {
             console.log(data)
+            console.log("评论时间:"+data.createTime)
             $("#"+comments+"").prepend("\t\t\t\t\t<ul class=\"comments-list\" >\n" +
                 "\t\t\t\t\t\t<li class=\"comment-item\">\n" +
                 "\t\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
