@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,7 +32,7 @@ public class CommentController {
      *
      */
     @RequestMapping("addComment")
-    public String addComment(@Param("userId") int userId,@Param("answerId") int answerId,String content,Model model){
+    public @ResponseBody Comment addComment(@Param("userId") int userId,@Param("answerId") int answerId,String content){
         Comment comment=new Comment();
         comment.setAnswerId(answerId);//文章ID
         comment.setUserId(userId);//用户ID
@@ -38,10 +40,7 @@ public class CommentController {
 
         commentService.insertComment(comment);//发表评论
         System.out.println(comment.toString());
-        CommentServiceImpl commentService=new CommentServiceImpl();
-        List<Comment> list=   commentService.selectCommentAll(answerId);
-            model.addAttribute("commentList",list);
-        return "MainPage";
+        return comment;
     }
     /**
      * 逻辑删除
@@ -55,13 +54,10 @@ public class CommentController {
      *查询
      */
     @RequestMapping("/selectAllComment")
-    public  String selectAllComment(@Param("answerId") int answerId, Model model){
-       List<Comment> list= commentService.selectCommentAll(answerId);
-        List<Article> list2=articleService.selectArticleAll();
-        model.addAttribute("articlelist",list2);
-     Model model1=model.addAttribute("commentList",list);
+    public  @ResponseBody List<Comment>  selectAllComment(@Param("answerId") int answerId){
+        List<Comment> list= commentService.selectCommentAll(answerId);
         System.out.println(list);
-        System.out.println(model1);
-        return "MainPage";
+
+        return list;
     }
 }
