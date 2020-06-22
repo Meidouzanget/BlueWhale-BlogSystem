@@ -1,17 +1,14 @@
 package com.melcoc.bluewhale.serviceImpl;
 
 import com.qiniu.util.Auth;
-
 import com.qiniu.util.StringMap;
 import com.qiniu.util.UrlSafeBase64;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import sun.misc.BASE64Decoder;
-
 
 import java.util.UUID;
 
@@ -43,12 +40,10 @@ public class QiniuServiceImpl {
     public String put64image(String base64Date) throws Exception{
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = UUID.randomUUID().toString();
-        BASE64Decoder decoder= null;
-        decoder = new BASE64Decoder();
         String str=base64Date.split("base64,")[1];//去掉“data:image/jpeg”
         //解码。将base64的字符串转化二进制流
-        byte[] imageByte=decoder.decodeBuffer(str);
-        StringBuffer buf=new StringBuffer();
+        byte[] imageByte= Base64.decodeBase64(str);
+        StringBuilder buf=new StringBuilder();
         byte[] uploadBytes = imageByte;
         String file64 = com.qiniu.util.Base64.encodeToString(uploadBytes, 0);
         Integer l = uploadBytes.length;

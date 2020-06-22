@@ -1,35 +1,30 @@
 package com.melcoc.bluewhale.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Comment;
 import com.melcoc.bluewhale.domain.Great;
-import com.melcoc.bluewhale.domain.Img;
-import com.melcoc.bluewhale.serviceImpl.*;
-import com.qiniu.http.Response;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
-import com.qiniu.util.Auth;
+import com.melcoc.bluewhale.serviceImpl.ArticleServiceImpl;
+import com.melcoc.bluewhale.serviceImpl.GreatServiceImpl;
+import com.melcoc.bluewhale.serviceImpl.Qiniu;
+import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
 import com.qiniu.util.UrlSafeBase64;
 import io.lettuce.core.dynamic.annotation.Param;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.BASE64Decoder;
-import com.qiniu.storage.Region;
-import com.qiniu.storage.Configuration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/article")
@@ -67,10 +62,10 @@ public class ArticleController {
     /**
      * 发布微博
      *
-     * @@return
+     * @return
      */
     @RequestMapping("/addArticle")
-    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date) throws Exception {
+    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date) {
 
         Article article=new Article();
         article.setUserId(userId);
@@ -79,7 +74,7 @@ public class ArticleController {
 
         try {
             System.out.println("base64Date:"+base64Date);
-            if (base64Date != "") {//判断用户是否发布图文微博
+            if (!base64Date.equals("")) {//判断用户是否发布图文微博
                 System.out.println("图片加文字");
                 article.setUrl(qiniu.getPublicUrl( qiniuService.put64image(base64Date)));
             }
@@ -157,12 +152,10 @@ public class ArticleController {
     String base64Upload(@RequestParam String base64Date, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = UUID.randomUUID().toString();
-        BASE64Decoder decoder = null;
-        decoder = new BASE64Decoder();
         String str = base64Date.split("base64,")[1];//去掉“data:image/jpeg”
         //解码。将base64的字符串转化二进制流
-        byte[] imageByte = decoder.decodeBuffer(str);
-        StringBuffer buf = new StringBuffer();
+        byte[] imageByte = Base64.decodeBase64(str);
+        StringBuilder buf = new StringBuilder();
         byte[] uploadBytes = imageByte;
         String file64 = com.qiniu.util.Base64.encodeToString(uploadBytes, 0);
         Integer l = uploadBytes.length;
