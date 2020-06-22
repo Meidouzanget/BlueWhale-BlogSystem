@@ -951,7 +951,8 @@ if the page has a “right panel”, add a class for BODY -- ".page-has-right-pa
             animation: sidedownscroll 30s linear infinite;
     background-size: auto; }
     .landing-page .content-bg-wrap:before {
-      background-color: rgba(0, 172, 238, 0.56); }
+      background-color: rgba(0, 172, 238, 0.68); }
+/*登录页背景*/
 
 @-webkit-keyframes sidedownscroll {
   0% {
