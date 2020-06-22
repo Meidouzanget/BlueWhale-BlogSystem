@@ -1,10 +1,12 @@
 package com.melcoc.bluewhale.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class Article {
@@ -18,6 +20,12 @@ public class Article {
     private int greatNum;//点赞数
     private String url;//图片路径
 
+    @TableField(exist = false)
+    private String name;
+    @TableField(exist = false)
+    private String nickName;
+
+
     @Override
     public String toString() {
         return "Article{" +
@@ -28,6 +36,8 @@ public class Article {
                 ", deleted=" + deleted +
                 ", greatNum=" + greatNum +
                 ", url='" + url + '\'' +
+                ", name='" + name + '\'' +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 
@@ -87,10 +97,26 @@ public class Article {
         this.url = url;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public Article() {
     }
 
-    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum, String url) {
+    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum, String url, String name, String nickName) {
         this.aId = aId;
         this.userId = userId;
         this.createTime = createTime;
@@ -98,5 +124,7 @@ public class Article {
         this.deleted = deleted;
         this.greatNum = greatNum;
         this.url = url;
+        this.name = name;
+        this.nickName = nickName;
     }
 }

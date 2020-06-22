@@ -1,8 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN"
 	  xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
+
 
 	<title>Newsfeed</title>
 
@@ -2054,7 +2057,9 @@
 		<main  id="d2" class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 
 
-
+			<shiro:guest>
+				<label>您当前是游客，</label><a href="/login.jsp" >请登录</a>
+			</shiro:guest>
 
 			<div class="ui-block">
 

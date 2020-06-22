@@ -1,6 +1,7 @@
 package com.melcoc.bluewhale.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Img;
 import org.apache.ibatis.annotations.*;
@@ -8,16 +9,13 @@ import org.springframework.data.jpa.repository.Lock;
 
 import javax.persistence.LockModeType;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ArticleDao extends BaseMapper<Article> {
     @Insert("INSERT INTO article(a_id,user_id,create_time,content,deleted,url) " +"VALUES(#{aId},#{userId},#{createTime},#{content},#{deleted},#{url})")
     @Options(useGeneratedKeys = true, keyProperty = "aId", keyColumn = "aId")
     int insertArticle(Article article);
-
-
-    @Select("select article.a_id,article.user_id,article.create_time,article.content,article.deleted,article.great_num,img.url from article,img where article.a_id=img.a_id")
-    List<Article> selectAll();
 
     /**
      * 点赞模块
@@ -40,5 +38,11 @@ public interface ArticleDao extends BaseMapper<Article> {
      * 单用户文章的全查询
      * @return
      */
+    @Select("select t1.*,t2.name,t2.nick_name from article t1 LEFT JOIN  user t2  ON t1.user_id =t2.user_id and t1.deleted=0 WHERE t1.user_id=#{userId} order by t1.a_id desc")
     List<Article> selectUserAll(Integer userId);
+//    List<Map<String,Object>> selectUserAll(Integer userId);
+
+    //多表联合查询
+    @Select("select t1.*,t2.name,t2.nick_name from article t1 LEFT JOIN  user t2  ON t1.user_id =t2.user_id and t1.deleted=0 order by t1.a_id desc")
+    List<Article> articleUserList();
 }

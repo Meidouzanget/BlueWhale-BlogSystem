@@ -55,7 +55,7 @@ public class CommentController {
      */
     @RequestMapping("/selectAllComment")
     public  @ResponseBody List<Comment>  selectAllComment(@Param("answerId") int answerId){
-        List<Comment> list= commentService.selectCommentAll(answerId);
+        List<Comment> list= commentService.userCommentList(answerId);
         System.out.println(list);
 
         return list;

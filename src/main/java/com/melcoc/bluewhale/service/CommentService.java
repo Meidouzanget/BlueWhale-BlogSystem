@@ -19,6 +19,12 @@ public interface CommentService {
     /**
      * 逻辑删除
      */
-    @Update("UPDATE comment SET deleted=0 where comment_id=#{commentId};")
     int deletedComment(Integer commentId);
+
+    /**
+     * 带用户表的全查
+     * @param answerId
+     * @return
+     */
+    List<Comment> userCommentList(int answerId);
 }

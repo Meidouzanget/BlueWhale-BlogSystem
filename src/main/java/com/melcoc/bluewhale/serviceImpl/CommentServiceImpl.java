@@ -33,4 +33,9 @@ public class CommentServiceImpl implements CommentService {
     public int deletedComment(Integer commentId) {
         return commentDao.deletedComment(commentId);
     }
+
+    @Override
+    public List<Comment> userCommentList(int answerId) {
+        return commentDao.userCommentList(answerId);
+    }
 }

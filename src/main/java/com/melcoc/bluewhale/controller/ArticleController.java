@@ -50,7 +50,7 @@ public class ArticleController {
     /**
      * 首页
      */
-    @RequestMapping("/index")
+    @RequestMapping("/mainPage")
     public String index() {
         return "MainPage";
     }
@@ -95,16 +95,7 @@ public class ArticleController {
         return article;
     }
 
-    /**
-     * 查询所有微博
-     */
-    @RequestMapping("/allArticle")
-    public @ResponseBody List<Article> allArticle() {
 
-        List<Article> list = articleService.selectArticleAll();
-        System.out.println(list);
-        return list;
-    }
 
     /**
      * 点赞
@@ -192,6 +183,16 @@ public class ArticleController {
     @RequestMapping("/selectUserAll")
     public @ResponseBody List<Article> selectUserAll(Integer userId){
         List<Article> list = articleService.selectUserAll(userId);
+        System.out.println(list);
+        return list;
+    }
+
+    /**
+     * 用户表 文章表
+     */
+    @RequestMapping("/articleUserList")
+    public  @ResponseBody List<Article> articleUserList(){
+        List<Article> list=articleService.articleUserList();
         System.out.println(list);
         return list;
     }

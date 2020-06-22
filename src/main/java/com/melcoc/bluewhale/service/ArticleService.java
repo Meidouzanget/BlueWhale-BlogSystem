@@ -1,9 +1,11 @@
 package com.melcoc.bluewhale.service;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.melcoc.bluewhale.domain.Article;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ArticleService {
     /**
@@ -19,10 +21,7 @@ public interface ArticleService {
      * 逻辑删除
      */
     int deletedArticle(Integer aId);
-    /**
-     * 查询文章
-     */
-    List<Article> selectAll();
+
     /**
      * 修改点赞数
      * @return
@@ -41,4 +40,6 @@ public interface ArticleService {
      * @return
      */
     List<Article> selectUserAll(Integer userId);
+
+    List<Article> articleUserList();
 }

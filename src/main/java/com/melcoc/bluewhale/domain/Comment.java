@@ -1,5 +1,6 @@
 package com.melcoc.bluewhale.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,11 @@ public class Comment {
     @TableLogic
     private int deleted;
 
+    @TableField(exist = false)
+    private String name;
+    @TableField(exist = false)
+    private String nickName;
+
 
     @Override
     public String toString() {
@@ -29,6 +35,8 @@ public class Comment {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", deleted=" + deleted +
+                ", name='" + name + '\'' +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 
@@ -104,10 +112,26 @@ public class Comment {
         this.deleted = deleted;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public Comment() {
     }
 
-    public Comment(int commentId, int answerId, int userId, String content, int state, int greatCount, LocalDateTime createTime, LocalDateTime updateTime, int deleted) {
+    public Comment(int commentId, int answerId, int userId, String content, int state, int greatCount, LocalDateTime createTime, LocalDateTime updateTime, int deleted, String name, String nickName) {
         this.commentId = commentId;
         this.answerId = answerId;
         this.userId = userId;
@@ -117,5 +141,7 @@ public class Comment {
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.deleted = deleted;
+        this.name = name;
+        this.nickName = nickName;
     }
 }

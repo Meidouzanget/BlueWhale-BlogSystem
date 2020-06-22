@@ -533,6 +533,7 @@ $(
 		}
 );
 $("#regBtn").click(function () {
+
     let nickname = $("#reg-nickname").val();
     let username = $("#reg-username").val();
     let email = $("#reg-email").val();
@@ -553,7 +554,7 @@ $("#regBtn").click(function () {
                 d.setTime(d.getTime() + (3*24*60*60*1000));
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = "token" + "=" + data.data + ";" + expires + ";path=/";
-                window.location.href="/article/allArticle";
+                window.location.href="/article/mainPage";
             }else {
                 $("regBox-Warn").val(data.msg).css("display","block");
             }
@@ -580,7 +581,7 @@ $("#loginBtn").click(function () {
                 d.setTime(d.getTime() + (3*24*60*60*1000));
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = "token" + "=" + data.data + ";" + expires + ";path=/";
-                window.location.href="/article/allArticle";
+                window.location.href="/article/mainPage";
             }else {
                 console.log(data.msg);
                 $("#LoginBox-Warn").val(data.msg).css("display","block");

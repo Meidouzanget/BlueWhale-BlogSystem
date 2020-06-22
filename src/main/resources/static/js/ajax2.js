@@ -7,7 +7,7 @@ $(function () {
 
 
 function select() {
-    var userId=2;
+    var userId=1;
     $.ajax({
         url: "/article/selectUserAll",
         type: "get",
@@ -28,7 +28,7 @@ function select() {
                     "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
                     "\n" +
                     "\t\t\t\t\t\t<div class=\"author-date\">\n" +
-                    "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">Elaine Dreyfuss</a>\n" +
+                    "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+item.nickName+"</a>\n" +
                     "\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
                     "\t\t\t\t\t\t\t\t<time class=\"published\" datetime=\"2004-07-24T18:18\" >\n" + item.createTime +
                     "\n" +

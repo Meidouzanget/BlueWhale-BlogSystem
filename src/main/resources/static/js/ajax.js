@@ -1,3 +1,17 @@
+function getToken(){
+    var strcookie = document.cookie;//获取cookie字符串
+    var arrcookie = strcookie.split("; ");//分割
+    //遍历匹配
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == "token"){
+            return arr[1];
+        }
+    }
+    console.log("strcookie:"+strcookie)
+    return "";
+}
+
 function addcomment(answerId) {
     var userId=1;
     var comments="comments"+answerId;
@@ -73,7 +87,7 @@ function comments(answerId) {
                         "\t\t\t\t\t\t\t\t<img src=\"img/author-page.jpg\" alt=\"author\">\n" +
                         "\t\t\t\t\t\n" +
                         "\t\t\t\t\t\t\t\t<div class=\"author-date\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"02-ProfilePage.html\">James Spiegel</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"02-ProfilePage.html\">"+item.nickName+"</a>\n" +
                         "\t\t\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
                         "\t\t\t\t\t\t\t\t\t\t<time class=\"published\" >\n" +
                         "\t\t\t\t\t\t\t\t\t\t\+"+item.createTime+"\n" +
@@ -165,6 +179,7 @@ function Great(greatId) {
 
 $(function () {
     select();
+    getToken();
     var result = "";
     var userId=1;
     //图片预览
@@ -309,7 +324,7 @@ $(function () {
     //查询所有帖子
     function select() {
         $.ajax({
-            url: "/article/allArticle",
+            url: "/article/articleUserList",
             type: "get",
             dataType: "json",
             success: function (data)//回调
@@ -325,7 +340,7 @@ $(function () {
                         "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
                         "\n" +
                         "\t\t\t\t\t\t<div class=\"author-date\">\n" +
-                        "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">Elaine Dreyfuss</a>\n" +
+                        "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+item.nickName+"</a>\n" +
                         "\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
                         "\t\t\t\t\t\t\t\t<time class=\"published\" datetime=\"2004-07-24T18:18\" >\n" + item.createTime +
                         "\n" +
