@@ -24,7 +24,7 @@ function addcomment(answerId) {
     var commentContent=$("#commentContent").val();
     //发表评论
     $.ajax({
-        url: "/comment/addComment",
+        url: "/api/addComment",
         type: "post",
         data: {
             answerId: answerId,
@@ -36,7 +36,7 @@ function addcomment(answerId) {
         success:function () {
             //查询最新一条评论
             $.ajax({
-                url: "/comment/userComment",
+                url: "/api/userComment",
                 type: "get",
                 data: {
                     answerId: answerId,
@@ -90,7 +90,7 @@ function comments(answerId) {
         console.log(comments)
 
         $.ajax({
-            url: "/comment/selectAllComment",
+            url: "/api/selectAllComment",
             type: "get",
             data: {
                 answerId: answerId
@@ -193,7 +193,7 @@ function Great(greatId) {
     console.log("gid"+gid)
     console.log("aId:"+aId);
     $.ajax({
-        url: "/article/great",
+        url: "/api/great",
         type: "post",
         data: {
             uId: userId,
@@ -249,7 +249,7 @@ $(function () {
                 alert("内容或图片不能为空！！！")
             }else {
                 $.ajax({
-                    url: "/article/addArticle",
+                    url: "/api/addArticle",
                     type: "post",
                     data: {
                         base64Date: result,
@@ -311,13 +311,13 @@ $(function () {
                                     "\n" +
                                     "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+data[0].aId+")'>\n" +
                                     "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
+                                    // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
                                     "\t\t\t\t\t\t\t<span  id=\"Great"+data[0].aId+"\"  >"+data[0].greatNum+"</span>\n" +
                                     "\t\t\t\t\t\t</a>\n" +
                                     "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
                                     "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\"  onclick='comments("+data[0].aId+")'  >\n" +
                                     "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
+                                    // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
                                     "\t\t\t\t\t\t\t\t<span>查看评论</span>\n" +
                                     "\t\t\t\t\t\t\t</a>\n" +
                                     "\n" +
@@ -369,7 +369,7 @@ $(function () {
     //查询所有帖子
     function select() {
         $.ajax({
-            url: "/article/articleUserList",
+            url: "/api/articleUserList",
             type: "get",
             dataType: "json",
             success: function (data)//回调
@@ -423,14 +423,14 @@ $(function () {
                         "\n" +
                         "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+item.aId+")'>\n" +
                         "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
+                        // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
                         "\t\t\t\t\t\t\t<span value=\""+item.greatNum+"\" id=\"Great"+item.aId+"\" >"+item.greatNum+"</span>\n" +
                         "\t\t\t\t\t\t</a>\n" +
                         "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
                         "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\" onclick='comments("+item.aId+")'  >\n" +
                         "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
-                        "\t\t\t\t\t\t\t\t<span>查看评论</span>\n" +
+                        // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
+                        "\t\t\t\t\t\t\t<span>查看评论</span>\n" +
                         "\t\t\t\t\t\t\t</a>\n" +
                         "\n" +
                         "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +

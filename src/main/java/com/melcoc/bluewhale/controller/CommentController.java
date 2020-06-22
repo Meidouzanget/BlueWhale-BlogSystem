@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/comment")
 public class CommentController {
 
     @Autowired
@@ -31,7 +30,7 @@ public class CommentController {
      * 发表评论
      *
      */
-    @RequestMapping("addComment")
+    @RequestMapping("/api/addComment")
     public @ResponseBody Comment addComment(@Param("userId") int userId,@Param("answerId") int answerId,String content){
         Comment comment=new Comment();
         comment.setAnswerId(answerId);//文章ID
@@ -45,7 +44,7 @@ public class CommentController {
     /**
      * 查询最新一条评论
      */
-    @RequestMapping("userComment")
+    @RequestMapping("/api/userComment")
     public @ResponseBody List<Comment> userComment(int answerId){
         List<Comment> list= commentService.userComment(answerId);
         return list;
@@ -56,7 +55,7 @@ public class CommentController {
     /**
      * 逻辑删除
      */
-    @RequestMapping("delComment")
+    @RequestMapping("/api/delComment")
     public String deletedComment(@Param("commentId") int commentId){
         commentService.deletedComment(commentId);
         return "删除成功";
@@ -64,7 +63,7 @@ public class CommentController {
     /**
      *查询
      */
-    @RequestMapping("/selectAllComment")
+    @RequestMapping("/api/selectAllComment")
     public  @ResponseBody List<Comment>  selectAllComment(@Param("answerId") int answerId){
         List<Comment> list= commentService.userCommentList(answerId);
         System.out.println(list);

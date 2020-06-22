@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/article")
+
 public class ArticleController {
 
     @Autowired
@@ -58,7 +58,7 @@ public class ArticleController {
      *
      * @return
      */
-    @RequestMapping("/addArticle")
+    @RequestMapping("/api/addArticle")
     public @ResponseBody Article addArticle(Integer userId,String content, String base64Date) {
 
         Article article=new Article();
@@ -87,7 +87,7 @@ public class ArticleController {
     /**
      * 查询最新一条评论
      */
-    @RequestMapping("articleUser")
+    @RequestMapping("/api/articleUser")
     public @ResponseBody List<Article> articleUser(){
         List<Article> list= articleService.articleUser();
         return list;
@@ -100,7 +100,7 @@ public class ArticleController {
      * 点赞
      */
 //    @Transactional
-    @RequestMapping("/great")
+    @RequestMapping("/api/great")
     public @ResponseBody String great(@Param("aId") int aId, @Param("uId") int uId) {
         //查询是否有该用户对该文章的点赞记录
         List<Great> list = greatService.findByAidAndUid(aId, uId);
@@ -141,7 +141,7 @@ public class ArticleController {
     /**
      * base64图片上传测试
      */
-    @RequestMapping("/upload")
+    @RequestMapping("/api/upload")
     public @ResponseBody
     String base64Upload(@RequestParam String base64Date, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //默认不指定key的情况下，以文件内容的hash值作为文件名
@@ -177,7 +177,7 @@ public class ArticleController {
      * 单用户文章的全查询
      * @return
      */
-    @RequestMapping("/selectUserAll")
+    @RequestMapping("/api/selectUserAll")
     public @ResponseBody List<Article> selectUserAll(Integer userId){
         List<Article> list = articleService.selectUserAll(userId);
         System.out.println(list);
@@ -187,7 +187,7 @@ public class ArticleController {
     /**
      * 用户表 文章表
      */
-    @RequestMapping("/articleUserList")
+    @RequestMapping("/api/articleUserList")
     public  @ResponseBody List<Article> articleUserList(){
         List<Article> list=articleService.articleUserList();
         System.out.println(list);
