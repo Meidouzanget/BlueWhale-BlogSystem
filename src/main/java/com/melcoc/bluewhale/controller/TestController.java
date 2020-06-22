@@ -7,15 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
     /**
-     * 首页
+     * 登录页
+     * @return
      */
-    @RequestMapping("/")
-    public  String index(){
-        return "test";
-    }
     @GetMapping("Landing")
     public  String landing(){
         return "LandingPage";
+    }
+    /**
+     * 首页
+     */
+    @RequestMapping("/")
+    public String index() {
+        return "MainPage";
     }
 
 }

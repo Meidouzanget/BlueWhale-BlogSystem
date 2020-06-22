@@ -38,4 +38,11 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> userCommentList(int answerId) {
         return commentDao.userCommentList(answerId);
     }
+
+    @Override
+    public List<Comment> userComment(int answerId) {
+        return commentDao.userComment(answerId);
+    }
+
+
 }
