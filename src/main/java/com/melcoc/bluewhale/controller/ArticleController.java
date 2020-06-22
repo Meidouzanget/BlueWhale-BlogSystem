@@ -45,7 +45,8 @@ public class ArticleController {
     /**
      * 首页
      */
-    @RequestMapping("/mainPage")
+    @RequestMapping("/" +
+            "")
     public String index() {
         return "MainPage";
     }
@@ -56,6 +57,9 @@ public class ArticleController {
     public String profilePage() {
         return "ProfilePage";
     }
+
+
+
 
 
     /**

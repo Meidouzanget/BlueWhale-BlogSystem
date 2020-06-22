@@ -1,38 +1,33 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN"
-	  xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
-<head  runat="server">
+<html lang="en">
+<head>
 
-
-	<title>Newsfeed</title>
+	<title>Your Account - Personal Information</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<link rel="stylesheet" th:href="@{/css/cropper.css}">
-	<!-- Main Font -->
-	<script th:src="@{https://libs.baidu.com/jquery/1.3.2/jquery.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/jquery-3.0.0.min.js}"></script>
-	<script th:src="@{/js/libs/webfontloader.min.js}"></script>
-	<script th:src="@{/js/cropper.js}"></script>
-	<script th:src="@{/js/ajax.js}"></script>
-	<script th:src="@{https://cdn.jsdelivr.net/npm/vue/dist/vue.js}"></script>
-
-
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/Bootstrap/dist/css/bootstrap-reboot.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/Bootstrap/dist/css/bootstrap.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/Bootstrap/dist/css/bootstrap-grid.css}">
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-reboot.css">
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-grid.css">
 
 	<!-- Main Styles CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.min.css}">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
+
+	<!-- Main Font -->
+	<script src="js/libs/webfontloader.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {
+				families: ['Roboto:300,400,500,700:latin']
+			}
+		});
+	</script>
 
 
 </head>
@@ -66,6 +61,81 @@
 </div>
 
 <!-- ... end Preloader -->
+<!-- Profile Settings Responsive -->
+
+<div class="profile-settings-responsive">
+
+	<a href="#" class="js-profile-settings-open profile-settings-open">
+		<i class="fa fa-angle-right" aria-hidden="true"></i>
+		<i class="fa fa-angle-left" aria-hidden="true"></i>
+	</a>
+	<div class="mCustomScrollbar" data-mcs-theme="dark">
+		<div class="ui-block">
+			<div class="your-profile">
+				<div class="ui-block-title ui-block-title-small">
+					<h6 class="title">Your PROFILE</h6>
+				</div>
+
+				<div id="accordion1" role="tablist" aria-multiselectable="true">
+					<div class="card">
+						<div class="card-header" role="tab" id="headingOne-1">
+							<h6 class="mb-0">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne-1" aria-expanded="true" aria-controls="collapseOne">
+									Profile Settings
+									<svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+								</a>
+							</h6>
+						</div>
+
+						<div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+							<ul class="your-profile-menu">
+								<li>
+									<a href="28-YourAccount-PersonalInformation.html">Personal Information</a>
+								</li>
+								<li>
+									<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
+								</li>
+								<li>
+									<a href="30-YourAccount-ChangePassword.html">Change Password</a>
+								</li>
+								<li>
+									<a href="31-YourAccount-HobbiesAndInterests.html">Hobbies and Interests</a>
+								</li>
+								<li>
+									<a href="32-YourAccount-EducationAndEmployement.html">Education and Employement</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="ui-block-title">
+					<a href="33-YourAccount-Notifications.html" class="h6 title">Notifications</a>
+					<a href="#" class="items-round-little bg-primary">8</a>
+				</div>
+				<div class="ui-block-title">
+					<a href="34-YourAccount-ChatMessages.html" class="h6 title">Chat / Messages</a>
+				</div>
+				<div class="ui-block-title">
+					<a href="35-YourAccount-FriendsRequests.html" class="h6 title">Friend Requests</a>
+					<a href="#" class="items-round-little bg-blue">4</a>
+				</div>
+				<div class="ui-block-title ui-block-title-small">
+					<h6 class="title">FAVOURITE PAGE</h6>
+				</div>
+				<div class="ui-block-title">
+					<a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Create Fav Page</a>
+				</div>
+				<div class="ui-block-title">
+					<a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Fav Page Settings</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ... end Profile Settings Responsive -->
 
 
 <!-- Fixed Sidebar Left -->
@@ -73,9 +143,9 @@
 <div class="fixed-sidebar">
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-		<a href="ProfilePage.html" class="logo">
+		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img th:src="@{/img/logo.png}" alt="Olympus">
+				<img src="img/logo.png" alt="Olympus">
 			</div>
 		</a>
 
@@ -83,36 +153,36 @@
 			<ul class="left-menu">
 				<li>
 					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-menu-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="打开菜单"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+						<svg class="olymp-menu-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="OPEN MENU"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 					</a>
 				</li>
 				<li>
-					<a href="MainPage.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="关注动态"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+					<a href="03-Newsfeed.html">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 					</a>
 				</li>
 				<li>
 					<a href="16-FavPagesFeed.html">
-						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="我的收藏"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
 					</a>
 				</li>
 				<li>
 					<a href="17-FriendGroups.html">
-						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="好友群组"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
 					</a>
 				</li>
-
+				
 			</ul>
 		</div>
 	</div>
 
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-		<a href="ProfilePage.html" class="logo">
+		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img th:src="@{/img/logo.png}" alt="Olympus">
+				<img src="img/logo.png" alt="Olympus">
 			</div>
 			<div class="title-block">
-				<h6 class="logo-title">蓝鲸博客</h6>
+				<h6 class="logo-title">olympus</h6>
 			</div>
 		</a>
 
@@ -121,28 +191,86 @@
 				<li>
 					<a href="#" class="js-sidebar-open">
 						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-						<span class="left-menu-title">收起菜单</span>
+						<span class="left-menu-title">Collapse Menu</span>
 					</a>
 				</li>
 				<li>
-					<a href="MainPage.html">
+					<a href="03-Newsfeed.html">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">关注动态</span>
+						<span class="left-menu-title">Newsfeed</span>
 					</a>
 				</li>
 				<li>
 					<a href="16-FavPagesFeed.html">
 						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-						<span class="left-menu-title">我的收藏</span>
+						<span class="left-menu-title">Fav Pages Feed</span>
 					</a>
 				</li>
 				<li>
 					<a href="17-FriendGroups.html">
 						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
-						<span class="left-menu-title">好友群组</span>
+						<span class="left-menu-title">Friend Groups</span>
+					</a>
+				</li>
+				<li>
+					<a href="18-MusicAndPlaylists.html">
+						<svg class="olymp-headphones-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="MUSIC&PLAYLISTS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-headphones-icon"></use></svg>
+						<span class="left-menu-title">Music & Playlists</span>
+					</a>
+				</li>
+				<li>
+					<a href="19-WeatherWidget.html">
+						<svg class="olymp-weather-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="WEATHER APP"><use xlink:href="svg-icons/sprites/icons.svg#olymp-weather-icon"></use></svg>
+						<span class="left-menu-title">Weather App</span>
+					</a>
+				</li>
+				<li>
+					<a href="20-CalendarAndEvents-MonthlyCalendar.html">
+						<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
+						<span class="left-menu-title">Calendar and Events</span>
+					</a>
+				</li>
+				<li>
+					<a href="24-CommunityBadges.html">
+						<svg class="olymp-badge-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Community Badges"><use xlink:href="svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
+						<span class="left-menu-title">Community Badges</span>
+					</a>
+				</li>
+				<li>
+					<a href="25-FriendsBirthday.html">
+						<svg class="olymp-cupcake-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Friends Birthdays"><use xlink:href="svg-icons/sprites/icons.svg#olymp-cupcake-icon"></use></svg>
+						<span class="left-menu-title">Friends Birthdays</span>
+					</a>
+				</li>
+				<li>
+					<a href="26-Statistics.html">
+						<svg class="olymp-stats-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Account Stats"><use xlink:href="svg-icons/sprites/icons.svg#olymp-stats-icon"></use></svg>
+						<span class="left-menu-title">Account Stats</span>
+					</a>
+				</li>
+				<li>
+					<a href="27-ManageWidgets.html">
+						<svg class="olymp-manage-widgets-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Manage Widgets"><use xlink:href="svg-icons/sprites/icons.svg#olymp-manage-widgets-icon"></use></svg>
+						<span class="left-menu-title">Manage Widgets</span>
 					</a>
 				</li>
 			</ul>
+
+			<div class="profile-completion">
+
+				<div class="skills-item">
+					<div class="skills-item-info">
+						<span class="skills-item-title">Profile Completion</span>
+						<span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="76" data-from="0"></span><span class="units">76%</span></span>
+					</div>
+					<div class="skills-item-meter">
+						<span class="skills-item-meter-active bg-primary" style="width: 76%"></span>
+					</div>
+				</div>
+
+				<span>Complete <a href="#">your profile</a> so people can know more about you!</span>
+
+			</div>
 		</div>
 	</div>
 </div>
@@ -156,7 +284,7 @@
 
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
 		<a href="#" class="logo js-sidebar-open">
-			<img th:src="@{/img/logo.png}" alt="Olympus">
+			<img src="img/logo.png" alt="Olympus">
 		</a>
 
 	</div>
@@ -164,10 +292,10 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
 		<a href="#" class="logo">
 			<div class="img-wrap">
-				<img th:src="@{/img/logo.png}" alt="Olympus">
+				<img src="img/logo.png" alt="Olympus">
 			</div>
 			<div class="title-block">
-				<h6 class="logo-title">蓝鲸博客</h6>
+				<h6 class="logo-title">olympus</h6>
 			</div>
 		</a>
 
@@ -176,10 +304,10 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/author-page.jpg}" class="avatar">
+						<img alt="author" src="img/author-page.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
-					<a href="ProfilePage.html" class="author-name fn">
+					<a href="02-ProfilePage.html" class="author-name fn">
 						<div class="author-title">
 							James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>
@@ -189,39 +317,80 @@
 			</div>
 
 			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">主选项</h6>
+				<h6 class="title">MAIN SECTIONS</h6>
 			</div>
 
 			<ul class="left-menu">
 				<li>
 					<a href="#" class="js-sidebar-open">
 						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-						<span class="left-menu-title">收起菜单</span>
+						<span class="left-menu-title">Collapse Menu</span>
 					</a>
 				</li>
 				<li>
 					<a href="mobile-index.html">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">关注动态</span>
+						<span class="left-menu-title">Newsfeed</span>
 					</a>
 				</li>
 				<li>
 					<a href="Mobile-28-YourAccount-PersonalInformation.html">
 						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-						<span class="left-menu-title">我的收藏</span>
+						<span class="left-menu-title">Fav Pages Feed</span>
 					</a>
 				</li>
 				<li>
 					<a href="mobile-29-YourAccount-AccountSettings.html">
 						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
-						<span class="left-menu-title">好友群组</span>
+						<span class="left-menu-title">Friend Groups</span>
 					</a>
 				</li>
-
+				<li>
+					<a href="Mobile-30-YourAccount-ChangePassword.html">
+						<svg class="olymp-headphones-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="MUSIC&PLAYLISTS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-headphones-icon"></use></svg>
+						<span class="left-menu-title">Music & Playlists</span>
+					</a>
+				</li>
+				<li>
+					<a href="Mobile-31-YourAccount-HobbiesAndInterests.html">
+						<svg class="olymp-weather-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="WEATHER APP"><use xlink:href="svg-icons/sprites/icons.svg#olymp-weather-icon"></use></svg>
+						<span class="left-menu-title">Weather App</span>
+					</a>
+				</li>
+				<li>
+					<a href="Mobile-32-YourAccount-EducationAndEmployement.html">
+						<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
+						<span class="left-menu-title">Calendar and Events</span>
+					</a>
+				</li>
+				<li>
+					<a href="Mobile-33-YourAccount-Notifications.html">
+						<svg class="olymp-badge-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Community Badges"><use xlink:href="svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
+						<span class="left-menu-title">Community Badges</span>
+					</a>
+				</li>
+				<li>
+					<a href="Mobile-34-YourAccount-ChatMessages.html">
+						<svg class="olymp-cupcake-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Friends Birthdays"><use xlink:href="svg-icons/sprites/icons.svg#olymp-cupcake-icon"></use></svg>
+						<span class="left-menu-title">Friends Birthdays</span>
+					</a>
+				</li>
+				<li>
+					<a href="Mobile-35-YourAccount-FriendsRequests.html">
+						<svg class="olymp-stats-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Account Stats"><use xlink:href="svg-icons/sprites/icons.svg#olymp-stats-icon"></use></svg>
+						<span class="left-menu-title">Account Stats</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<svg class="olymp-manage-widgets-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Manage Widgets"><use xlink:href="svg-icons/sprites/icons.svg#olymp-manage-widgets-icon"></use></svg>
+						<span class="left-menu-title">Manage Widgets</span>
+					</a>
+				</li>
 			</ul>
 
 			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">我的账户</h6>
+				<h6 class="title">YOUR ACCOUNT</h6>
 			</div>
 
 			<ul class="account-settings">
@@ -230,48 +399,48 @@
 
 						<svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
-						<span>账户设置</span>
+						<span>Profile Settings</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
 						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
 
-						<span>管理收藏</span>
+						<span>Create Fav Page</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
 						<svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
-						<span>登出</span>
+						<span>Log Out</span>
 					</a>
 				</li>
 			</ul>
 
 			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">关于蓝鲸</h6>
+				<h6 class="title">About Olympus</h6>
 			</div>
 
 			<ul class="about-olympus">
 				<li>
 					<a href="#">
-						<span>用户协议</span>
+						<span>Terms and Conditions</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>疑难解答</span>
+						<span>FAQs</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>加入我们</span>
+						<span>Careers</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<span>联系我们</span>
+						<span>Contact</span>
 					</a>
 				</li>
 			</ul>
@@ -292,71 +461,71 @@
 			<ul class="chat-users">
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar67-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar67-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar62-sm.jpg}" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar68-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar62-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar69-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar68-sm.jpg" class="avatar">
+						<span class="icon-status online"></span>
+					</div>
+				</li>
+
+				<li class="inline-items js-chat-open">
+					<div class="author-thumb">
+						<img alt="author" src="img/avatar69-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar70-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar70-sm.jpg" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar64-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar64-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar63-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar63-sm.jpg" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 				</li>
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 				</li>
@@ -388,7 +557,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar67-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar67-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -419,7 +588,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar62-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar62-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -452,7 +621,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" src="{/static/img/avatar68-sm.jpg" class="avatar">
+						<img alt="author" src="img/avatar68-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -486,7 +655,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar69-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar69-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -520,7 +689,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar70-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar70-sm.jpg" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 
@@ -561,7 +730,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar64-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar64-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -600,7 +769,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -632,7 +801,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -663,7 +832,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar63-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar63-sm.jpg" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 
@@ -693,7 +862,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -723,7 +892,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -795,15 +964,15 @@
 		<div class="mCustomScrollbar" data-mcs-theme="dark">
 
 			<div class="ui-block-title ui-block-title-small">
-				<a href="#" class="title">附近的人</a>
-				<a href="#">设置</a>
+				<a href="#" class="title">Close Friends</a>
+				<a href="#">Settings</a>
 			</div>
 
 			<ul class="chat-users">
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar67-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar67-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -834,7 +1003,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar62-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar62-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -867,7 +1036,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar68-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar68-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -901,7 +1070,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar69-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar69-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -935,7 +1104,7 @@
 
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar70-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar70-sm.jpg" class="avatar">
 						<span class="icon-status disconected"></span>
 					</div>
 
@@ -968,15 +1137,15 @@
 
 
 			<div class="ui-block-title ui-block-title-small">
-				<a href="#" class="title">我的家人</a>
-				<a href="#">设置</a>
+				<a href="#" class="title">MY FAMILY</a>
+				<a href="#">Settings</a>
 			</div>
 
 			<ul class="chat-users">
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar64-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar64-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1007,15 +1176,15 @@
 
 
 			<div class="ui-block-title ui-block-title-small">
-				<a href="#" class="title">未知分类</a>
-				<a href="#">设置</a>
+				<a href="#" class="title">UNCATEGORIZED</a>
+				<a href="#">Settings</a>
 			</div>
 
 			<ul class="chat-users">
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1047,7 +1216,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -1078,7 +1247,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar63-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar63-sm.jpg" class="avatar">
 						<span class="icon-status status-invisible"></span>
 					</div>
 
@@ -1108,7 +1277,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar72-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar72-sm.jpg" class="avatar">
 						<span class="icon-status away"></span>
 					</div>
 
@@ -1138,7 +1307,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar71-sm.jpg}" class="avatar">
+						<img alt="author" src="img/avatar71-sm.jpg" class="avatar">
 						<span class="icon-status online"></span>
 					</div>
 
@@ -1171,7 +1340,7 @@
 
 		<div class="search-friend inline-items">
 			<form class="form-group" >
-				<input class="form-control" placeholder="搜索好友..." value="" type="text">
+				<input class="form-control" placeholder="Search Friends..." value="" type="text">
 			</form>
 
 			<a href="29-YourAccount-AccountSettings.html" class="settings">
@@ -1185,7 +1354,7 @@
 
 		<a href="#" class="olympus-chat inline-items js-chat-open">
 
-			<h6 class="olympus-chat-title">发私信</h6>
+			<h6 class="olympus-chat-title">OLYMPUS CHAT</h6>
 			<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 		</a>
 	</div>
@@ -1200,39 +1369,39 @@
 <header class="header" id="site-header">
 
 	<div class="page-title">
-		<h6>动态</h6>
+		<h6>我的账户</h6>
 	</div>
 
 	<div class="header-content-wrapper">
 		<form class="search-bar w-search notification-list friend-requests">
 			<div class="form-group with-button">
-				<input class="form-control js-user-search" placeholder="查找查找用户或页面" type="text">
+				<input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
 				<button>
 					<svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
 				</button>
 			</div>
 		</form>
 
-		<a href="#" class="link-find-friend">发现新的朋友</a>
+		<a href="#" class="link-find-friend">Find Friends</a>
 
 		<div class="control-block">
 
 			<div class="control-icon more has-items">
-				<svg class="olymp-happy-face-icon"><use xlink:th:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+				<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 				<div class="label-avatar bg-blue">6</div>
 
 				<div class="more-dropdown more-with-triangle triangle-top-center">
 					<div class="ui-block-title ui-block-title-small">
-						<h6 class="title">好友请求</h6>
-						<a href="#">查找好友</a>
-						<a href="#">设置</a>
+						<h6 class="title">FRIEND REQUESTS</h6>
+						<a href="#">Find Friends</a>
+						<a href="#">Settings</a>
 					</div>
 
 					<div class="mCustomScrollbar" data-mcs-theme="dark">
 						<ul class="notification-list friend-requests">
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar55-sm.jpg}" alt="author">
+									<img src="img/avatar55-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Tamara Romanoff</a>
@@ -1260,7 +1429,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar56-sm.jpg}" alt="author">
+									<img src="img/avatar56-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Tony Stevens</a>
@@ -1288,7 +1457,7 @@
 
 							<li class="accepted">
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar57-sm.jpg}" alt="author">
+									<img src="img/avatar57-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									You and <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="#" class="notification-link">her wall</a>.
@@ -1305,7 +1474,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar58-sm.jpg}" alt="author">
+									<img src="img/avatar58-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Stagg Clothing</a>
@@ -1334,7 +1503,7 @@
 						</ul>
 					</div>
 
-					<a href="#" class="view-all bg-blue">查看所有请求</a>
+					<a href="#" class="view-all bg-blue">Check all your Events</a>
 				</div>
 			</div>
 
@@ -1344,16 +1513,16 @@
 
 				<div class="more-dropdown more-with-triangle triangle-top-center">
 					<div class="ui-block-title ui-block-title-small">
-						<h6 class="title">私信 / 消息</h6>
-						<a href="#">全部标记已读</a>
-						<a href="#">设置</a>
+						<h6 class="title">Chat / Messages</h6>
+						<a href="#">Mark all as read</a>
+						<a href="#">Settings</a>
 					</div>
 
 					<div class="mCustomScrollbar" data-mcs-theme="dark">
 						<ul class="notification-list chat-message">
 							<li class="message-unread">
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar59-sm.jpg}" alt="author">
+									<img src="img/avatar59-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Diana Jameson</a>
@@ -1370,7 +1539,7 @@
 
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar60-sm.jpg}" alt="author">
+									<img src="img/avatar60-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Jake Parker</a>
@@ -1387,14 +1556,14 @@
 							</li>
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar61-sm.jpg}" alt="author">
+									<img src="img/avatar61-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
 									<span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 									</span>
 								<div class="more">
@@ -1404,10 +1573,10 @@
 
 							<li class="chat-group">
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar11-sm.jpg}" alt="author">
-									<img th:src="@{/img/avatar12-sm.jpg}" alt="author">
-									<img th:src="@{/img/avatar13-sm.jpg}" alt="author">
-									<img th:src="@{/img/avatar10-sm.jpg}" alt="author">
+									<img src="img/avatar11-sm.jpg" alt="author">
+									<img src="img/avatar12-sm.jpg" alt="author">
+									<img src="img/avatar13-sm.jpg" alt="author">
+									<img src="img/avatar10-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
@@ -1415,7 +1584,7 @@
 									<span class="chat-message-item">Yeah! Seems fine by me!</span>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 									</span>
 								<div class="more">
@@ -1425,7 +1594,7 @@
 						</ul>
 					</div>
 
-					<a href="#" class="view-all bg-purple">查看所有消息</a>
+					<a href="#" class="view-all bg-purple">View All Messages</a>
 				</div>
 			</div>
 
@@ -1436,22 +1605,22 @@
 
 				<div class="more-dropdown more-with-triangle triangle-top-center">
 					<div class="ui-block-title ui-block-title-small">
-						<h6 class="title">通知</h6>
-						<a href="#">全部标记已读</a>
-						<a href="#">设置</a>
+						<h6 class="title">Notifications</h6>
+						<a href="#">Mark all as read</a>
+						<a href="#">Settings</a>
 					</div>
 
 					<div class="mCustomScrollbar" data-mcs-theme="dark">
 						<ul class="notification-list">
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar62-sm.jpg}" alt="author">
+									<img src="img/avatar62-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-comments-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use></svg>
 									</span>
 
@@ -1463,13 +1632,13 @@
 
 							<li class="un-read">
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar63-sm.jpg}" alt="author">
+									<img src="img/avatar63-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<div>You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.</div>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 									</span>
 
@@ -1481,18 +1650,18 @@
 
 							<li class="with-comment-photo">
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar64-sm.jpg}" alt="author">
+									<img src="img/avatar64-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.</div>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-comments-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use></svg>
 									</span>
 
 								<div class="comment-photo">
-									<img th:src="@{/img/comment-photo1.jpg}" alt="photo">
+									<img src="img/comment-photo1.jpg" alt="photo">
 									<span>“She looks incredible in that outfit! We should see each...”</span>
 								</div>
 
@@ -1504,13 +1673,13 @@
 
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar65-sm.jpg}" alt="author">
+									<img src="img/avatar65-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.</div>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 									</span>
 
@@ -1522,13 +1691,13 @@
 
 							<li>
 								<div class="author-thumb">
-									<img th:src="@{/img/avatar66-sm.jpg}" alt="author">
+									<img src="img/avatar66-sm.jpg" alt="author">
 								</div>
 								<div class="notification-event">
 									<div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
 									<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
 								</div>
-								<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-heart-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
 									</span>
 
@@ -1540,18 +1709,18 @@
 						</ul>
 					</div>
 
-					<a href="#" class="view-all bg-primary">查看所有通知</a>
+					<a href="#" class="view-all bg-primary">View All Notifications</a>
 				</div>
 			</div>
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" th:src="@{/img/author-page.jpg}" class="avatar">
+					<img alt="author" src="img/author-page.jpg" class="avatar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
 							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">我的账户</h6>
+								<h6 class="title">Your Account</h6>
 							</div>
 
 							<ul class="account-settings">
@@ -1560,60 +1729,59 @@
 
 										<svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
-										<span>账户设置</span>
+										<span>Profile Settings</span>
 									</a>
 								</li>
 								<li>
 									<a href="36-FavPage-SettingsAndCreatePopup.html">
 										<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
 
-										<span>管理收藏</span>
+										<span>Create Fav Page</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
 										<svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
-										<span>登出</span>
+										<span>Log Out</span>
 									</a>
 								</li>
 							</ul>
 
 							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">状态设置</h6>
+								<h6 class="title">Chat Settings</h6>
 							</div>
 
 							<ul class="chat-settings">
 								<li>
 									<a href="#">
 										<span class="icon-status online"></span>
-										<span>在线</span>
+										<span>Online</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
 										<span class="icon-status away"></span>
-										<span>隐身</span>
+										<span>Away</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
 										<span class="icon-status disconected"></span>
-										<span>忙碌</span>
+										<span>Disconnected</span>
 									</a>
 								</li>
 
 								<li>
 									<a href="#">
 										<span class="icon-status status-invisible"></span>
-										<span>离开</span>
+										<span>Invisible</span>
 									</a>
 								</li>
 							</ul>
 
-
 							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">个性签名</h6>
+								<h6 class="title">Custom Status</h6>
 							</div>
 
 							<form class="form-group with-button custom-status">
@@ -1624,31 +1792,29 @@
 								</button>
 							</form>
 
-
 							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">关于蓝鲸</h6>
+								<h6 class="title">About Olympus</h6>
 							</div>
-
 
 							<ul>
 								<li>
 									<a href="#">
-										<span>用户体哦快</span>
+										<span>Terms and Conditions</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<span>疑难解答</span>
+										<span>FAQs</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<span>加入我们</span>
+										<span>Careers</span>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<span>联系我们</span>
+										<span>Contact</span>
 									</a>
 								</li>
 							</ul>
@@ -1656,7 +1822,7 @@
 
 					</div>
 				</div>
-				<a href="ProfilePage.html" class="author-name fn">
+				<a href="02-ProfilePage.html" class="author-name fn">
 					<div class="author-title">
 						James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
@@ -1721,20 +1887,20 @@
 
 			<div class="mCustomScrollbar" data-mcs-theme="dark">
 				<div class="ui-block-title ui-block-title-small">
-					<h6 class="title">好友请求</h6>
-					<a href="#">寻找好友</a>
-					<a href="#">设置</a>
+					<h6 class="title">FRIEND REQUESTS</h6>
+					<a href="#">Find Friends</a>
+					<a href="#">Settings</a>
 				</div>
 				<ul class="notification-list friend-requests">
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar55-sm.jpg}" alt="author">
+							<img src="img/avatar55-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Tamara Romanoff</a>
 							<span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<a href="#" class="accept-request">
 											<span class="icon-add without-text">
 												<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
@@ -1755,13 +1921,13 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar56-sm.jpg}" alt="author">
+							<img src="img/avatar56-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Tony Stevens</a>
 							<span class="chat-message-item">4 Friends in Common</span>
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<a href="#" class="accept-request">
 											<span class="icon-add without-text">
 												<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
@@ -1782,12 +1948,12 @@
 					</li>
 					<li class="accepted">
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar57-sm.jpg}" alt="author">
+							<img src="img/avatar57-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							You and <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="#" class="notification-link">her wall</a>.
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 									</span>
 
@@ -1798,13 +1964,13 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar58-sm.jpg}" alt="author">
+							<img src="img/avatar58-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Stagg Clothing</a>
 							<span class="chat-message-item">9 Friends in Common</span>
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<a href="#" class="accept-request">
 											<span class="icon-add without-text">
 												<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
@@ -1824,7 +1990,7 @@
 						</div>
 					</li>
 				</ul>
-				<a href="#" class="view-all bg-blue">查看所有请求</a>
+				<a href="#" class="view-all bg-blue">Check all your Events</a>
 			</div>
 
 		</div>
@@ -1833,22 +1999,22 @@
 
 			<div class="mCustomScrollbar" data-mcs-theme="dark">
 				<div class="ui-block-title ui-block-title-small">
-					<h6 class="title">私信 / 消息</h6>
-					<a href="#">全部标记已读</a>
-					<a href="#">设置</a>
+					<h6 class="title">Chat / Messages</h6>
+					<a href="#">Mark all as read</a>
+					<a href="#">Settings</a>
 				</div>
 
 				<ul class="notification-list chat-message">
 					<li class="message-unread">
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar59-sm.jpg}" alt="author">
+							<img src="img/avatar59-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Diana Jameson</a>
 							<span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we have to reschedule...</span>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 									</span>
 						<div class="more">
@@ -1858,14 +2024,14 @@
 
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar60-sm.jpg}" alt="author">
+							<img src="img/avatar60-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Jake Parker</a>
 							<span class="chat-message-item">Great, I’ll see you tomorrow!.</span>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
 						</div>
-						<span class="notification-icon">
+									<span class="notification-icon">
 										<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 									</span>
 
@@ -1875,14 +2041,14 @@
 					</li>
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar61-sm.jpg}" alt="author">
+							<img src="img/avatar61-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
 							<span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 										</span>
 						<div class="more">
@@ -1892,10 +2058,10 @@
 
 					<li class="chat-group">
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar11-sm.jpg}" alt="author">
-							<img th:src="@{/img/avatar12-sm.jpg}" alt="author">
-							<img th:src="@{/img/avatar13-sm.jpg}" alt="author">
-							<img th:src="@{/img/avatar10-sm.jpg}" alt="author">
+							<img src="img/avatar11-sm.jpg" alt="author">
+							<img src="img/avatar12-sm.jpg" alt="author">
+							<img src="img/avatar13-sm.jpg" alt="author">
+							<img src="img/avatar10-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
@@ -1903,7 +2069,7 @@
 							<span class="chat-message-item">Yeah! Seems fine by me!</span>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
 										</span>
 						<div class="more">
@@ -1912,7 +2078,7 @@
 					</li>
 				</ul>
 
-				<a href="#" class="view-all bg-purple">查看所有消息</a>
+				<a href="#" class="view-all bg-purple">View All Messages</a>
 			</div>
 
 		</div>
@@ -1921,21 +2087,21 @@
 
 			<div class="mCustomScrollbar" data-mcs-theme="dark">
 				<div class="ui-block-title ui-block-title-small">
-					<h6 class="title">通知</h6>
-					<a href="#">全部标记已读</a>
-					<a href="#">设置</a>
+					<h6 class="title">Notifications</h6>
+					<a href="#">Mark all as read</a>
+					<a href="#">Settings</a>
 				</div>
 
 				<ul class="notification-list">
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar62-sm.jpg}" alt="author">
+							<img src="img/avatar62-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-comments-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use></svg>
 										</span>
 
@@ -1947,13 +2113,13 @@
 
 					<li class="un-read">
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar63-sm.jpg}" alt="author">
+							<img src="img/avatar63-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<div>You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.</div>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 										</span>
 
@@ -1965,18 +2131,18 @@
 
 					<li class="with-comment-photo">
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar64-sm.jpg}" alt="author">
+							<img src="img/avatar64-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.</div>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-comments-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use></svg>
 										</span>
 
 						<div class="comment-photo">
-							<img th:src="@{/img/comment-photo1.jpg}" alt="photo">
+							<img src="img/comment-photo1.jpg" alt="photo">
 							<span>“She looks incredible in that outfit! We should see each...”</span>
 						</div>
 
@@ -1988,13 +2154,13 @@
 
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar65-sm.jpg}" alt="author">
+							<img src="img/avatar65-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.</div>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
 										</span>
 
@@ -2006,13 +2172,13 @@
 
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar66-sm.jpg}" alt="author">
+							<img src="img/avatar66-sm.jpg" alt="author">
 						</div>
 						<div class="notification-event">
 							<div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.</div>
 							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
 						</div>
-						<span class="notification-icon">
+										<span class="notification-icon">
 											<svg class="olymp-heart-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
 										</span>
 
@@ -2023,7 +2189,7 @@
 					</li>
 				</ul>
 
-				<a href="#" class="view-all bg-primary">查看所有消息</a>
+				<a href="#" class="view-all bg-primary">View All Notifications</a>
 			</div>
 
 		</div>
@@ -2031,11 +2197,11 @@
 		<div class="tab-pane " id="search" role="tabpanel">
 
 
-			<form class="search-bar w-search notification-list friend-requests">
-				<div class="form-group with-button">
-					<input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
-				</div>
-			</form>
+				<form class="search-bar w-search notification-list friend-requests">
+					<div class="form-group with-button">
+						<input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
+					</div>
+				</form>
 
 
 		</div>
@@ -2046,964 +2212,211 @@
 </header>
 
 <!-- ... end Responsive Header-BP -->
-<div class="header-spacer"></div>
+<div class="header-spacer header-spacer-small"></div>
 
+<!-- Main Header Account -->
+
+<div class="main-header">
+	<div class="content-bg-wrap bg-account"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
+				<div class="main-header-content">
+					<h1>你的账户设置指南</h1>
+					<p>欢迎来到您的帐号仪表盘!在这里你会发现你需要改变你的个人资料的一切
+信息，设置，阅读通知和请求，查看您的最新消息，更改您的pasword和很多
+更多!您也可以创建或管理自己喜爱的页面，祝您生活愉快!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img class="img-bottom" src="img/account-bottom.png" alt="friends">
+</div>
+
+<!-- ... end Main Header Account -->
+
+
+<!-- Your Account Personal Information -->
 
 <div class="container">
 	<div class="row">
-
-		<!-- Main Content -->
-
-		<main  id="d2" class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-
-
-			<shiro:guest>
-				<label>您当前是游客，</label><a href="/login.jsp" >请登录</a>
-			</shiro:guest>
-
+		<div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
 			<div class="ui-block">
-
-				<!-- News Feed Form  -->
-
-				<div class="news-feed-form">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
-
-								<svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
-
-								<span>发表博文</span>
-							</a>
-						</li>
-
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div class="tab-pane active" id="home-1"  role="tabpanel" aria-expanded="true">
-							<form  method="post" th:action="@{/article/addArticle}" id="articlefrom">
-								<div class="author-thumb">
-									<img th:src="@{/img/author-page.jpg}" alt="author">
-								</div>
-								<div class="form-group with-icon label-floating is-empty" >
-									<label class="control-label">分享你的动态...</label>
-									<textarea class="form-control" placeholder=""  th:name="content" id="content"></textarea>
-								</div>
-								<div class="add-options-message">
-<!--									<form id="form1" runat="server">-->
-<!--										<div>-->
-<!--											<asp:FileUpload ID="FileUpload1" runat="server"/>-->
-<!--											<input id="btnUpload" type="button" value="上传" onclick="Judge()" />-->
-<!--											<div id="hint"></div>-->
-<!--										</div>-->
-<!--									</form>-->
-
-									<span id='uploadSpan'>
-    									 <input type="file" id="imgBut" name="imgCut">
-										<div class="box" style="width: 100px;height: 100px">
-
-											 <img src="" alt="" id="yulan" style="border: 1px solid rebeccapurple;height: 100px;width: 100px;">
-  										 </div>
-    										<span style="color: red;">*</span><span style="color: silver;">新闻预览图片,只支持.jpg .jif .png图片格式</span>
-								</span>
-									<a href="#" class="options-mess  age" data-toggle="tooltip" data-placement="top"   data-original-title="添加相片">
-										<svg class="olymp-camera-icon" ><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="@你的好友">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
-
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="显示当前位置">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
-
-									<button class="btn btn-primary btn-md-2" type="button" id="upload">发表</button>
-									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey" type="reset">重置</button>
-									<input type="reset" style="display:none;" />
-
-								</div>
-
-							</form>
-						</div>
-
-						<div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-							<form>
-								<div class="author-thumb">
-									<img th:src="@{/img/author-page.jpg}" alt="author">
-								</div>
-								<div class="form-group with-icon label-floating is-empty">
-									<label class="control-label">Share what you are thinking here...</label>
-									<textarea class="form-control" placeholder=""  ></textarea>
-								</div>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
-
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
-
-									<button class="btn btn-primary btn-md-2">Post Status</button>
-									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-								</div>
-
-							</form>
-						</div>
-
-						<div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-							<form>
-								<div class="author-thumb">
-									<img th:src="@{/img/author-page.jpg}" alt="author">
-								</div>
-								<div class="form-group with-icon label-floating is-empty">
-									<label class="control-label">Share what you are thinking here...</label>
-									<textarea class="form-control" placeholder=""  ></textarea>
-								</div>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
-
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
-
-									<button class="btn btn-primary btn-md-2">Post Status</button>
-									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-								</div>
-
-							</form>
-						</div>
-					</div>
+				<div class="ui-block-title">
+					<h6 class="title">Personal Information</h6>
 				</div>
+				<div class="ui-block-content">
 
-				<!-- ... end News Feed Form  -->			</div>
-
-			<div class="ui-block" th:each="li:${articlelist}">
-
-
-				<article class="hentry post">
-
-					<div class="post__author author vcard inline-items">
-						<img th:src="@{/img/avatar10-sm.jpg}" alt="author">
-
-						<div class="author-date">
-							<a class="h6 post__author-name fn" href="#">Elaine Dreyfuss</a>
-							<div class="post__date">
-								<time class="published" datetime="2004-07-24T18:18" th:text="${li.createTime}">
-
-								</time>
-							</div>
-						</div>
-
-						<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-							<ul class="more-dropdown">
-								<li>
-									<a href="#">Edit Post</a>
-								</li>
-								<li>
-									<a href="#">Delete Post</a>
-								</li>
-								<li>
-									<a href="#">Turn Off Notifications</a>
-								</li>
-								<li>
-									<a href="#">Select as Featured</a>
-								</li>
-							</ul>
-						</div>
-
-					</div>
-
-					<p th:text="${li.content}">
-					</p>
-
-					<div class="post-thumb">
-						<img th:src="${li.getUrl()}" >
-					</div>
-
-					<div class="post-additional-info inline-items" th:fragment="div1">
-
-						<a    class="post-add-icon inline-items" th:href="@{/article/great(aId=${li.getaId()},uId=${li.getUserId()})}"  >
-							<svg class="olymp-heart-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
-							<img th:src="@{/img/great.png}">
-							<span th:text="${li.greatNum}"></span>
-						</a>
-
-						<!--						<ul class="friends-harmonic">-->
-						<!--							<li>-->
-						<!--								<a href="#">-->
-						<!--									<img th:src="@{/friend-harmonic7.jpg}" alt="friend">-->
-						<!--								</a>-->
-						<!--							</li>-->
-						<!--							<li>-->
-						<!--								<a href="#">-->
-						<!--									<img th:src="@{/friend-harmonic8.jpg}" alt="friend">-->
-						<!--								</a>-->
-						<!--							</li>-->
-						<!--							<li>-->
-						<!--								<a href="#">-->
-						<!--									<img th:src="@{/friend-harmonic9.jpg}" alt="friend">-->
-						<!--								</a>-->
-						<!--							</li>-->
-						<!--							<li>-->
-						<!--								<a href="#">-->
-						<!--									<img th:src="@{/friend-harmonic10.jpg}" alt="friend">-->
-						<!--								</a>-->
-						<!--							</li>-->
-						<!--							<li>-->
-						<!--								<a href="#">-->
-						<!--									<img th:src="@{/friend-harmonic11.jpg}" alt="friend">-->
-						<!--								</a>-->
-						<!--							</li>-->
-						<!--						</ul>-->
-
-						<!--						<div class="names-people-likes">-->
-						<!--							<a href="#">You</a>, <a href="#">Elaine</a> and-->
-						<!--							<br>22 more liked this-->
-						<!--						</div>-->
-
-
-						<div class="comments-shared" id="a">
-							<a   class="post-add-icon inline-items" id="commentShow" th:href="@{/comment/selectAllComment(answerId=${li.getaId()})}"  >
-								<svg class="olymp-speech-balloon-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use></svg>
-								<img th:src="@{/img/comment.png}">
-								<span>查看评论</span>
-							</a>
-
-							<a href="#" class="post-add-icon inline-items">
-								<svg class="olymp-share-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use></svg>
-								<span ></span>
-							</a>
-						</div>
-
-
-					</div>
-
-					<div class="control-block-button post-control-button">
-
-						<a href="#" class="btn btn-control">
-							<svg class="olymp-like-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use></svg>
-						</a>
-
-						<a href="#" class="btn btn-control">
-							<svg class="olymp-comments-post-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use></svg>
-						</a>
-
-						<a href="#" class="btn btn-control">
-							<svg class="olymp-share-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use></svg>
-						</a>
-
-					</div>
-
-				</article>
-
-				<!-- Comments -->
-				<div id="comments" >
-					<ul class="comments-list" th:each="comments:${commentList}" th:if="${comments.getAnswerId()==li.getaId()}">
-						<li class="comment-item" >
-							<div class="post__author author vcard inline-items">
-								<img th:src="@{author-page.jpg}" alt="author">
-
-								<div class="author-date">
-									<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
-									<div class="post__date">
-										<time class="published" datetime="2004-07-24T18:18" th:text="${comments.createTime}">
-
-										</time>
-									</div>
+					
+					<!-- Personal Information Form  -->
+					
+					<form>
+						<div class="row">
+					
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="form-group label-floating">
+									<label class="control-label">你的账户</label>
+									<input class="form-control" disabled="disabled" placeholder="" type="text" value="meidouzanget">
 								</div>
-
-								<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-
+								<div class="form-group label-floating">
+									<label class="control-label">你的昵称</label>
+									<input class="form-control" placeholder="" type="text" value="James">
+								</div>
+					
+								<div class="form-group label-floating">
+									<label class="control-label">你的邮箱</label>
+									<input class="form-control" placeholder="" type="email" value="jspiegel@yourmail.com">
+								</div>
+					
+								
 							</div>
-
-							<p th:text="${comments.content}"></p>
-
-							<a href="#" class="post-add-icon inline-items">
-								<svg class="olymp-heart-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
-								<span>3</span>
-							</a>
-							<a href="#" class="reply">Reply</a>
-						</li>
-
-					</ul>
-
-					<!-- ... end Comments -->
-
-					<!--					<a href="#" class="more-comments">View more comments <span>+</span></a>-->
-
-
-					<!-- Comment Form  -->
-
-					<form class="comment-form inline-items" v-shou="flag" th:action="@{/comment/addComment}" >
-
-						<div class="post__author author vcard inline-items">
-
-
-							<div class="form-group with-icon-right ">
-
-								<textarea class="form-control" placeholder=""  th:name="content"></textarea>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
-										<svg class="olymp-camera-icon">
-											<use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
-										</svg>
-									</a>
+					
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+						<div class="form-group label-floating is-empty">
+									<label class="control-label">你的电话号码</label>
+									<input class="form-control" placeholder="" type="text">
+								</div>
+								<div class="form-group date-time-picker label-floating">
+									<label class="control-label">你的生日</label>
+									<input name="datetimepicker" value="10/24/1984" />
+									<span class="input-group-addon">
+															<svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
+														</span>
 								</div>
 							</div>
+					
+							<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="form-group label-floating is-select">
+									<label class="control-label">国籍</label>
+									<select class="selectpicker form-control">
+										<option value="ML">中国大陆</option>
+										<option value="HMT">港澳台等其他地区</option>
+									</select>
+								</div>
+							</div>
+							<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="form-group label-floating is-select">
+									<label class="control-label">现居城市</label>
+									<select class="selectpicker form-control">
+										<option value="SF">北京</option>
+										<option value="NY">上海</option>
+										<option value="SF">广州</option>
+										<option value="NY">深圳</option>
+									</select>
+								</div>
+							</div>
+							<div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="form-group label-floating is-select">
+									<label class="control-label">地区</label>
+									<select class="selectpicker form-control">
+										<option value="SF">北京</option>
+										<option value="NY">上海</option>
+										<option value="SF">广州</option>
+										<option value="NY">深圳</option>
+									</select>
+								</div>
+							</div>
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="form-group label-floating">
+									<label class="control-label">介绍一下你自己</label>
+									<textarea class="form-control" placeholder="">性别人男，爱好女，有车有房，父母双亡</textarea>
+								</div>
+					
+								<div class="form-group label-floating is-select">
+									<label class="control-label">性别</label>
+									<select class="selectpicker form-control">
+										<option value="MA">男</option>
+										<option value="FE">女</option>
+									</select>
+								</div>
+					
+								
+							</div>
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="form-group label-floating is-empty">
+									<label class="control-label">我的家乡</label>
+									<input class="form-control" placeholder="" type="text">
+								</div>
+					
+								<div class="form-group label-floating">
+									<label class="control-label">职业</label>
+									<input class="form-control" placeholder="" type="text" value="程序猿">
+								</div>
+					
+								<div class="form-group label-floating is-select">
+									<label class="control-label">婚姻状况</label>
+									<select class="selectpicker form-control">
+										<option value="MA">未婚</option>
+										<option value="FE">已婚</option>
+									</select>
+								</div>
+					
+								
+							</div>
+							
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+								<button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
+							</div>
+							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+								<button class="btn btn-primary btn-lg full-width">Save all Changes</button>
+							</div>
+					
 						</div>
-
-						<button class="btn btn-md-2 btn-primary" type="submit">发表评论</button>
-
-						<button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
-
 					</form>
+					
+					<!-- ... end Personal Information Form  -->
 				</div>
-
-				<!-- ... end Comment Form  -->
 			</div>
+		</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<!--			<a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>-->
-
-		</main>
-
-		<!-- ... end Main Content -->
-
-
-		<!-- Left Sidebar -->
-
-		<aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
-
-			<!-- W-Weather -->
-
-			<!-- W-Weather -->
-
+		<div class="col col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12 responsive-display-none">
 			<div class="ui-block">
-				<!-- W-Calendar -->
-				<div class="w-calendar">
-					<div class="calendar">
-						<header>
-							<h6 class="month">五月</h6>
-						</header>
-						<table>
-							<thead>
-							<tr><td>Mon</td><td>Tue</td><td>Wed</td><td>Thu</td><td>Fri</td><td>Sat</td><td>San</td></tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td data-month="12" data-day="1">1</td>
-								<td data-month="12" data-day="2">
-									2
-								</td>
-								<td data-month="12" data-day="3">3</td>
-								<td data-month="12" data-day="4">4</td>
-								<td data-month="12" data-day="5">5</td>
-								<td data-month="12" data-day="6">6</td>
-								<td data-month="12" data-day="7">7</td>
-							</tr>
-							<tr>
-								<td data-month="12" data-day="8">8</td>
-								<td data-month="12" data-day="9">9</td>
-								<td data-month="12" data-day="10">10</td>
-								<td data-month="12" data-day="11">11</td>
-								<td data-month="12" data-day="12">12</td>
-								<td data-month="12" data-day="13">13</td>
-								<td data-month="12" data-day="14">14</td>
-							</tr>
-							<tr>
-								<td data-month="12" data-day="15">15</td>
-								<td data-month="12" data-day="16">16</td>
-								<td data-month="12" data-day="17">17</td>
-								<td data-month="12" data-day="18">18</td>
-								<td data-month="12" data-day="19">19</td>
-								<td data-month="12" data-day="20">20</td>
-								<td data-month="12" data-day="21">21</td>
-							</tr>
-							<tr>
-								<td data-month="12" data-day="22">22</td>
-								<td data-month="12" data-day="23">23</td>
-								<td data-month="12" data-day="24">24</td>
-								<td data-month="12" data-day="25">25</td>
-								<td data-month="12" data-day="26">26</td>
-								<td data-month="12" data-day="27">27</td>
-								<td data-month="12" data-day="28">28</td>
-							</tr>
-							<tr>
-								<td data-month="12" data-day="29">29</td>
-								<td data-month="12" data-day="30">30</td>
-								<td data-month="12" data-day="31">31</td>
-							</tr>
-							</tbody>
-						</table>
+
+				<!-- Your Profile  -->
+				
+				<div class="your-profile">
+					<div class="ui-block-title ui-block-title-small">
+						<h6 class="title">我的账户</h6>
 					</div>
-				</div>
-
-
-				<!-- ... end W-Calendar -->			</div>
-
-			<div class="ui-block">
-				<div class="ui-block-title">
-					<h6 class="title">好友推荐</h6>
-					<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-				</div>
-
-
-
-				<!-- W-Action -->
-
-				<ul class="widget w-friend-pages-added notification-list friend-requests">
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar38-sm.jpg}" alt="author">
+				
+					<div id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="card">
+							<div class="card-header" role="tab" id="headingOne">
+								<h6 class="mb-0">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										账户设置
+										<svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+									</a>
+								</h6>
+							</div>
+				
+							<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+								<ul class="your-profile-menu">
+									<li>
+										<a href="28-YourAccount-PersonalInformation.html">个人资料</a>
+									</li>
+									
+									<li>
+										<a href="30-YourAccount-ChangePassword.html">修改密码</a>
+									</li>
+									
+									
+								</ul>
+							</div>
 						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Francine Smith</a>
-							<span class="chat-message-item">8 Friends in Common</span>
-						</div>
-						<span class="notification-icon">
-							<a href="#" class="accept-request">
-								<span class="icon-add without-text">
-									<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-							</a>
-						</span>
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar39-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Hugh Wilson</a>
-							<span class="chat-message-item">6 Friends in Common</span>
-						</div>
-						<span class="notification-icon">
-							<a href="#" class="accept-request">
-								<span class="icon-add without-text">
-									<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-							</a>
-						</span>
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar40-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Karen Masters</a>
-							<span class="chat-message-item">6 Friends in Common</span>
-						</div>
-						<span class="notification-icon">
-							<a href="#" class="accept-request">
-								<span class="icon-add without-text">
-									<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-							</a>
-						</span>
-					</li>
-
-				</ul>
-
-				<!-- ... end W-Action -->
-			</div>
-
-
-			<div class="ui-block">
-				<div class="ui-block-title">
-					<h6 class="title">猜你喜欢</h6>
-					<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-				</div>
-
-				<!-- W-Friend-Pages-Added -->
-
-				<ul class="widget w-friend-pages-added notification-list friend-requests">
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar41-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">The Marina Bar</a>
-							<span class="chat-message-item">Restaurant / Bar</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar42-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Tapronus Rock</a>
-							<span class="chat-message-item">Rock Band</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar43-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Pixel Digital Design</a>
-							<span class="chat-message-item">Company</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar44-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Thompson’s Custom Clothing Boutique</a>
-							<span class="chat-message-item">Clothing Store</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar45-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Crimson Agency</a>
-							<span class="chat-message-item">Company</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar46-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Mannequin Angel</a>
-							<span class="chat-message-item">Clothing Store</span>
-						</div>
-						<span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="ADD TO YOUR FAVS">
-							<a href="#">
-								<svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-							</a>
-						</span>
-					</li>
-				</ul>
-
-				<!-- .. end W-Friend-Pages-Added -->
-			</div>
-		</aside>
-
-		<!-- ... end Left Sidebar -->
-
-
-		<!-- Right Sidebar -->
-
-		<aside class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
-
-
-			<div class="ui-block">
-
-
-				<!-- W-Action -->
-
-				<div class="widget w-action">
-
-					<img th:src="@{/img/logo.png}" alt="Olympus">
-					<div class="content">
-						<h4 class="title">蓝鲸博客</h4>
-						<span>最棒的社区交流平台</span>
-						<a href="LandingPage.html" class="btn btn-bg-secondary btn-md">现在加入!</a>
 					</div>
+				
+					
 				</div>
+				
+				<!-- ... end Your Profile  -->
 
-				<!-- ... end W-Action -->
-			</div>
-
-			<div class="ui-block">
-
-				<div class="ui-block-title">
-					<h6 class="title">即时动态</h6>
-					<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-				</div>
-
-
-				<!-- W-Activity-Feed -->
-
-				<ul class="widget w-activity-feed notification-list">
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar49-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Marina Polson</a> commented on Jason Mark’s <a href="#" class="notification-link">photo.</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">2 mins ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar9-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Jake Parker </a> liked Nicholas Grissom’s <a href="#" class="notification-link">status update.</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">5 mins ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar50-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Mary Jane Stark </a> added 20 new photos to her <a href="#" class="notification-link">gallery album.</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">12 mins ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar51-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Nicholas Grissom </a> updated his profile <a href="#" class="notification-link">photo</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">1 hour ago</time></span>
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar48-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Marina Valentine </a> commented on Chris Greyson’s <a href="#" class="notification-link">status update</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">1 hour ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar52-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Green Goo Rock </a> posted a <a href="#" class="notification-link">status update</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">1 hour ago</time></span>
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar10-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Elaine Dreyfuss  </a> liked your <a href="#" class="notification-link">blog post</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">2 hours ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar10-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Elaine Dreyfuss  </a> commented on your <a href="#" class="notification-link">blog post</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">2 hours ago</time></span>
-						</div>
-					</li>
-
-					<li>
-						<div class="author-thumb">
-							<img th:src="@{/img/avatar53-sm.jpg}" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">Bruce Peterson </a> changed his <a href="#" class="notification-link">profile picture</a>.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">15 hours ago</time></span>
-						</div>
-					</li>
-
-				</ul>
-
-				<!-- .. end W-Activity-Feed -->
-			</div>
-
-
-
-
-		</aside>
-
-		<!-- ... end Right Sidebar -->
-
-	</div>
-</div>
-
-
-<!-- Window-popup Update Header Photo -->
-
-<div class="modal fade" id="update-header-photo" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
-	<div class="modal-dialog window-popup update-header-photo" role="document">
-		<div class="modal-content">
-			<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-				<svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-			</a>
-
-			<div class="modal-header">
-				<h6 class="title">Update Header Photo</h6>
-			</div>
-
-			<div class="modal-body">
-				<a href="#" class="upload-photo-item">
-					<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-
-					<h6>Upload Photo</h6>
-					<span>Browse your computer.</span>
-				</a>
-
-				<a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-					<svg class="olymp-photos-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-photos-icon"></use></svg>
-
-					<h6>Choose from My Photos</h6>
-					<span>Choose from your uploaded photos</span>
-				</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-
-<!-- ... end Window-popup Update Header Photo -->
-
-<!-- Window-popup Choose from my Photo -->
-
-<div class="modal fade" id="choose-from-my-photo" tabindex="-1" role="dialog" aria-labelledby="choose-from-my-photo" aria-hidden="true">
-	<div class="modal-dialog window-popup choose-from-my-photo" role="document">
-
-		<div class="modal-content">
-			<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-				<svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-			</a>
-			<div class="modal-header">
-				<h6 class="title">Choose from My Photos</h6>
-
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true">
-							<svg class="olymp-photos-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-photos-icon"></use></svg>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-expanded="false">
-							<svg class="olymp-albums-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-albums-icon"></use></svg>
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="modal-body">
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div class="tab-pane active" id="home" role="tabpanel" aria-expanded="true">
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo1.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo2.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo3.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo4.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo5.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo6.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo7.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo8.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<div class="radio">
-								<label class="custom-radio">
-									<img th:src="@{/img/choose-photo9.jpg}" alt="photo">
-									<input type="radio" name="optionsRadios">
-								</label>
-							</div>
-						</div>
-
-
-						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-						<a href="#" class="btn btn-primary btn-lg btn--half-width">Confirm Photo</a>
-
-					</div>
-					<div class="tab-pane" id="profile" role="tabpanel" aria-expanded="false">
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo10.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">South America Vacations</a>
-									<span>Last Added: 2 hours ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo11.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">Photoshoot Summer 2016</a>
-									<span>Last Added: 5 weeks ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo12.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">Amazing Street Food</a>
-									<span>Last Added: 6 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo13.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">Graffity & Street Art</a>
-									<span>Last Added: 16 hours ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo14.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">Amazing Landscapes</a>
-									<span>Last Added: 13 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="choose-photo-item" data-mh="choose-item">
-							<figure>
-								<img th:src="@{/img/choose-photo15.jpg}" alt="photo">
-								<figcaption>
-									<a href="#">The Majestic Canyon</a>
-									<span>Last Added: 57 mins ago</span>
-								</figcaption>
-							</figure>
-						</div>
-
-
-						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-						<a href="#" class="btn btn-primary btn-lg disabled btn--half-width">Confirm Photo</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-<!-- ... end Window-popup Choose from my Photo -->
-
-
-<a class="back-to-top" href="#">
-	<img th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
-</a>
+<!-- ... end Your Account Personal Information -->
 
 
 
@@ -3026,7 +2439,7 @@
 				<ul class="notification-list chat-message chat-message-field">
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar14-sm.jpg}" alt="author" class="mCS_img_loaded">
+							<img src="img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -3036,7 +2449,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/author-page.jpg}" alt="author" class="mCS_img_loaded">
+							<img src="img/author-page.jpg" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Don’t worry Mathilda!</span>
@@ -3047,7 +2460,7 @@
 
 					<li>
 						<div class="author-thumb">
-							<img th:src="@{/img/avatar14-sm.jpg}" alt="author" class="mCS_img_loaded">
+							<img src="img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded">
 						</div>
 						<div class="notification-event">
 							<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -3059,159 +2472,159 @@
 
 			<form class="need-validation">
 
-				<div class="form-group label-floating is-empty">
-					<label class="control-label">Press enter to post...</label>
-					<textarea class="form-control" placeholder=""></textarea>
-					<div class="add-options-message">
-						<a href="#" class="options-message">
-							<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-						</a>
-						<div class="options-message smile-block">
+		<div class="form-group label-floating is-empty">
+			<label class="control-label">Press enter to post...</label>
+			<textarea class="form-control" placeholder=""></textarea>
+			<div class="add-options-message">
+				<a href="#" class="options-message">
+					<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+				</a>
+				<div class="options-message smile-block">
 
-							<svg class="olymp-happy-sticker-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
+					<svg class="olymp-happy-sticker-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use></svg>
 
-							<ul class="more-dropdown more-with-triangle triangle-bottom-right">
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat1.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat2.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat3.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat4.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat5.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat6.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat7.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat8.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat9.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat10.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat11.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat12.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat13.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat14.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat15.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat16.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat17.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat18.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat19.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat20.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat21.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat22.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat23.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat24.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat25.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat26.png}" alt="icon">
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img th:src="@{/img/icon-chat27.png}" alt="icon">
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+					<ul class="more-dropdown more-with-triangle triangle-bottom-right">
+						<li>
+							<a href="#">
+								<img src="img/icon-chat1.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat2.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat3.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat4.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat5.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat6.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat7.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat8.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat9.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat10.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat11.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat12.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat13.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat14.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat15.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat16.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat17.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat18.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat19.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat20.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat21.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat22.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat23.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat24.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat25.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat26.png" alt="icon">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/icon-chat27.png" alt="icon">
+							</a>
+						</li>
+					</ul>
 				</div>
+			</div>
+		</div>
 
-			</form>
+	</form>
 		</div>
 	</div>
 
@@ -3219,95 +2632,54 @@
 
 <!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
 
+
+
+<a class="back-to-top" href="#">
+	<img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
+</a>
+
+
+
 <!-- JS Scripts -->
-<script  th:src="@{/js/jQuery/jquery-3.4.1.js}"></script>
-<script  th:src="@{/js/libs/jquery.appear.js}"></script>
-<script th:src="@{/js/libs/jquery.mousewheel.js}"></script>
-<script th:src="@{/js/libs/perfect-scrollbar.js}"></script>
-<script th:src="@{/js/libs/jquery.matchHeight.js}"></script>
-<script th:src="@{/js/libs/svgxuse.js}"></script>
-<script th:src="@{/js/libs/imagesloaded.pkgd.js}"></script>
-<script th:src="@{/js/libs/Headroom.js}"></script>
-<script th:src="@{/js/libs/velocity.js}"></script>
-<script th:src="@{/js/libs/ScrollMagic.js}"></script>
-<script th:src="@{/js/libs/jquery.waypoints.js}"></script>
-<script th:src="@{/js/libs/jquery.countTo.js}"></script>
-<script th:src="@{/js/libs/popper.min.js}"></script>
-<script th:src="@{/js/libs/material.min.js}"></script>
-<script th:src="@{/js/libs/bootstrap-select.js}"></script>
-<script th:src="@{/js/libs/smooth-scroll.js}"></script>
-<script th:src="@{/js/libs/selectize.js}"></script>
-<script th:src="@{/js/libs/swiper.jquery.js}"></script>
-<script th:src="@{/js/libs/moment.js}"></script>
-<script th:src="@{/js/libs/daterangepicker.js}"></script>
-<script th:src="@{/js/libs/fullcalendar.js}"></script>
-<script th:src="@{/js/libs/isotope.pkgd.js}"></script>
-<script th:src="@{/js/libs/ajax-pagination.js}"></script>
-<script th:src="@{/js/libs/Chart.js}"></script>
-<script th:src="@{/js/libs/chartjs-plugin-deferred.js}"></script>
-<script th:src="@{/js/libs/circle-progress.js}"></script>
-<script th:src="@{/js/libs/loader.js}"></script>
-<script th:src="@{/js/libs/run-chart.js}"></script>
-<script th:src="@{/js/libs/jquery.magnific-popup.js}"></script>
-<script th:src="@{/js/libs/jquery.gifplayer.js}"></script>
-<script th:src="@{/js/libs/mediaelement-and-player.js}"></script>
-<script th:src="@{/js/libs/mediaelement-playlist-plugin.min.js}"></script>
-<script th:src="@{/js/libs/ion.rangeSlider.js}"></script>
+<script src="js/jQuery/jquery-3.4.1.js"></script>
+<script src="js/libs/jquery.appear.js"></script>
+<script src="js/libs/jquery.mousewheel.js"></script>
+<script src="js/libs/perfect-scrollbar.js"></script>
+<script src="js/libs/jquery.matchHeight.js"></script>
+<script src="js/libs/svgxuse.js"></script>
+<script src="js/libs/imagesloaded.pkgd.js"></script>
+<script src="js/libs/Headroom.js"></script>
+<script src="js/libs/velocity.js"></script>
+<script src="js/libs/ScrollMagic.js"></script>
+<script src="js/libs/jquery.waypoints.js"></script>
+<script src="js/libs/jquery.countTo.js"></script>
+<script src="js/libs/popper.min.js"></script>
+<script src="js/libs/material.min.js"></script>
+<script src="js/libs/bootstrap-select.js"></script>
+<script src="js/libs/smooth-scroll.js"></script>
+<script src="js/libs/selectize.js"></script>
+<script src="js/libs/swiper.jquery.js"></script>
+<script src="js/libs/moment.js"></script>
+<script src="js/libs/daterangepicker.js"></script>
+<script src="js/libs/fullcalendar.js"></script>
+<script src="js/libs/isotope.pkgd.js"></script>
+<script src="js/libs/ajax-pagination.js"></script>
+<script src="js/libs/Chart.js"></script>
+<script src="js/libs/chartjs-plugin-deferred.js"></script>
+<script src="js/libs/circle-progress.js"></script>
+<script src="js/libs/loader.js"></script>
+<script src="js/libs/run-chart.js"></script>
+<script src="js/libs/jquery.magnific-popup.js"></script>
+<script src="js/libs/jquery.gifplayer.js"></script>
+<script src="js/libs/mediaelement-and-player.js"></script>
+<script src="js/libs/mediaelement-playlist-plugin.min.js"></script>
+<script src="js/libs/ion.rangeSlider.js"></script>
 
-<script th:src="@{/js/main.js}"></script>
-<script th:src="@{/js/libs-init/libs-init.js}"></script>
-<script defer th:src="@{/fonts/fontawesome-all.js}"></script>
+<script src="js/main.js"></script>
+<script src="js/libs-init/libs-init.js"></script>
+<script defer src="fonts/fontawesome-all.js"></script>
 
-<script th:src="@{/Bootstrap/dist/js/bootstrap.bundle.js}"></script>
+<script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
 
-<script>
-	$("#commentShow").click(function(){
-		$("#comments").show();
-	});
-	$("#commentShow").click(function(){
-		$("#comments").hide();
-	});
-
-	// function Judge() {
-	//
-	// 	// 获取上传文件名
-	// 	var fileupload = document.getElementByIdx_x("FileUpload1");
-	// 	var filename = fileupload.value;
-	// 	// 获取该文件名的后缀名
-	// 	var extend = filename.substring(filename.lastIndexOf(".") + 1);
-	// 	// 上传文件提示信息
-	// 	var hint = document.getElementByIdx_x("hint");
-	//
-	// 	if (extend == "") {
-	// 		hint.innerHTML = "<span style='color:red'>上传文件不能为空</span>";
-	// 	}
-	// 	else if (extend != "doc") {
-	// 		hint.innerHTML = "<span style='color:red'>必须上传word格式文件</span>";
-	// 		// 清空上传文件控件的值
-	// 		fileupload.outerHTML = fileupload.outerHTML
-	// 	}
-	// 	else if (extend == "doc") {
-	// 		hint.innerHTML = "";
-	// 	}
-	// $(function () {
-	// 	$('#imgBUT').blur(function(event) {
-	// 		if ($(this).val()=='') {
-	// 			$(this).focus();
-	// 		}else{
-	// 			alert($(this).val());
-	// 		}
-	//
-	// }
-
-
-	$(function () {
-		var t = $("#imgBUT");
-		if (t.val() == "") {
-			t.focus();
-		}
-	});
-
-</script>
 </body>
-
 </html>
