@@ -43,6 +43,17 @@ public class CommentController {
         return comment;
     }
     /**
+     * 查询最新一条评论
+     */
+    @RequestMapping("userComment")
+    public @ResponseBody List<Comment> userComment(int answerId){
+        List<Comment> list= commentService.userComment(answerId);
+        return list;
+    }
+
+
+
+    /**
      * 逻辑删除
      */
     @RequestMapping("delComment")

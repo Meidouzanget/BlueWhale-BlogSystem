@@ -42,4 +42,6 @@ public interface ArticleService {
     List<Article> selectUserAll(Integer userId);
 
     List<Article> articleUserList();
+
+    List<Article> articleUser();
 }

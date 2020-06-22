@@ -27,4 +27,6 @@ public interface CommentService {
      * @return
      */
     List<Comment> userCommentList(int answerId);
+
+    List<Comment> userComment(int answerId);
 }

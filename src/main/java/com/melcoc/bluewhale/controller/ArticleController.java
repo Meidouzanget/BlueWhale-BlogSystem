@@ -3,6 +3,7 @@ package com.melcoc.bluewhale.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.melcoc.bluewhale.domain.Article;
+import com.melcoc.bluewhale.domain.Comment;
 import com.melcoc.bluewhale.domain.Great;
 import com.melcoc.bluewhale.domain.Img;
 import com.melcoc.bluewhale.serviceImpl.*;
@@ -94,6 +95,15 @@ public class ArticleController {
 
         return article;
     }
+    /**
+     * 查询最新一条评论
+     */
+    @RequestMapping("articleUser")
+    public @ResponseBody List<Article> articleUser(){
+        List<Article> list= articleService.articleUser();
+        return list;
+    }
+
 
 
 
