@@ -43,13 +43,7 @@ public class ArticleController {
     Qiniu qiniu;
 
 
-    /**
-     * 首页
-     */
-    @RequestMapping("/mainPage")
-    public String index() {
-        return "MainPage";
-    }
+
     /**
      * 个人页
      */
