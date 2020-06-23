@@ -272,99 +272,105 @@ $(function () {
             }
         }
 
-        $.ajax({
-            type: 'POST',
-            url: 'api/pTest',
-            //从localStorage获取存储的token
-            headers : {'Authorization':localStorage["token"]},
-            datatype: 'json',
-            success: function (data) {
-                console.log(data);
-                var userId=data.data.userId;
+        if(content!=""||file!=null){
+            $.ajax({
+                type: 'POST',
+                url: 'api/pTest',
+                //从localStorage获取存储的token
+                headers : {'Authorization':localStorage["token"]},
+                datatype: 'json',
+                success: function (data) {
+                    console.log(data);
+                    var userId=data.data.userId;
 
-                $.ajax({
-                    url: "/api/addArticle",
-                    type: "post",
-                    data: {
-                        base64Date: result,
-                        content: content,
-                        userId: userId
-                    },
-                    dataType: "json",
-                    success: function () {
-                        //查询最新一条文章
-                        $.ajax({
-                            url: "/api/articleUser",
-                            type: "get",
-                            dataType: "json",
-                            success:function (data) {
-                                console.log("发帖")
-                                $("#d3").prepend("\t<div class=\"ui-block\">\n" +
-                                    "\n" +
-                                    "\n" +
-                                    "\t\t\t\t<article class=\"hentry post\">\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                                    "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t<div class=\"author-date\">\n" +
-                                    "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+data[0].nickName+"</a>\n" +
-                                    "\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
-                                    "\t\t\t\t\t\t\t\t<time class=\"published\" datetime=\"2004-07-24T18:18\" >\n" + data[0].createTime +
-                                    "\n" +
-                                    "\t\t\t\t\t\t\t\t</time>\n" +
-                                    "\t\t\t\t\t\t\t</div>\n" +
-                                    "\t\t\t\t\t\t</div>\n" +
-                                    "\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t</div>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t<p>\n" + data[0].content +
-                                    "\t\t\t\t\t</p>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t<div class=\"post-thumb\">\n" +
-                                    "\t\t\t\t\t\t<img src=\"" + data[0].url + "\" alt=''>\n" +
-                                    "\t\t\t\t\t</div>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t<div class=\"post-additional-info inline-items\" >\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+data[0].aId+")'>\n" +
-                                    "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
-                                    // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
-                                    "\t\t\t\t\t\t\t<span  id=\"Great"+data[0].aId+"\"  >"+data[0].greatNum+"</span>\n" +
-                                    "\t\t\t\t\t\t</a>\n" +
-                                    "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
-                                    "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\"  onclick='comments("+data[0].aId+")'  >\n" +
-                                    "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
-                                    // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
-                                    "\t\t\t\t\t\t\t\t<span>查看评论</span>\n" +
-                                    "\t\t\t\t\t\t\t</a>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
-                                    "\t\t\t\t\t\t\t\t<span ></span>\n" +
-                                    "\t\t\t\t\t\t\t</a>\n" +
-                                    "\t\t\t\t\t\t</div>\n" +
-                                    "\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t</div>\n" +
-                                    "\n" +
-                                    "\n" +
-                                    "\t\t\t\t</article>\n" +
-                                    "\n" +
-                                    "<div id=\"comments"+data[0].aId+"\">"+
-                                    "\t\t\t\t\t</div>\n" +
-                                    "");
-                            }
-                        })
+                    $.ajax({
+                        url: "/api/addArticle",
+                        type: "post",
+                        data: {
+                            base64Date: result,
+                            content: content,
+                            userId: userId
+                        },
+                        dataType: "json",
+                        success: function () {
+                            //查询最新一条文章
+                            $.ajax({
+                                url: "/api/articleUser",
+                                type: "get",
+                                dataType: "json",
+                                success:function (data) {
+                                    console.log("发帖")
+                                    $("#d3").prepend("\t<div class=\"ui-block\">\n" +
+                                        "\n" +
+                                        "\n" +
+                                        "\t\t\t\t<article class=\"hentry post\">\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
+                                        "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t\t<div class=\"author-date\">\n" +
+                                        "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+data[0].nickName+"</a>\n" +
+                                        "\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
+                                        "\t\t\t\t\t\t\t\t<time class=\"published\" datetime=\"2004-07-24T18:18\" >\n" + data[0].createTime +
+                                        "\n" +
+                                        "\t\t\t\t\t\t\t\t</time>\n" +
+                                        "\t\t\t\t\t\t\t</div>\n" +
+                                        "\t\t\t\t\t\t</div>\n" +
+                                        "\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t</div>\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t<p>\n" + data[0].content +
+                                        "\t\t\t\t\t</p>\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t<div class=\"post-thumb\">\n" +
+                                        "\t\t\t\t\t\t<img src=\"" + data[0].url + "\" alt=''>\n" +
+                                        "\t\t\t\t\t</div>\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t<div class=\"post-additional-info inline-items\" >\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+data[0].aId+")'>\n" +
+                                        "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
+                                        // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
+                                        "\t\t\t\t\t\t\t<span  id=\"Great"+data[0].aId+"\"  >"+data[0].greatNum+"</span>\n" +
+                                        "\t\t\t\t\t\t</a>\n" +
+                                        "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
+                                        "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\"  onclick='comments("+data[0].aId+")'  >\n" +
+                                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
+                                        // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
+                                        "\t\t\t\t\t\t\t\t<span>查看评论</span>\n" +
+                                        "\t\t\t\t\t\t\t</a>\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
+                                        "\t\t\t\t\t\t\t\t<span ></span>\n" +
+                                        "\t\t\t\t\t\t\t</a>\n" +
+                                        "\t\t\t\t\t\t</div>\n" +
+                                        "\n" +
+                                        "\n" +
+                                        "\t\t\t\t\t</div>\n" +
+                                        "\n" +
+                                        "\n" +
+                                        "\t\t\t\t</article>\n" +
+                                        "\n" +
+                                        "<div id=\"comments"+data[0].aId+"\">"+
+                                        "\t\t\t\t\t</div>\n" +
+                                        "");
+                                }
+                            })
 
-                    },error:function (e) {
-                        console.log(e)
-                    }
+                        },error:function (e) {
+                            console.log(e)
+                        }
 
-                })
-                //
-            }
-        })
+                    })
+                    //
+                }
+            })
+        }else{
+            alert("内容还图片不能为空！！！")
+        }
+
+
 
 
 
