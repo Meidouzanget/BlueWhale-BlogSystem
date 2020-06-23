@@ -34,9 +34,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public int deletedArticle(Integer aId) {
+    public int deletedArticle(Integer aId,Integer userId) {
 
-        return articleDao.deleteById(aId);
+        return articleDao.deletedArticle(aId,userId);
     }
 
 

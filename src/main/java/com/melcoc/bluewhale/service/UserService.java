@@ -19,4 +19,9 @@ public interface UserService {
     LUser selectlUserByName(String username);
 
     boolean insertUserrole(LUserrole lUserrole);
+
+    /**
+     * 修改个人信息
+     */
+    int updateByIdUser(User user);
 }

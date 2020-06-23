@@ -20,7 +20,7 @@ public interface ArticleService {
     /**
      * 逻辑删除
      */
-    int deletedArticle(Integer aId);
+    int deletedArticle(Integer aId,Integer userId);
 
     /**
      * 修改点赞数

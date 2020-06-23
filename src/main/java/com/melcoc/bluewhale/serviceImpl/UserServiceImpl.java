@@ -1,5 +1,6 @@
 package com.melcoc.bluewhale.serviceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.melcoc.bluewhale.dao.LUserDao;
 import com.melcoc.bluewhale.dao.LUserroleDao;
 import com.melcoc.bluewhale.dao.UserDao;
@@ -73,6 +74,12 @@ public class UserServiceImpl implements UserService
         }else {
             return false;
         }
+    }
+
+    @Override
+    public int updateByIdUser(User user) {
+
+        return controllDao.updateById(user);
     }
 
 

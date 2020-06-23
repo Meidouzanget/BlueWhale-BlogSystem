@@ -9,11 +9,13 @@ import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
 import com.qiniu.util.UrlSafeBase64;
 import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,7 +51,8 @@ public class ArticleController {
      *
      * @return
      */
-    @RequestMapping("/api/addArticle")
+    @ApiOperation("发布微博")
+    @PostMapping("/api/addArticle")
     public Article addArticle(Integer userId,String content, String base64Date) {
 
         Article article=new Article();
@@ -81,8 +84,8 @@ public class ArticleController {
     /**
      * 点赞
      */
-//    @Transactional
-    @RequestMapping("/api/great")
+    @ApiOperation("点赞")
+    @PostMapping("/api/great")
     public String great(@Param("aId") int aId, @Param("uId") int uId) {
         //查询是否有该用户对该文章的点赞记录
         List<Great> list = greatService.findByAidAndUid(aId, uId);
@@ -115,15 +118,18 @@ public class ArticleController {
     /**
      * 逻辑删除
      */
-    public String deldeArticle(@Param("aId") int aId) {
-        articleService.deletedArticle(aId);
+    @ApiOperation("逻辑删除")
+    @PostMapping("/api/deldeArticle")
+    public String deldeArticle(@Param("aId") int aId ,Integer userId) {
+        articleService.deletedArticle(aId,userId);
         return "删除成功";
     }
 
     /**
      * base64图片上传测试
      */
-    @RequestMapping("/upload")
+    @ApiOperation("base64图片上传测试")
+    @PostMapping("/upload")
     public String base64Upload(@RequestParam String base64Date, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = UUID.randomUUID().toString();
@@ -158,7 +164,8 @@ public class ArticleController {
      * 单用户文章的全查询
      * @return
      */
-    @RequestMapping("/api/selectUserAll")
+    @ApiOperation("单用户文章的全查询")
+    @PostMapping("/api/selectUserAll")
     public List<Article> selectUserAll(Integer userId){
         List<Article> list = articleService.selectUserAll(userId);
         System.out.println(list);
@@ -168,7 +175,8 @@ public class ArticleController {
     /**
      * 用户表 文章表
      */
-    @RequestMapping("/api/articleUserList")
+    @ApiOperation("用户表 文章表查询")
+    @PostMapping("/api/articleUserList")
     public List<Article> articleUserList(){
         List<Article> list=articleService.articleUserList();
         System.out.println(list);
@@ -176,9 +184,10 @@ public class ArticleController {
     }
 
     /**
-     *
+     *最新一条文章
      */
-    @RequestMapping("/api/articleUser")
+    @ApiOperation("最新一条文章")
+    @PostMapping("/api/articleUser")
     public List<Article> articleUser(){
         List<Article> list=articleService.articleUser();
         System.out.println(list);

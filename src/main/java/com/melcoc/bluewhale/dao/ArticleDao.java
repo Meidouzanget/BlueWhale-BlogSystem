@@ -31,8 +31,8 @@ public interface ArticleDao extends BaseMapper<Article> {
     /**
      * 逻辑删除
      */
-    @Update("UPDATE article SET deleted=0 where a_id=#{aId};")
-    int deletedArticle(Integer aId);
+    @Update("UPDATE article SET deleted=1 where a_id=#{aId} and user_id=#{userId};")
+    int deletedArticle(Integer aId,Integer userId);
 
     /**
      * 单用户文章的全查询

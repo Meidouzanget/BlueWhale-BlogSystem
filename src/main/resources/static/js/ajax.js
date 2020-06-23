@@ -1,3 +1,32 @@
+function deleteArticle(answerId) {
+    $.ajax({
+        type: 'POST',
+        url: 'api/pTest',
+        //从localStorage获取存储的token
+        headers : {'Authorization':localStorage["token"]},
+        datatype: 'json',
+        success: function (data) {
+            console.log(data);
+            var userId=data.data.userId;
+           $.ajax({
+               url: "/api/deldeArticle",
+               type: "post",
+               data: {
+                   answerId: answerId,
+                   userId: userId
+               },
+               dataType: "json",
+               success:function () {
+                    alert("删除成功")
+               },error:function () {
+                    alert("对不起，你没有权限")
+               }
+           })
+        }
+    })
+
+}
+
 function packup(answerId){
     var comments="comments"+answerId;
     console.log(comments)

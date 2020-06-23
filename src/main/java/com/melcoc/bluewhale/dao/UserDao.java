@@ -29,7 +29,9 @@ public interface UserDao extends BaseMapper<User> {
     @Select("SELECT * FROM l_user where name=#{username}")
     LUser selectBylUserName(@Param("username") String username);
 
-
-
+    /**
+     * 修改个人信息
+     */
+    int updateByIdUser(User user);
 
 }
