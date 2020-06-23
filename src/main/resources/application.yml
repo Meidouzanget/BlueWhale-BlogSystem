@@ -18,10 +18,10 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       pool-prepared-statements: true
-      stat-view-servlet:
-        login-username: admin
-        login-password: druid
-        url-pattern: /druid/*
+
+mybatis-plus:
+  configuration:
+    cache-enabled: true
 
 
 
