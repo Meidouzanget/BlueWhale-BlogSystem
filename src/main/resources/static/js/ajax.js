@@ -294,10 +294,11 @@ $(function () {
                     success: function () {
                         //查询最新一条文章
                         $.ajax({
-                            url: "/article/articleUser",
+                            url: "/api/articleUser",
                             type: "get",
                             dataType: "json",
                             success:function (data) {
+                                console.log("发帖")
                                 $("#d3").prepend("\t<div class=\"ui-block\">\n" +
                                     "\n" +
                                     "\n" +
@@ -315,22 +316,6 @@ $(function () {
                                     "\t\t\t\t\t\t\t</div>\n" +
                                     "\t\t\t\t\t\t</div>\n" +
                                     "\n" +
-                                    "\t\t\t\t\t\t<div class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t\t<ul class=\"more-dropdown\">\n" +
-                                    "\t\t\t\t\t\t\t\t<li>\n" +
-                                    "\t\t\t\t\t\t\t\t\t<a href=\"#\">Edit Post</a>\n" +
-                                    "\t\t\t\t\t\t\t\t</li>\n" +
-                                    "\t\t\t\t\t\t\t\t<li>\n" +
-                                    "\t\t\t\t\t\t\t\t\t<a href=\"#\">Delete Post</a>\n" +
-                                    "\t\t\t\t\t\t\t\t</li>\n" +
-                                    "\t\t\t\t\t\t\t\t<li>\n" +
-                                    "\t\t\t\t\t\t\t\t\t<a href=\"#\">Turn Off Notifications</a>\n" +
-                                    "\t\t\t\t\t\t\t\t</li>\n" +
-                                    "\t\t\t\t\t\t\t\t<li>\n" +
-                                    "\t\t\t\t\t\t\t\t\t<a href=\"#\">Select as Featured</a>\n" +
-                                    "\t\t\t\t\t\t\t\t</li>\n" +
-                                    "\t\t\t\t\t\t\t</ul>\n" +
-                                    "\t\t\t\t\t\t</div>\n" +
                                     "\n" +
                                     "\t\t\t\t\t</div>\n" +
                                     "\n" +
@@ -356,7 +341,6 @@ $(function () {
                                     "\t\t\t\t\t\t\t</a>\n" +
                                     "\n" +
                                     "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
-                                    "\t\t\t\t\t\t\t\t<svg class=\"olymp-share-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-share-icon\"></use></svg>\n" +
                                     "\t\t\t\t\t\t\t\t<span ></span>\n" +
                                     "\t\t\t\t\t\t\t</a>\n" +
                                     "\t\t\t\t\t\t</div>\n" +
@@ -364,21 +348,6 @@ $(function () {
                                     "\n" +
                                     "\t\t\t\t\t</div>\n" +
                                     "\n" +
-                                    "\t\t\t\t\t<div class=\"control-block-button post-control-button\">\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                                    "\t\t\t\t\t\t\t<svg class=\"olymp-like-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-like-post-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t</a>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                                    "\t\t\t\t\t\t\t<svg class=\"olymp-comments-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-comments-post-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t</a>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                                    "\t\t\t\t\t\t\t<svg class=\"olymp-share-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-share-icon\"></use></svg>\n" +
-                                    "\t\t\t\t\t\t</a>\n" +
-                                    "\n" +
-                                    "\t\t\t\t\t</div>\n" +
                                     "\n" +
                                     "\t\t\t\t</article>\n" +
                                     "\n" +
@@ -401,7 +370,6 @@ $(function () {
 
 
 
-        console.log("userId:"+userId)
         $("input[type=reset]").trigger("click");//触发reset
     })
 
@@ -432,22 +400,6 @@ $(function () {
                         "\t\t\t\t\t\t\t</div>\n" +
                         "\t\t\t\t\t\t</div>\n" +
                         "\n" +
-                        "\t\t\t\t\t\t<div class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t\t<ul class=\"more-dropdown\">\n" +
-                        "\t\t\t\t\t\t\t\t<li>\n" +
-                        "\t\t\t\t\t\t\t\t\t<a href=\"#\">Edit Post</a>\n" +
-                        "\t\t\t\t\t\t\t\t</li>\n" +
-                        "\t\t\t\t\t\t\t\t<li>\n" +
-                        "\t\t\t\t\t\t\t\t\t<a href=\"#\">Delete Post</a>\n" +
-                        "\t\t\t\t\t\t\t\t</li>\n" +
-                        "\t\t\t\t\t\t\t\t<li>\n" +
-                        "\t\t\t\t\t\t\t\t\t<a href=\"#\">Turn Off Notifications</a>\n" +
-                        "\t\t\t\t\t\t\t\t</li>\n" +
-                        "\t\t\t\t\t\t\t\t<li>\n" +
-                        "\t\t\t\t\t\t\t\t\t<a href=\"#\">Select as Featured</a>\n" +
-                        "\t\t\t\t\t\t\t\t</li>\n" +
-                        "\t\t\t\t\t\t\t</ul>\n" +
-                        "\t\t\t\t\t\t</div>\n" +
                         "\n" +
                         "\t\t\t\t\t</div>\n" +
                         "\n" +
@@ -473,7 +425,6 @@ $(function () {
                         "\t\t\t\t\t\t\t</a>\n" +
                         "\n" +
                         "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
-                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-share-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-share-icon\"></use></svg>\n" +
                         "\t\t\t\t\t\t\t\t<span ></span>\n" +
                         "\t\t\t\t\t\t\t</a>\n" +
                         "\t\t\t\t\t\t</div>\n" +
@@ -481,21 +432,6 @@ $(function () {
                         "\n" +
                         "\t\t\t\t\t</div>\n" +
                         "\n" +
-                        "\t\t\t\t\t<div class=\"control-block-button post-control-button\">\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                        "\t\t\t\t\t\t\t<svg class=\"olymp-like-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-like-post-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t</a>\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                        "\t\t\t\t\t\t\t<svg class=\"olymp-comments-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-comments-post-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t</a>\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                        "\t\t\t\t\t\t\t<svg class=\"olymp-share-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-share-icon\"></use></svg>\n" +
-                        "\t\t\t\t\t\t</a>\n" +
-                        "\n" +
-                        "\t\t\t\t\t</div>\n" +
                         "\n" +
                         "\t\t\t\t</article>\n" +
                         "\n" +

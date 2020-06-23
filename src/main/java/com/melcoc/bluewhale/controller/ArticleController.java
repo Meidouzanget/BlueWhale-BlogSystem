@@ -41,13 +41,7 @@ public class ArticleController {
     Qiniu qiniu;
 
 
-    /**
-     * 首页
-     */
-    @RequestMapping("/mainPage")
-    public String index() {
-        return "MainPage";
-    }
+
     /**
      * 个人页
      */
@@ -185,6 +179,16 @@ public class ArticleController {
     @RequestMapping("/api/articleUserList")
     public  @ResponseBody List<Article> articleUserList(){
         List<Article> list=articleService.articleUserList();
+        System.out.println(list);
+        return list;
+    }
+
+    /**
+     *
+     */
+    @RequestMapping("/api/articleUser")
+    public  @ResponseBody List<Article> articleUser(){
+        List<Article> list=articleService.articleUser();
         System.out.println(list);
         return list;
     }
