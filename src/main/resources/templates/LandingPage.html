@@ -253,7 +253,7 @@
 
                                     <div class="form-group date-time-picker label-floating">
                                         <label class="control-label">你的生日</label>
-                                        <input id= "reg-birth"name="datetimepicker" value="10/24/1984"/>
+                                        <input id= "reg-birth" name="datetimepicker" value="1984-08-01"/>
                                         <span class="input-group-addon">
 														<svg class="olymp-calendar-icon"><use
                                                                 xlink:href="svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
@@ -446,6 +446,15 @@
 <script type="text/javascript">
 $(
 		function () {
+		    $("#reg-birth").datetimepicker({
+                format:'yyyy-mm-dd',
+                startView:'year',
+                maxView:'year',
+                minView:'month',
+                autoclose:true,
+                pickerPosition: "bottom-left",
+                language:'zh-CN',
+            });
 		}
 );
 $("#regBtn").click(function () {

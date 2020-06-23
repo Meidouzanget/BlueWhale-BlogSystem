@@ -5,6 +5,7 @@ import com.melcoc.bluewhale.domain.ResponseBean;
 import com.melcoc.bluewhale.domain.User;
 import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.service.UserService;
+import io.swagger.annotations.Api;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+@Api("登录验证Controller")
 @RestController
 public class LoginController {
 

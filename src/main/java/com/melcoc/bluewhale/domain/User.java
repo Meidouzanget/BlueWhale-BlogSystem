@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @TableName("user")
 public class User {
 
-  @TableId(value = "",type = IdType.AUTO)
+  @TableId(type = IdType.AUTO)
   private long userId;
   private String name;
   private String nickName;
+  private String birth;
   private long sex;
   private String signature;
   private String avatar;

@@ -25,14 +25,17 @@ public class RegController {
                       @RequestParam("birth") String birth,
                       @RequestParam("sex") Integer sex
                       ){
+        System.out.println(nickName+":"+username+":"+email+":"+password+birth+sex);
+        LUser lUserBean = new LUser();
+        User userBean = new User();
 
-        LUser lUserBean = null;
-        User userBean = null;
-        if (userService.getUserNameNoRepeat(username)){
-            if (userService.getUserEmailNoRepeat(email)){
+        if (userService.getUserNameNoRepeat(username)){//检测用户名重复
+            if (userService.getUserEmailNoRepeat(email)){//检测邮件地址是否重复
+                //写入
                 userBean.setNickName(nickName);
                 userBean.setName(username);
                 userBean.setEmail(email);
+                userBean.setBirth(birth);
                 userBean.setSex(sex);
 
                 lUserBean.setAccount(email);
@@ -40,10 +43,13 @@ public class RegController {
                 lUserBean.setPassword(DigestUtils.sha256Hex(password));
 
                 if (userService.register(userBean,lUserBean)){
+
                     LUser lUserBean2= userService.selectlUserByName(username);
                     User userBean2 =userService.selectUserByName(username);
                     System.out.println(lUserBean2.getUid()+" "+userBean.getUserId());
+
                     if (lUserBean2.getUid()==userBean2.getUserId()) {
+
                         userService.insertUserrole(new LUserrole(userBean2.getUserId(),1));
                         return new ResponseBean(200, "注册成功", JWTUtil.sign(userBean.getName(), DigestUtils.sha256Hex(password)));
                     }else {

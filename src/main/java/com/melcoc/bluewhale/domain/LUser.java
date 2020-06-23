@@ -3,14 +3,16 @@ package com.melcoc.bluewhale.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@TableName("l_user")
 public class LUser {
 
-  @TableId(value = "",type = IdType.AUTO)
+  @TableId(type = IdType.AUTO)
   private long uid;
   private String account;
   private String name;
