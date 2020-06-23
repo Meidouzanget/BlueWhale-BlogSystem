@@ -8,15 +8,15 @@ import com.melcoc.bluewhale.serviceImpl.Qiniu;
 import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
 import com.qiniu.util.UrlSafeBase64;
 import io.lettuce.core.dynamic.annotation.Param;
+import io.swagger.annotations.Api;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Controller
+@Api("微博Controller")
+@RestController
 public class ArticleController {
 
     @Autowired
@@ -42,14 +43,6 @@ public class ArticleController {
 
 
 
-    /**
-     * 个人页
-     */
-    @RequestMapping("/profilePage")
-    public String profilePage() {
-        return "ProfilePage";
-    }
-
 
     /**
      * 发布微博
@@ -57,7 +50,7 @@ public class ArticleController {
      * @return
      */
     @RequestMapping("/api/addArticle")
-    public @ResponseBody Article addArticle(Integer userId,String content, String base64Date) {
+    public Article addArticle(Integer userId,String content, String base64Date) {
 
         Article article=new Article();
         article.setUserId(userId);
@@ -90,7 +83,7 @@ public class ArticleController {
      */
 //    @Transactional
     @RequestMapping("/api/great")
-    public @ResponseBody String great(@Param("aId") int aId, @Param("uId") int uId) {
+    public String great(@Param("aId") int aId, @Param("uId") int uId) {
         //查询是否有该用户对该文章的点赞记录
         List<Great> list = greatService.findByAidAndUid(aId, uId);
         if (list != null && list.size() > 0) {
@@ -131,8 +124,7 @@ public class ArticleController {
      * base64图片上传测试
      */
     @RequestMapping("/upload")
-    public @ResponseBody
-    String base64Upload(@RequestParam String base64Date, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String base64Upload(@RequestParam String base64Date, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = UUID.randomUUID().toString();
         String str = base64Date.split("base64,")[1];//去掉“data:image/jpeg”
@@ -167,7 +159,7 @@ public class ArticleController {
      * @return
      */
     @RequestMapping("/api/selectUserAll")
-    public @ResponseBody List<Article> selectUserAll(Integer userId){
+    public List<Article> selectUserAll(Integer userId){
         List<Article> list = articleService.selectUserAll(userId);
         System.out.println(list);
         return list;
@@ -177,7 +169,7 @@ public class ArticleController {
      * 用户表 文章表
      */
     @RequestMapping("/api/articleUserList")
-    public  @ResponseBody List<Article> articleUserList(){
+    public List<Article> articleUserList(){
         List<Article> list=articleService.articleUserList();
         System.out.println(list);
         return list;
@@ -187,7 +179,7 @@ public class ArticleController {
      *
      */
     @RequestMapping("/api/articleUser")
-    public  @ResponseBody List<Article> articleUser(){
+    public List<Article> articleUser(){
         List<Article> list=articleService.articleUser();
         System.out.println(list);
         return list;

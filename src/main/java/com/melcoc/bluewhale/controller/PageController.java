@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TestController {
+public class PageController {
     /**
      * 登录页
      * @return
@@ -20,6 +20,13 @@ public class TestController {
     @RequestMapping("/")
     public String index() {
         return "MainPage";
+    }
+    /**
+     * 个人页
+     */
+    @RequestMapping("/profilePage")
+    public String profilePage() {
+        return "ProfilePage";
     }
 
 }
