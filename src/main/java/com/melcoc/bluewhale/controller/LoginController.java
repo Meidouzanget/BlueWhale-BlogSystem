@@ -29,15 +29,15 @@ public class LoginController {
     public ResponseBean login(@RequestParam("username")String username,@RequestParam("password")String password) {
         System.out.println(username+":"+password);
         String passwordHex = DigestUtils.sha256Hex(password);
-        LUser userBean = null;
+        LUser lUserBean;
         if (service.getUserWithPermission(username) == null){
             return new ResponseBean(401, "登录失败", null);
         }else {
-            userBean = service.getUserWithPermission(username);
+            lUserBean = service.getUserWithPermission(username);
         }
 
-        if (userBean.getPassword().equals(passwordHex)) {
-            return new ResponseBean(200, "登录成功", JWTUtil.sign(userBean.getName(), passwordHex));
+        if (lUserBean.getPassword().equals(passwordHex)) {
+            return new ResponseBean(200, "登录成功", JWTUtil.sign(lUserBean.getName(), passwordHex));
         } else {
             throw new UnauthorizedException();
         }
@@ -47,7 +47,7 @@ public class LoginController {
     @PostMapping("/api/pTest")
     public ResponseBean pTest(HttpServletRequest request){
         String token=request.getHeader("Authorization");
-        System.out.println(token);
+        System.out.println("token:"+token);
         JWTUtil.getUsername(token);
         User user= service.selectUserByName(JWTUtil.getUsername(token));
         return new ResponseBean(200,JWTUtil.getUsername(token),user);
