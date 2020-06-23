@@ -21,7 +21,9 @@ public class LoginController {
 
     @Autowired
     private UserService service;
-
+    /**
+    *   登录流程
+    */
     @PostMapping("/api/Login")
     public ResponseBean login(@RequestParam("username")String username,@RequestParam("password")String password) {
         System.out.println(username+":"+password);
