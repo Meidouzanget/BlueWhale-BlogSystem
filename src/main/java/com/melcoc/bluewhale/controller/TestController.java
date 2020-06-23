@@ -10,7 +10,7 @@ public class TestController {
      * 登录页
      * @return
      */
-    @GetMapping("Landing")
+    @GetMapping("Login")
     public  String landing(){
         return "LandingPage";
     }
