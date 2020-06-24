@@ -43,19 +43,6 @@ public class PageController {
         return "personalInformation";
     }
 
-    /**
-     * 修改密码页
-     */
-    @RequestMapping("/changePassword")
-    public String changePassword() {
-        return "ChangePassword";
-    }
-    /**
-     * 个人信息页
-     */
-    @RequestMapping("/personalInformation")
-    public String personalInformation() {
-        return "personalInformation";
-    }
+
 
 }
