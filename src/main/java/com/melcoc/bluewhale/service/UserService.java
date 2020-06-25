@@ -20,8 +20,13 @@ public interface UserService {
 
     boolean insertUserrole(LUserrole lUserrole);
 
+
+
     /**
-     * 修改个人信息
+     * 根据UserId修改avatar
      */
-    int updateByIdUser(User user);
+
+
+    int updateByIduUrl(int userId,String avatar);
+
 }
