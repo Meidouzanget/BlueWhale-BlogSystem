@@ -2,6 +2,7 @@ package com.melcoc.bluewhale.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,8 +25,8 @@ public class PageController {
     /**
      * 个人页
      */
-    @RequestMapping("/profilePage")
-    public String profilePage() {
+    @RequestMapping("/u/{id}")
+    public String profilePage(@PathVariable String id) {
         return "ProfilePage";
     }
     /**

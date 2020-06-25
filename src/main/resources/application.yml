@@ -18,6 +18,20 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       pool-prepared-statements: true
+  mail:
+    default-encoding: UTF-8
+    host: smtp.exmail.qq.com
+    username: admin@melco.cc
+    password: 9839BurstX
+    properties:
+      mail:
+        smtp:
+          atuh: true
+          starttls:
+            enable: true
+            required: true
+
+
 
 mybatis-plus:
   configuration:

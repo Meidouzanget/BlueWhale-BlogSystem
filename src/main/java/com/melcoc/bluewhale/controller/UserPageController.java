@@ -30,4 +30,9 @@ public class UserPageController {
         */
     }
 
+    @PostMapping("/api/ChangePassword")
+    public ResponseBean changePW(@PathVariable String id, HttpServletRequest request){
+        return null;
+    }
+
 }
