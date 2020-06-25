@@ -1,6 +1,5 @@
 package com.melcoc.bluewhale.serviceImpl;
 
-import com.melcoc.bluewhale.domain.Img;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
 import org.springframework.stereotype.Service;

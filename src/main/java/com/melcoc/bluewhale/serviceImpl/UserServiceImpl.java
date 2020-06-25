@@ -82,5 +82,10 @@ public class UserServiceImpl implements UserService
         return controllDao.updateById(user);
     }
 
+    @Override
+    public int updateByIduUrl(int userId,String avatar) {
+        return controllDao.updateByIduUrl(userId,avatar);
+    }
+
 
 }

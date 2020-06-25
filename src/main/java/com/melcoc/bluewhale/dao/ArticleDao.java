@@ -1,15 +1,12 @@
 package com.melcoc.bluewhale.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.melcoc.bluewhale.domain.Article;
-import com.melcoc.bluewhale.domain.Img;
 import org.apache.ibatis.annotations.*;
 import org.springframework.data.jpa.repository.Lock;
 
 import javax.persistence.LockModeType;
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface ArticleDao extends BaseMapper<Article> {

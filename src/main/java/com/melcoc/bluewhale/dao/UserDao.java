@@ -6,6 +6,14 @@ import com.melcoc.bluewhale.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+    /**
+     * 根据UserId修改avatar
+     */
+
+    @Update("UPDATE from user SET avatar=#{avatar} WHERE user_id=#{userId} ;")
+    int updateByIduUrl(int userId,String avatar);
 
 
 @Mapper
