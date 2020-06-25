@@ -120,9 +120,9 @@ public class ArticleController {
      */
     @ApiOperation("逻辑删除")
     @PostMapping("/api/deldeArticle")
-    public String deldeArticle(@Param("aId") int aId ,Integer userId) {
-        articleService.deletedArticle(aId,userId);
-        return "删除成功";
+    public int deldeArticle(@Param("aId") int aId ,Integer userId) {
+       int i= articleService.deletedArticle(aId,userId);
+        return i;
     }
 
     /**

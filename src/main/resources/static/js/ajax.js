@@ -1,4 +1,6 @@
+//逻辑删除
 function deleteArticle(answerId) {
+    var article="article"+answerId;
     $.ajax({
         type: 'POST',
         url: 'api/pTest',
@@ -8,31 +10,47 @@ function deleteArticle(answerId) {
         success: function (data) {
             console.log(data);
             var userId=data.data.userId;
-           $.ajax({
-               url: "/api/deldeArticle",
-               type: "post",
-               data: {
-                   answerId: answerId,
-                   userId: userId
-               },
-               dataType: "json",
-               success:function () {
-                    alert("删除成功")
-               },error:function () {
-                    alert("对不起，你没有权限")
-               }
-           })
+            $.ajax({
+                url: "/api/deldeArticle",
+                type: "post",
+                data: {
+                    aId: answerId,
+                    userId: userId
+                },
+                dataType: "json",
+                success:function (data) {
+                    console.log(data);
+                    if (data==1){
+                        alert("删除成功")
+                        $("."+article+"").empty();
+                    }
+                    if (data==0){
+                        console.log(data);
+                        alert("对不起，你没有权限")
+
+                    }
+
+                },error:function () {
+
+                }
+            })
         }
     })
 
 }
-
+//登出
+function logout() {
+    localStorage["token"]="";
+    window.location.reload();
+    alert("登出");
+}
+//收起评论
 function packup(answerId){
     var comments="comments"+answerId;
     console.log(comments)
     $("#"+comments+"").empty();;
 }
-
+//获取登录用户
 function getToken(){
     $.ajax({
         type: 'POST',
@@ -77,7 +95,7 @@ function addcomment(answerId) {
                     //查询最新一条评论
                     $.ajax({
                         url: "/api/userComment",
-                        type: "get",
+                        type: "post",
                         data: {
                             answerId: answerId,
                         },
@@ -136,7 +154,7 @@ function comments(answerId) {
 
     $.ajax({
         url: "/api/selectAllComment",
-        type: "get",
+        type: "post",
         data: {
             answerId: answerId
         },
@@ -325,7 +343,7 @@ $(function () {
                             //查询最新一条文章
                             $.ajax({
                                 url: "/api/articleUser",
-                                type: "get",
+                                type: "post",
                                 dataType: "json",
                                 success:function (data) {
                                     console.log("发帖")
@@ -378,12 +396,18 @@ $(function () {
                                         "\n" +
                                         "\t\t\t\t\t</div>\n" +
                                         "\n" +
+                                        "<div class=\"control-block-button post-control-button\">\n" +
+                                        "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
+                                        "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
+                                        "\t\t\t\t\t\t\t</a>\n" +
+                                        "</div>"+
                                         "\n" +
                                         "\t\t\t\t</article>\n" +
                                         "\n" +
                                         "<div id=\"comments"+data[0].aId+"\">"+
                                         "\t\t\t\t\t</div>\n" +
                                         "");
+
                                 }
                             })
 
@@ -412,13 +436,13 @@ $(function () {
     function select() {
         $.ajax({
             url: "/api/articleUserList",
-            type: "get",
+            type: "post",
             dataType: "json",
             success: function (data)//回调
             {
                 console.log(data)
                 $.each(data, function (index, item) {
-                    $("#d2").append("\t<div class=\"ui-block\" id=\"d3\">\n" +
+                    $("#d2").append("\t<div class=\"ui-block\" id=\"d3\" class=\"article"+item.aId+"\" >\n" +
                         "\n" +
                         "\n" +
                         "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -467,6 +491,11 @@ $(function () {
                         "\n" +
                         "\t\t\t\t\t</div>\n" +
                         "\n" +
+                        "<div class=\"control-block-button post-control-button\">\n" +
+                        "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
+                        "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
+                        "\t\t\t\t\t\t\t</a>\n" +
+                        "</div>"+
                         "\n" +
                         "\t\t\t\t</article>\n" +
                         "\n" +
