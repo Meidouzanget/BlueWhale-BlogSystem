@@ -1,8 +1,10 @@
 package com.melcoc.bluewhale.controller;
 
+import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.LUser;
 import com.melcoc.bluewhale.domain.ResponseBean;
 import com.melcoc.bluewhale.jwt.JWTUtil;
+import com.melcoc.bluewhale.service.ArticleService;
 import com.melcoc.bluewhale.serviceImpl.Qiniu;
 import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
 import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
@@ -14,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 @RestController
 public class UserPageController {
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private ArticleService articleService;
 
     @Autowired
     private Qiniu qiniu;
@@ -32,8 +38,11 @@ public class UserPageController {
         System.out.println(username);
         String token=request.getHeader("Authorization");
         System.out.println("token:"+token);
-
-        return new ResponseBean(200,"success",null);
+        List<Article> list = articleService.selectArticleByUserName(username);
+        if (list== null){
+            return new ResponseBean(200,"success",list);
+        }else
+            return new ResponseBean(400,"failure",null);
 
     }
     @PostMapping("/updateByIduUrl")
