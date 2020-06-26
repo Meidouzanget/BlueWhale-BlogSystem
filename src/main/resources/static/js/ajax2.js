@@ -1,39 +1,45 @@
-//逻辑删除
-function deleteArticle(answerId) {
-    var article="article"+answerId;
+//获取登录用户
+function getToken(){
     $.ajax({
         type: 'POST',
-        url: 'api/pTest',
+        url: '/u/{id}' +
+            '',
         //从localStorage获取存储的token
         headers : {'Authorization':localStorage["token"]},
         datatype: 'json',
         success: function (data) {
+            alert("用户")
             console.log(data);
-            var userId=data.data.userId;
-            $.ajax({
-                url: "/api/deldeArticle",
-                type: "post",
-                data: {
-                    aId: answerId,
-                    userId: userId
-                },
-                dataType: "json",
-                success:function (data) {
-                    console.log(data);
-                    if (data==1){
-                        alert("删除成功")
-                        $("[name="+article+"]").empty();
-                    }
-                    if (data==0){
-                        console.log(data);
-                        alert("对不起，你没有权限")
+            $("#name").append("<p>"+data.data.nickName+"</p>")
+        }
+    })
+}
 
-                    }
+//逻辑删除
+function deleteArticle(answerId) {
+    var article="article"+answerId;
+    $.ajax({
+        url: "/api/deldeArticle",
+        type: "post",
+        headers : {'Authorization':localStorage["token"]},
+        data: {
+            aId: answerId,
+        },
+        dataType: "json",
+        success:function (data) {
+            console.log(data);
+            if (data==1){
+                alert("删除成功")
+                $("[name="+article+"]").empty();
+            }
+            if (data==0){
+                console.log(data);
+                alert("对不起，你没有权限")
 
-                },error:function () {
+            }
 
-                }
-            })
+        },error:function () {
+
         }
     })
 
@@ -44,6 +50,7 @@ function deleteArticle(answerId) {
 
 $(function () {
     select();
+    getToken();
 })
 
 
@@ -52,28 +59,21 @@ $(function () {
 
 function select() {
 
-    $.ajax({
-        type: 'POST',
-        url: 'api/pTest',
-        //从localStorage获取存储的token
-        headers : {'Authorization':localStorage["token"]},
-        datatype: 'json',
-        success: function (data) {
-            console.log(data);
-            var userId=data.data.userId;
+
 
             $.ajax({
                 url: "/api/selectUserAll",
                 type: "post",
+                headers : {'Authorization':localStorage["token"]},
                 data:{
-                    userId:userId
+
                 },
                 dataType: "json",
                 success: function (data)//回调
                 {
                     console.log(data)
                     $.each(data, function (index, item) {
-                        $(".dUser").append("\t<div class=\"ui-block\" id='article"+data.aId+"' >\n" +
+                        $(".dUser").append("\t<div class=\"ui-block\" id='article"+item.aId+"' name='article"+item.aId+"'>\n" +
                             "\n" +
                             "\n" +
                             "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -140,9 +140,9 @@ function select() {
                             "\t\t\t\t\t</div>\n" +
                             "\n" +
                             "<div class=\"control-block-button post-control-button\">\n" +
-                            "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
+                            "\t\t\t\t\t\t\t<button class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
                             "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
-                            "\t\t\t\t\t\t\t</a>\n" +
+                            "\t\t\t\t\t\t\t</button>\n" +
                             "</div>"+
                             "\n" +
                             "\t\t\t\t</article>\n" +
@@ -156,8 +156,7 @@ function select() {
 
             })
             //
-        }
-    })
+
 
 
 

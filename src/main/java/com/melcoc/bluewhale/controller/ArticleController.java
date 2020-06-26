@@ -122,9 +122,12 @@ public class ArticleController {
     /**
      * 逻辑删除
      */
+    @RequiresAuthentication
     @ApiOperation("逻辑删除")
     @PostMapping("/api/deldeArticle")
-    public int deldeArticle(@Param("aId") int aId ,Integer userId) {
+    public int deldeArticle(@Param("aId") int aId ,HttpServletRequest request) {
+        String token=request.getHeader("Authorization");
+        int userId=  userService.selectUserId(JWTUtil.getUsername(token));
        int i= articleService.deletedArticle(aId,userId);
         return i;
     }
@@ -169,10 +172,12 @@ public class ArticleController {
      * 单用户文章的全查询
      * @return
      */
+    @RequiresAuthentication
     @ApiOperation("单用户文章的全查询")
     @PostMapping("/api/selectUserAll")
-    public List<Article> selectUserAll(String name){
-        List<Article> list = articleService.selectUserAll(name);
+    public List<Article> selectUserAll(HttpServletRequest request){
+        String token=request.getHeader("Authorization");
+        List<Article> list = articleService.selectUserAll(JWTUtil.getUsername(token));
         System.out.println(list);
         return list;
     }
