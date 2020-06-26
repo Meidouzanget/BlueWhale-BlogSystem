@@ -490,24 +490,3 @@ $(function () {
 
 
 })
-$(function () {
-    var login_flag = false;
-    $.ajax({
-        type: 'POST',
-        url: 'api/pTest',
-        //从localStorage获取存储的token
-        headers : {'Authorization':localStorage["token"]},
-        datatype: 'json',
-        success: function (data) {
-            console.log(data);
-            if (data.code ==200){
-                login_flag = true;
-            }
-        }
-    })
-    if (login_flag){
-        $("#Notlogged").css("display","none");
-    }else {
-        $(".news-feed-form").css("display","none");
-    }
-})

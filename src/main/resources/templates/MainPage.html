@@ -171,7 +171,7 @@
 					</div>
 					<a href="ProfilePage.html" class="author-name fn">
 						<div class="author-title" >
-							<div id="nickname"></div>
+
 							<svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>
 						<span class="author-subtitle"></span>
@@ -676,6 +676,7 @@
 				</div>
 				<a href="ProfilePage.html" class="author-name fn">
 					<div class="author-title">
+						<span id="nickname"></span>
 						<svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
 					<span class="author-subtitle">SPACE COWBOY</span>
@@ -2123,6 +2124,33 @@
 		}
 	});
 
+</script>
+<script>
+	$(function () {
+		var login_flag = false;
+		var nickname = "";
+		$.ajax({
+			type: 'POST',
+			url: 'api/pTest',
+			//从localStorage获取存储的token
+			headers : {'Authorization':localStorage["token"]},
+			datatype: 'json',
+			success: function (data) {
+				console.log(data);
+				if (data.code === 200){
+					login_flag = true;
+					$("#nickname").html(data.data.nickName);
+					console.log(data.data.nickName);
+				}
+			}
+		})
+		if (login_flag){
+			$(".news-feed-form").css("display","none");
+		}else {
+			$("#Notlogged").css("display","none");
+
+		}
+	})
 </script>
 </body>
 
