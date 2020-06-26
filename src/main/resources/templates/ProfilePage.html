@@ -74,9 +74,9 @@
 <div class="fixed-sidebar">
 	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
 
-		<a href="ProfilePage.html" class="logo">
+		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img th:src="@{/img/logo.png}" alt="Olympus">
+				<img src="img/logo.png" alt="蓝鲸社区">
 			</div>
 		</a>
 
@@ -84,22 +84,17 @@
 			<ul class="left-menu">
 				<li>
 					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-menu-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="OPEN MENU"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+						<svg class="olymp-menu-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="打开菜单"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 					</a>
 				</li>
 				<li>
-					<a href="MainPage.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="关注动态"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+					<a href="/">
+						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="好友动态"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
 					</a>
 				</li>
 				<li>
-					<a href="16-FavPagesFeed.html">
-						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="我的收藏"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-					</a>
-				</li>
-				<li>
-					<a href="17-FriendGroups.html">
-						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="好友群组"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+					<a href="/u/{id}">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="个人空间"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 					</a>
 				</li>
 
@@ -108,12 +103,12 @@
 	</div>
 
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-		<a href="ProfilePage.html" class="logo">
+		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img th:src="@{/img/logo.png}" alt="Olympus">
+				<img src="img/logo.png" alt="olympus">
 			</div>
 			<div class="title-block">
-				<h6 class="logo-title">蓝鲸博客</h6>
+				<h6 class="logo-title">蓝鲸社区</h6>
 			</div>
 		</a>
 
@@ -121,26 +116,20 @@
 			<ul class="left-menu">
 				<li>
 					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-						<span class="left-menu-title">收起菜单</span>
+						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+						<span class="left-menu-title">关闭菜单</span>
 					</a>
 				</li>
 				<li>
-					<a href="MainPage.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">关注动态</span>
+					<a href="/">
+						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+						<span class="left-menu-title">好友动态</span>
 					</a>
 				</li>
 				<li>
-					<a href="16-FavPagesFeed.html">
-						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-						<span class="left-menu-title">我的收藏</span>
-					</a>
-				</li>
-				<li>
-					<a href="17-FriendGroups.html">
-						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
-						<span class="left-menu-title">好友群组</span>
+					<a href="/u/{id}">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+						<span class="left-menu-title">个人空间</span>
 					</a>
 				</li>
 			</ul>
@@ -181,10 +170,11 @@
 						<span class="icon-status online"></span>
 					</div>
 					<a href="ProfilePage.html" class="author-name fn">
-						<div class="author-title">
-							James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+						<div class="author-title" >
+							<div id="nickname"></div>
+							<svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 						</div>
-						<span class="author-subtitle">Space Cowboy </span>
+						<span class="author-subtitle"></span>
 					</a>
 				</div>
 			</div>
@@ -196,91 +186,26 @@
 			<ul class="left-menu">
 				<li>
 					<a href="#" class="js-sidebar-open">
-						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+						<svg class="olymp-close-icon left-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
 						<span class="left-menu-title">收起菜单</span>
 					</a>
 				</li>
 				<li>
-					<a href="mobile-index.html">
-						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
-						<span class="left-menu-title">关注动态</span>
-					</a>
-				</li>
-				<li>
-					<a href="Mobile-28-YourAccount-PersonalInformation.html">
-						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-						<span class="left-menu-title">我的收藏</span>
-					</a>
-				</li>
-				<li>
-					<a href="mobile-29-YourAccount-AccountSettings.html">
-						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+					<a href="/">
+						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
 						<span class="left-menu-title">好友群组</span>
 					</a>
 				</li>
-
-			</ul>
-
-			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">我的账户</h6>
-			</div>
-
-			<ul class="account-settings">
 				<li>
-					<a href="#">
-
-						<svg class="olymp-menu-icon"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
-
-						<span>账户设置</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-
-						<span>管理收藏</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<svg class="olymp-logout-icon"><use xlink:href="static/svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
-
-						<span>登出</span>
+					<a href="/u/{id}">
+						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+						<span class="left-menu-title">关注动态</span>
 					</a>
 				</li>
 			</ul>
-
-			<div class="ui-block-title ui-block-title-small">
-				<h6 class="title">关于蓝鲸</h6>
-			</div>
-
-			<ul class="about-olympus">
-				<li>
-					<a href="#">
-						<span>用户协议</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>疑难解答</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>加入我们</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>联系我们</span>
-					</a>
-				</li>
-			</ul>
-
 		</div>
 	</div>
 </div>
-
 
 <!-- ... end Fixed Sidebar Left -->
 
