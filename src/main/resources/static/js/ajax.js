@@ -1,21 +1,13 @@
 //逻辑删除
 function deleteArticle(answerId) {
     var article="article"+answerId;
-    $.ajax({
-        type: 'POST',
-        url: 'api/pTest',
-        //从localStorage获取存储的token
-        headers : {'Authorization':localStorage["token"]},
-        datatype: 'json',
-        success: function (data) {
-            console.log(data);
-            var userId=data.data.userId;
+
             $.ajax({
                 url: "/api/deldeArticle",
                 type: "post",
+                headers : {'Authorization':localStorage["token"]},
                 data: {
                     aId: answerId,
-                    userId: userId
                 },
                 dataType: "json",
                 success:function (data) {
@@ -34,8 +26,7 @@ function deleteArticle(answerId) {
 
                 }
             })
-        }
-    })
+
 
 }
 //登出
