@@ -1,7 +1,6 @@
 package com.melcoc.bluewhale.serviceImpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.melcoc.bluewhale.dao.ArticleDao;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.service.ArticleService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -53,8 +51,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> selectUserAll(String name) {
-        return articleDao.selectUserAll(name);
+    public List<Article> selectArticleByUserName(String name) {
+        return articleDao.selectArticleByUserName(name);
     }
 
     @Override

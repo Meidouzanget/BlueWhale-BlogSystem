@@ -1,6 +1,5 @@
 package com.melcoc.bluewhale.serviceImpl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.melcoc.bluewhale.dao.LUserDao;
 import com.melcoc.bluewhale.dao.LUserroleDao;
 import com.melcoc.bluewhale.dao.UserDao;
@@ -58,6 +57,15 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
+    public boolean changePassword(LUser lUser) {
+        if (dao.updateById(lUser) == 1){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
     public User selectUserByName(String username) {
         return controllDao.selectByUserName(username);
     }
@@ -76,11 +84,24 @@ public class UserServiceImpl implements UserService
         }
     }
 
+    @Override
+    public boolean updateByIdUser(User user) {
+        if (controllDao.updateByIdUser(user)==1){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 
     @Override
-    public int updateByIduUrl(int userId,String avatar) {
-        return controllDao.updateByIduUrl(userId,avatar);
+    public boolean updateByIduUrl(int userId, String avatar) {
+        if (controllDao.updateByIduUrl(userId,avatar)==1){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     @Override

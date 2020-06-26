@@ -1,12 +1,16 @@
 package com.melcoc.bluewhale.controller;
 
+import com.melcoc.bluewhale.domain.LUser;
 import com.melcoc.bluewhale.domain.ResponseBean;
+import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.serviceImpl.Qiniu;
 import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
 import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,19 +27,14 @@ public class UserPageController {
     @Autowired
     private QiniuServiceImpl qiniuService;
 
-    @PostMapping("/u/{id}")
-    public ResponseBean userPage(@PathVariable String id, HttpServletRequest request){
-        System.out.println(id);
+    @PostMapping("/api/ArticleOfUser")
+    public ResponseBean userPage(@RequestParam String username, HttpServletRequest request){
+        System.out.println(username);
         String token=request.getHeader("Authorization");
         System.out.println("token:"+token);
+
         return new ResponseBean(200,"success",null);
-        /*if (token.equals("")){
-            JWTUtil.getUsername(token);
-            User user= userService.selectUserByName(JWTUtil.getUsername(token));
-            return new ResponseBean(200,JWTUtil.getUsername(token),user);
-        }else {
-        }
-        */
+
     }
     @PostMapping("/updateByIduUrl")
     public String updateByIduUrl(Integer userId,String base64Date)  {
@@ -53,9 +52,19 @@ public class UserPageController {
         return avatar;
     }
 
+    @RequiresAuthentication
     @PostMapping("/api/ChangePassword")
-    public ResponseBean changePW(@PathVariable String id, HttpServletRequest request){
-        return null;
+    public ResponseBean changePW(@RequestParam String nPassword, @RequestParam String oPassword, HttpServletRequest request){
+        String token=request.getHeader("Authorization");
+        System.out.println("token:"+token);
+        LUser lUserBean = userService.selectlUserByName(JWTUtil.getUsername(token));
+        if (lUserBean.getPassword().equals(DigestUtils.sha256Hex(oPassword))) {
+            lUserBean.setPassword(DigestUtils.sha256Hex(nPassword));
+            userService.changePassword(lUserBean);
+            return new ResponseBean(200,"成功修改密码",JWTUtil.sign(lUserBean.getName(), DigestUtils.sha256Hex(nPassword)));
+        }else {
+            return new ResponseBean(401,"旧密码不匹配",null);
+        }
     }
 
 }

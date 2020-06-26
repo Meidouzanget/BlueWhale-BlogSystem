@@ -1,11 +1,9 @@
 package com.melcoc.bluewhale.service;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.melcoc.bluewhale.domain.Article;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ArticleService {
     /**
@@ -39,7 +37,7 @@ public interface ArticleService {
      * 单用户文章的全查询
      * @return
      */
-    List<Article> selectUserAll(String name);
+    List<Article> selectArticleByUserName(String name);
 
     List<Article> articleUserList();
 

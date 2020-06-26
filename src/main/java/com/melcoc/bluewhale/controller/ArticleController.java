@@ -15,7 +15,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -172,7 +171,7 @@ public class ArticleController {
     @ApiOperation("单用户文章的全查询")
     @PostMapping("/api/selectUserAll")
     public List<Article> selectUserAll(String name){
-        List<Article> list = articleService.selectUserAll(name);
+        List<Article> list = articleService.selectArticleByUserName(name);
         System.out.println(list);
         return list;
     }

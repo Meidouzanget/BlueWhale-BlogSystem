@@ -14,6 +14,9 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserDao extends BaseMapper<User> {
 
+    @Update("UPDATE from user SET avatar=#{avatar} WHERE user_id=#{userId}")
+    int updateByIduUrl(int userId,String avatar);
+
     @Select("SELECT COUNT(*) FROM l_user where name=#{username}")
     int RepeatUserNameQuery(@Param("username") String username);
 
@@ -40,8 +43,6 @@ public interface UserDao extends BaseMapper<User> {
      * 根据UserId修改avatar
      */
 
-    @Update("UPDATE from user SET avatar=#{avatar} WHERE user_id=#{userId} ;")
-    int updateByIduUrl(int userId,String avatar);
 
     /**
      * 查询用户ID

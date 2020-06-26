@@ -1,6 +1,7 @@
 package com.melcoc.bluewhale.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,9 @@ public class PageController {
     /**
      * 个人页
      */
-    @RequestMapping("/u/{id}")
-    public String profilePage(@PathVariable String id) {
+    @RequestMapping("/u/{username}")
+    public String profilePage(@PathVariable String username, Model model) {
+        model.addAttribute("username",username);
         return "ProfilePage";
     }
     /**
