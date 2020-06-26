@@ -22,7 +22,7 @@ function deleteArticle(answerId) {
                     console.log(data);
                     if (data==1){
                         alert("删除成功")
-                        $("."+article+"").empty();
+                        $("[name="+article+"]").empty();
                     }
                     if (data==0){
                         console.log(data);
@@ -59,9 +59,9 @@ function getToken(){
         headers : {'Authorization':localStorage["token"]},
         datatype: 'json',
         success: function (data) {
-            console.log(data);
+            console.log(userId);
             var userId=data.data.userId;
-            $("#nickname").append("<p>"+data.data.nickName+"</p>")
+            $("#addform").css("display","block")
         }
     })
 }
@@ -71,22 +71,14 @@ function addcomment(answerId) {
     var comments="comments"+answerId;
     var commentContent=$("#commentContent").val();
 
-    $.ajax({
-        type: 'POST',
-        url: 'api/pTest',
-        //从localStorage获取存储的token
-        headers : {'Authorization':localStorage["token"]},
-        datatype: 'json',
-        success: function (data) {
-            console.log(data);
-            var userId=data.data.userId;
+
             //发表评论
             $.ajax({
                 url: "/api/addComment",
                 type: "post",
+                headers : {'Authorization':localStorage["token"]},
                 data: {
                     answerId: answerId,
-                    userId:userId,
                     content: commentContent
 
                 },
@@ -136,8 +128,7 @@ function addcomment(answerId) {
                 }
             })
             //
-        }
-    })
+
 
 
 
@@ -320,23 +311,15 @@ $(function () {
         }
 
         if(content!=""||file!=null){
-            $.ajax({
-                type: 'POST',
-                url: 'api/pTest',
-                //从localStorage获取存储的token
-                headers : {'Authorization':localStorage["token"]},
-                datatype: 'json',
-                success: function (data) {
-                    console.log(data);
-                    var userId=data.data.userId;
+
 
                     $.ajax({
                         url: "/api/addArticle",
                         type: "post",
+                        headers : {'Authorization':localStorage["token"]},
                         data: {
                             base64Date: result,
                             content: content,
-                            userId: userId
                         },
                         dataType: "json",
                         success: function () {
@@ -347,7 +330,7 @@ $(function () {
                                 dataType: "json",
                                 success:function (data) {
                                     console.log("发帖")
-                                    $("#d3").prepend("\t<div class=\"ui-block\">\n" +
+                                    $("#d3").prepend("\t<div class=\"ui-block\" name='article"+data[0].aId+"'>\n" +
                                         "\n" +
                                         "\n" +
                                         "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -397,9 +380,9 @@ $(function () {
                                         "\t\t\t\t\t</div>\n" +
                                         "\n" +
                                         "<div class=\"control-block-button post-control-button\">\n" +
-                                        "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
+                                        "\t\t\t\t\t\t\t<button href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+data[0].aId+")'>\n" +
                                         "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
-                                        "\t\t\t\t\t\t\t</a>\n" +
+                                        "\t\t\t\t\t\t\t</button>\n" +
                                         "</div>"+
                                         "\n" +
                                         "\t\t\t\t</article>\n" +
@@ -417,8 +400,8 @@ $(function () {
 
                     })
                     //
-                }
-            })
+
+
         }else{
             alert("内容还图片不能为空！！！")
         }
@@ -442,7 +425,7 @@ $(function () {
             {
                 console.log(data)
                 $.each(data, function (index, item) {
-                    $("#d2").append("\t<div class=\"ui-block\" id=\"d3\" class=\"article"+item.aId+"\" >\n" +
+                    $("#d2").append("\t<div class=\"ui-block\" id=\"d3\" name='article"+item.aId+"' >\n" +
                         "\n" +
                         "\n" +
                         "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -492,9 +475,9 @@ $(function () {
                         "\t\t\t\t\t</div>\n" +
                         "\n" +
                         "<div class=\"control-block-button post-control-button\">\n" +
-                        "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
+                        "\t\t\t\t\t\t\t<button href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
                         "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
-                        "\t\t\t\t\t\t\t</a>\n" +
+                        "\t\t\t\t\t\t\t</button>\n" +
                         "</div>"+
                         "\n" +
                         "\t\t\t\t</article>\n" +

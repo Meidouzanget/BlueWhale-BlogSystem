@@ -1,8 +1,8 @@
 $(function () {
     var result = "";
     //图片预览
-    $("#imgBut").change(function () {
-        var file = $("#imgBut").get(0).files[0];//获取文件对象
+    $("#headPortrait").change(function () {
+        var file = $("#headPortrait").get(0).files[0];//获取文件对象
         console.log(file);//创建文件读取对象
         var fileReader = new FileReader(); //创建文件读取对象
         fileReader.readAsDataURL(file);//读取文件对象

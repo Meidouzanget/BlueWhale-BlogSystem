@@ -1,3 +1,47 @@
+//逻辑删除
+function deleteArticle(answerId) {
+    var article="article"+answerId;
+    $.ajax({
+        type: 'POST',
+        url: 'api/pTest',
+        //从localStorage获取存储的token
+        headers : {'Authorization':localStorage["token"]},
+        datatype: 'json',
+        success: function (data) {
+            console.log(data);
+            var userId=data.data.userId;
+            $.ajax({
+                url: "/api/deldeArticle",
+                type: "post",
+                data: {
+                    aId: answerId,
+                    userId: userId
+                },
+                dataType: "json",
+                success:function (data) {
+                    console.log(data);
+                    if (data==1){
+                        alert("删除成功")
+                        $("[name="+article+"]").empty();
+                    }
+                    if (data==0){
+                        console.log(data);
+                        alert("对不起，你没有权限")
+
+                    }
+
+                },error:function () {
+
+                }
+            })
+        }
+    })
+
+}
+
+
+
+
 $(function () {
     select();
 })
@@ -20,7 +64,7 @@ function select() {
 
             $.ajax({
                 url: "/api/selectUserAll",
-                type: "get",
+                type: "post",
                 data:{
                     userId:userId
                 },
@@ -29,7 +73,7 @@ function select() {
                 {
                     console.log(data)
                     $.each(data, function (index, item) {
-                        $(".dUser").append("\t<div class=\"ui-block\" >\n" +
+                        $(".dUser").append("\t<div class=\"ui-block\" id='article"+data.aId+"' >\n" +
                             "\n" +
                             "\n" +
                             "\t\t\t\t<article class=\"hentry post\">\n" +
@@ -95,21 +139,11 @@ function select() {
                             "\n" +
                             "\t\t\t\t\t</div>\n" +
                             "\n" +
-                            "\t\t\t\t\t<div class=\"control-block-button post-control-button\">\n" +
-                            "\n" +
-                            "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                            "\t\t\t\t\t\t\t<svg class=\"olymp-like-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-like-post-icon\"></use></svg>\n" +
-                            "\t\t\t\t\t\t</a>\n" +
-                            "\n" +
-                            "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                            "\t\t\t\t\t\t\t<svg class=\"olymp-comments-post-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-comments-post-icon\"></use></svg>\n" +
-                            "\t\t\t\t\t\t</a>\n" +
-                            "\n" +
-                            "\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\">\n" +
-                            "\t\t\t\t\t\t\t<svg class=\"olymp-share-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-share-icon\"></use></svg>\n" +
-                            "\t\t\t\t\t\t</a>\n" +
-                            "\n" +
-                            "\t\t\t\t\t</div>\n" +
+                            "<div class=\"control-block-button post-control-button\">\n" +
+                            "\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-control\" onclick='deleteArticle("+item.aId+")'>\n" +
+                            "\t\t\t\t\t\t<img src=\"/img/delect.png\" alt=\"author\">\n" +
+                            "\t\t\t\t\t\t\t</a>\n" +
+                            "</div>"+
                             "\n" +
                             "\t\t\t\t</article>\n" +
                             "\n" +

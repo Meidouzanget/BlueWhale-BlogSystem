@@ -506,7 +506,7 @@ $("#loginBtn").click(function () {
                 d.setTime(d.getTime() + (3*24*60*60*1000));
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = "token" + "=" + data.data + ";" + expires + ";path=/";
-                window.location.href="/article/mainPage";
+                window.location.href="/";
             }else {
                 console.log(data.msg);
                 $("#LoginBox-Warn").val(data.msg).css("display","block");

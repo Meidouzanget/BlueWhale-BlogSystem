@@ -243,11 +243,11 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" onclick="logout();">
+					<button onclick="logout()">
 						<svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
 						<span>登出</span>
-					</a>
+					</button>
 				</li>
 			</ul>
 
@@ -1153,11 +1153,9 @@
 		<main  id="d2" class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 
 
-			<shiro:guest>
 				<label>您当前是游客，</label><a href="/login.jsp" >请登录</a>
-			</shiro:guest>
 
-			<div class="ui-block">
+			<div class="ui-block" id="addform" style="display: none">
 
 				<!-- News Feed Form  -->
 

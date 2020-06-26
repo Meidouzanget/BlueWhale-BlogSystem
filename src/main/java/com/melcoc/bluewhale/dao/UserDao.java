@@ -8,12 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-    /**
-     * 根据UserId修改avatar
-     */
 
-    @Update("UPDATE from user SET avatar=#{avatar} WHERE user_id=#{userId} ;")
-    int updateByIduUrl(int userId,String avatar);
 
 
 @Mapper
@@ -41,5 +36,17 @@ public interface UserDao extends BaseMapper<User> {
      * 修改个人信息
      */
     int updateByIdUser(User user);
+    /**
+     * 根据UserId修改avatar
+     */
+
+    @Update("UPDATE from user SET avatar=#{avatar} WHERE user_id=#{userId} ;")
+    int updateByIduUrl(int userId,String avatar);
+
+    /**
+     * 查询用户ID
+     */
+    @Select("select user_id from user where name=#{name} ")
+    int selectUserId(String name);
 
 }

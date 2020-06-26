@@ -39,7 +39,7 @@ public interface ArticleService {
      * 单用户文章的全查询
      * @return
      */
-    List<Article> selectUserAll(Integer userId);
+    List<Article> selectUserAll(String name);
 
     List<Article> articleUserList();
 

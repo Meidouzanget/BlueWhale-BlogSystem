@@ -76,15 +76,16 @@ public class UserServiceImpl implements UserService
         }
     }
 
-    @Override
-    public int updateByIdUser(User user) {
 
-        return controllDao.updateById(user);
-    }
 
     @Override
     public int updateByIduUrl(int userId,String avatar) {
         return controllDao.updateByIduUrl(userId,avatar);
+    }
+
+    @Override
+    public int selectUserId(String name) {
+        return controllDao.selectUserId(name);
     }
 
 

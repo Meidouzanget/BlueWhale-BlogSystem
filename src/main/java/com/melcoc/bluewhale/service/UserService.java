@@ -29,4 +29,6 @@ public interface UserService {
 
     int updateByIduUrl(int userId,String avatar);
 
+    int selectUserId(String name);
+
 }

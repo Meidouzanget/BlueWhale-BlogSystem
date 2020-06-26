@@ -2,10 +2,8 @@ package com.melcoc.bluewhale.controller;
 
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Great;
-import com.melcoc.bluewhale.serviceImpl.ArticleServiceImpl;
-import com.melcoc.bluewhale.serviceImpl.GreatServiceImpl;
-import com.melcoc.bluewhale.serviceImpl.Qiniu;
-import com.melcoc.bluewhale.serviceImpl.QiniuServiceImpl;
+import com.melcoc.bluewhale.jwt.JWTUtil;
+import com.melcoc.bluewhale.serviceImpl.*;
 import com.qiniu.util.UrlSafeBase64;
 import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.annotations.Api;
@@ -14,6 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +29,8 @@ import java.util.UUID;
 @Api("微博Controller")
 @RestController
 public class ArticleController {
+    @Autowired
+    UserServiceImpl userService;
 
     @Autowired
     ArticleServiceImpl articleService;
@@ -51,12 +52,15 @@ public class ArticleController {
      *
      * @return
      */
+    @RequiresAuthentication
     @ApiOperation("发布微博")
     @PostMapping("/api/addArticle")
-    public Article addArticle(Integer userId,String content, String base64Date) {
-
+    public Article addArticle(String content, String base64Date,HttpServletRequest request) {
+        String token=request.getHeader("Authorization");
+      int userId=  userService.selectUserId(JWTUtil.getUsername(token));
         Article article=new Article();
         article.setUserId(userId);
+        article.setName(JWTUtil.getUsername(token));
         article.setCreateTime(LocalDateTime.now());
         article.setContent(content);
 
@@ -167,8 +171,8 @@ public class ArticleController {
      */
     @ApiOperation("单用户文章的全查询")
     @PostMapping("/api/selectUserAll")
-    public List<Article> selectUserAll(Integer userId){
-        List<Article> list = articleService.selectUserAll(userId);
+    public List<Article> selectUserAll(String name){
+        List<Article> list = articleService.selectUserAll(name);
         System.out.println(list);
         return list;
     }

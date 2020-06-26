@@ -52,4 +52,5 @@ public class LoginController {
         User user= service.selectUserByName(JWTUtil.getUsername(token));
         return new ResponseBean(200,JWTUtil.getUsername(token),user);
     }
+
 }

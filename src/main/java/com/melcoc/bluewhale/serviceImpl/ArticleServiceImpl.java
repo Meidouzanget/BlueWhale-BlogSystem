@@ -53,8 +53,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> selectUserAll(Integer userId) {
-        return articleDao.selectUserAll(userId);
+    public List<Article> selectUserAll(String name) {
+        return articleDao.selectUserAll(name);
     }
 
     @Override
