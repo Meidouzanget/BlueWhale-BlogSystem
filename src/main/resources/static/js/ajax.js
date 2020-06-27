@@ -50,8 +50,7 @@ function getToken(){
         headers : {'Authorization':localStorage["token"]},
         datatype: 'json',
         success: function (data) {
-            console.log(userId);
-            var userId=data.data.userId;
+            console.log(data);
             $("#addform").css("display","block")
         }
     })
@@ -108,7 +107,7 @@ function addcomment(answerId) {
                                 "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                                 "\t\t\t\t\t\t\t\t<span></span>\n" +
                                 "\t\t\t\t\t\t\t</a>\n" +
-                                "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
+                                // "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
                                 "\t\t\t\t\t\t</li>")
                         },error:function (e) {
                             console.log("查看评论错误"+e)
@@ -170,7 +169,7 @@ function comments(answerId) {
                     "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                     "\t\t\t\t\t\t\t\t<span></span>\n" +
                     "\t\t\t\t\t\t\t</a>\n" +
-                    "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
+                    // "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
                     "\t\t\t\t\t\t</li>")
 
             })

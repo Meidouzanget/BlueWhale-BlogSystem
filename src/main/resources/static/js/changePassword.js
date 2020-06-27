@@ -3,22 +3,24 @@ $(function () {
 })
 
 function updataPassword() {
-    var password=$("#password").val();
-    var newPassword1=$("#newPassword1").val();
-    var newPassword2=$("#newPassword2").val();
+    var oPassword=$("#oPassword").val();
+    var nPassword1=$("#nPassword1").val();
+    var nPassword2=$("#nPassword2").val();
 
-    if (newPassword1==newPassword2){
+
+
+    if (nPassword1==nPassword2){
         $.ajax({
-            url:"",
+            url:"/api/ChangePassword",
             type:"post",
             headers : {'Authorization':localStorage["token"]},
             data:{
-                password:password,
-                newPassword1:newPassword1,
-                newPassword2:newPassword2
+                oPassword:oPassword,
+                nPassword:nPassword1,
+
             },
             success:function () {
-                window.location.reload();
+                 window.location.reload();
                 alert("修改成功");
             }
         })

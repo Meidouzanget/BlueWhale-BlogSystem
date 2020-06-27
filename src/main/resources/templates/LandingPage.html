@@ -237,8 +237,8 @@
                                 </div>
                                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group label-floating">
-                                        <label id =  "reg-username" class="control-label">你的用户名</label>
-                                        <input class="form-control" placeholder="" type="text">
+                                        <label  class="control-label">你的用户名</label>
+                                        <input class="form-control" id =  "reg-username" placeholder="" type="text">
                                     </div>
                                 </div>
                                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -260,9 +260,9 @@
 													</span>
                                     </div>
 
-                                    <div id =  "reg-sex" class="form-group label-floating is-select">
+                                    <div class="form-group label-floating is-select">
                                         <label class="control-label">性别</label>
-                                        <select class="selectpicker form-control">
+                                        <select  class="selectpicker form-control" id =  "reg-sex">
                                             <option value="1">男</option>
                                             <option value="2">女</option>
                                             <option value="0">未指定</option>
@@ -446,6 +446,22 @@
 <script type="text/javascript">
 $(
 		function () {
+            $("#regNow").click(
+                function () {
+                    //注册区域切换逻辑
+                    $("#home").toggleClass("active");
+                    $("#profile").toggleClass("active");
+                    $("#nav-reg").toggleClass("active");
+                    $("#nav-login").toggleClass("active");
+                });
+            $("#loginNow").click(
+                function () {
+                    //登录区域切换逻辑
+                    $("#home").toggleClass("active");
+                    $("#profile").toggleClass("active");
+                    $("#nav-reg").toggleClass("active");
+                    $("#nav-login").toggleClass("active");
+                });
 		    $("#reg-birth").datetimepicker({
                 format:'yyyy-mm-dd',
                 startView:'year',
@@ -479,7 +495,7 @@ $("#regBtn").click(function () {
                 d.setTime(d.getTime() + (3*24*60*60*1000));
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = "token" + "=" + data.data + ";" + expires + ";path=/";
-                window.location.href="/article/mainPage";
+                window.location.href="/";
             }else {
                 $("regBox-Warn").val(data.msg).css("display","block");
             }

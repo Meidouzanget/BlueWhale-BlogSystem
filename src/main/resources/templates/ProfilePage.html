@@ -94,7 +94,7 @@
 
 		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img src="img/logo.png" alt="蓝鲸社区">
+				<img alt="蓝鲸社区" th:src="@{/img/logo.png}">
 			</div>
 		</a>
 
@@ -111,7 +111,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/u/{id}">
+					<a th:href="@{/u/{username}}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="个人空间"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 					</a>
 				</li>
@@ -123,7 +123,7 @@
 	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
 		<a href="02-ProfilePage.html" class="logo">
 			<div class="img-wrap">
-				<img src="img/logo.png" alt="olympus">
+				<img alt="蓝鲸社区" th:src="@{/img/logo.png}">
 			</div>
 			<div class="title-block">
 				<h6 class="logo-title">蓝鲸社区</h6>

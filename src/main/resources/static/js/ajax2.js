@@ -2,8 +2,7 @@
 function getToken(){
     $.ajax({
         type: 'POST',
-        url: '/u/{id}' +
-            '',
+        url: '/u/{id}',
         //从localStorage获取存储的token
         headers : {'Authorization':localStorage["token"]},
         datatype: 'json',
