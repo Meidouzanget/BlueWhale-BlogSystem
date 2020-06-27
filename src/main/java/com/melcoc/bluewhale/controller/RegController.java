@@ -34,15 +34,21 @@ public class RegController {
         String xRealIP = request.getHeader("X-Real-IP");
         String remote = request.getRemoteAddr();
         System.out.println("X-Real-IP:"+xRealIP+"RemoteAddr："+remote);
-        String[] xForwardedFor = request.getHeader("X-Forwarded-For").split(",");
-        String realIP = xForwardedFor[0];
-        if (realIP.equals("") || realIP == null){
+        String[] xForwardedFor = null;
+        if (request.getHeader("X-Forwarded-For")!=null){
+            xForwardedFor = request.getHeader("X-Forwarded-For").split(",");
+        }
+        String realIP = null;
+        if (xForwardedFor==null){
             realIP = request.getRemoteAddr();
+        }else {
+            realIP = xForwardedFor[0];
         }
 
         if (userService.getUserNameNoRepeat(username)){//检测用户名重复
             if (userService.getUserEmailNoRepeat(email)){//检测邮件地址是否重复
                 //写入
+                System.out.println(realIP);
                 userBean.setNickName(nickName);
                 userBean.setName(username);
                 userBean.setEmail(email);
@@ -54,13 +60,13 @@ public class RegController {
                 lUserBean.setPassword(DigestUtils.sha256Hex(password));
 
                 if (userService.register(userBean,lUserBean)){
-
+                    System.out.println("验证成功");
                     LUser lUserBean2= userService.selectlUserByName(username);
                     User userBean2 =userService.selectUserByName(username);
                     System.out.println(lUserBean2.getUid()+" "+userBean.getUserId());
 
                     if (lUserBean2.getUid()==userBean2.getUserId()) {
-
+                        System.out.println("注册成功");
                         userService.insertUserrole(new LUserrole(userBean2.getUserId(),1));
                         return new ResponseBean(200, "注册成功", JWTUtil.sign(userBean.getName(), DigestUtils.sha256Hex(password)));
                     }else {
