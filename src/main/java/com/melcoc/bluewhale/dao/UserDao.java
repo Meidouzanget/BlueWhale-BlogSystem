@@ -38,7 +38,7 @@ public interface UserDao extends BaseMapper<User> {
     /**
      * 修改个人信息
      */
-    int updateByIdUser(User user);
+
     /**
      * 根据UserId修改avatar
      */

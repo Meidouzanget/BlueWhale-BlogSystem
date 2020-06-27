@@ -85,8 +85,8 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public boolean updateByIdUser(User user) {
-        if (controllDao.updateByIdUser(user)==1){
+    public boolean updateById(User user) {
+        if (controllDao.updateById(user)==1){
             return true;
         }else {
             return false;

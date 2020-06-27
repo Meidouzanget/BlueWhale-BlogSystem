@@ -29,7 +29,7 @@ public interface UserService {
      * 根据UserId修改avatar
      */
 
-    boolean updateByIdUser(User user);
+    boolean updateById(User user);
 
     boolean updateByIduUrl(int userId,String avatar);
 
