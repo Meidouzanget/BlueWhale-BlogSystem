@@ -34,7 +34,10 @@ public class RegController {
         String xRealIP = request.getHeader("X-Real-IP");
         String remote = request.getRemoteAddr();
         System.out.println("X-Real-IP:"+xRealIP+"RemoteAddr："+remote);
-
+        String realIP = String.valueOf(request.getHeader("X-Forwarded-For").split(",",1));
+        if (realIP.equals("") || realIP == null){
+            realIP = request.getRemoteAddr();
+        }
 
         if (userService.getUserNameNoRepeat(username)){//检测用户名重复
             if (userService.getUserEmailNoRepeat(email)){//检测邮件地址是否重复
@@ -44,7 +47,7 @@ public class RegController {
                 userBean.setEmail(email);
                 userBean.setBirth(birth);
                 userBean.setSex(sex);
-
+                userBean.setCreateIp(realIP);
                 lUserBean.setAccount(email);
                 lUserBean.setName(username);
                 lUserBean.setPassword(DigestUtils.sha256Hex(password));
