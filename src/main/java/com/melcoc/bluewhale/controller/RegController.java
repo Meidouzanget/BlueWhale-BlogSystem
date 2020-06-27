@@ -34,7 +34,8 @@ public class RegController {
         String xRealIP = request.getHeader("X-Real-IP");
         String remote = request.getRemoteAddr();
         System.out.println("X-Real-IP:"+xRealIP+"RemoteAddr："+remote);
-        String realIP = String.valueOf(request.getHeader("X-Forwarded-For").split(",",1));
+        String[] xForwardedFor = request.getHeader("X-Forwarded-For").split(",");
+        String realIP = xForwardedFor[0];
         if (realIP.equals("") || realIP == null){
             realIP = request.getRemoteAddr();
         }
