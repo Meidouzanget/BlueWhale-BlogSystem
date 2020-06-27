@@ -23,6 +23,9 @@
 				families: ['Roboto:300,400,500,700:latin']
 			}
 		});
+
+
+
 	</script>
 
 	<!-- Bootstrap CSS -->
@@ -32,9 +35,24 @@
 
 	<!-- Main Styles CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/layui.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.min.css}">
 
+	<link rel="stylesheet" type="text/css" th:href="@{/css/cropper.css}">
+<!--	<link rel="stylesheet" href="css/cropper.css">-->
 
+	<style>
+
+
+		img {
+			max-width: 100%;
+		}
+
+		.cropper-view-box,
+		.cropper-face {
+			border-radius: 50%;
+		}
+	</style>
 </head>
 <body class="page-has-left-panels ">
 <span style="display: none" th:text="${username}"></span>
@@ -197,7 +215,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/u/{id}">
+					<a href="/u/{}">
 						<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
 						<span class="left-menu-title">关注动态</span>
 					</a>
@@ -1900,10 +1918,11 @@
 			</form>
 		</div>
 	</div>
-
 </div>
 
-<!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
+<!-- end Window-popup-CHAT for responsive min-width: 768px -->
+
+
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -1914,14 +1933,35 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<span id='uploadSpan'>
-					<input type="file" id="imgBut" name="imgCut">
-					<div class="box" style="width: 100px;height: 100px">
-						<img src="" alt="" id="yulan" style="border: 1px solid rebeccapurple;height: 100px;width: 100px;">
+				<div class="img-container">
+					<img id="image" src="/img/404.png" alt="Picture">
+				</div>
+				<!-- Show the cropped image in modal -->
+				<div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="getCroppedCanvasTitle">Cropped</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body"></div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.jpg">Download</a>
+							</div>
+						</div>
 					</div>
-					<span style="color: red;">*</span><span style="color: silver;">新闻预览图片,只支持.jpg .jif .png图片格式</span>
-				</span>
+				</div><!-- /.modal -->
 			</div>
+
+			<label class="btn btn-primary btn-upload" for="input" title="Upload image file">
+				<input type="file" class="sr-only" id="input" name="file" accept="image/*">
+				<span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+              <span class="fa fa-upload"></span>
+            </span>
+			</label>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">
 					关闭
@@ -1930,6 +1970,7 @@
 					提交更改
 				</button>
 			</div>
+
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
@@ -1975,6 +2016,64 @@
 <script defer th:src="@{/fonts/fontawesome-all.js}"></script>
 
 <script th:src="@{/Bootstrap/dist/js/bootstrap.bundle.js}"></script>
+
+<!--弹出框-->
+<!--<script th:src="@{js/cropper.js}"></script>-->
+	<script th:src="@{/js/cropper.js}"></script>
+	<script>
+		function getRoundedCanvas(sourceCanvas) {
+			var canvas = document.createElement('canvas');
+			var context = canvas.getContext('2d');
+			var width = sourceCanvas.width;
+			var height = sourceCanvas.height;
+
+			canvas.width = width;
+			canvas.height = height;
+			context.imageSmoothingEnabled = true;
+			context.drawImage(sourceCanvas, 0, 0, width, height);
+			context.globalCompositeOperation = 'destination-in';
+			context.beginPath();
+			context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
+			context.fill();
+			return canvas;
+		}
+
+		window.addEventListener('DOMContentLoaded', function () {
+			var image = document.getElementById('image');
+			var button = document.getElementById('button');
+			var result = document.getElementById('result');
+			var croppable = false;
+			var cropper = new Cropper(image, {
+				aspectRatio: 1,
+				viewMode: 1,
+				ready: function () {
+					croppable = true;
+				},
+			});
+
+			button.onclick = function () {
+				var croppedCanvas;
+				var roundedCanvas;
+				var roundedImage;
+
+				if (!croppable) {
+					return;
+				}
+
+				// Crop
+				croppedCanvas = cropper.getCroppedCanvas();
+
+				// Round
+				roundedCanvas = getRoundedCanvas(croppedCanvas);
+
+				// Show
+				roundedImage = document.createElement('img');
+				roundedImage.src = roundedCanvas.toDataURL()
+				result.innerHTML = '';
+				result.appendChild(roundedImage);
+			};
+		});
+	</script>
 
 </body>
 </html>
