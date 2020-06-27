@@ -3,6 +3,7 @@ package com.melcoc.bluewhale.controller;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.LUser;
 import com.melcoc.bluewhale.domain.ResponseBean;
+import com.melcoc.bluewhale.domain.User;
 import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.service.ArticleService;
 import com.melcoc.bluewhale.serviceImpl.Qiniu;
@@ -12,6 +13,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -74,6 +76,13 @@ public class UserPageController {
         }else {
             return new ResponseBean(401,"旧密码不匹配",null);
         }
+    }
+
+    @RequiresAuthentication
+    @PostMapping("/api/ChangeUserInfo")
+    public ResponseBean changeUI(@RequestBody User userBean,HttpServletRequest request){
+    return null;
+
     }
 
 }

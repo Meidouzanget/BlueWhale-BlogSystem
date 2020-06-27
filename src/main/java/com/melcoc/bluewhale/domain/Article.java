@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 public class Article {

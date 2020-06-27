@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class RegController {
     @Autowired
@@ -23,11 +25,16 @@ public class RegController {
                       @RequestParam("email") String email,
                       @RequestParam("password") String password,
                       @RequestParam("birth") String birth,
-                      @RequestParam("sex") Integer sex
+                      @RequestParam("sex") Integer sex,
+                            HttpServletRequest request
                       ){
         System.out.println(nickName+":"+username+":"+email+":"+password+birth+sex);
         LUser lUserBean = new LUser();
         User userBean = new User();
+        String xRealIP = request.getHeader("X-Real-IP");
+        String remote = request.getRemoteAddr();
+        System.out.println("X-Real-IP:"+xRealIP+"RemoteAddr："+remote);
+
 
         if (userService.getUserNameNoRepeat(username)){//检测用户名重复
             if (userService.getUserEmailNoRepeat(email)){//检测邮件地址是否重复

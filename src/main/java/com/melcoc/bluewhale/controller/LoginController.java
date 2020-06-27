@@ -47,6 +47,9 @@ public class LoginController {
     @PostMapping("/api/pTest")
     public ResponseBean pTest(HttpServletRequest request){
         String token=request.getHeader("Authorization");
+        String xRealIP = request.getHeader("X-Real-IP");
+        String remote = request.getRemoteAddr();
+        System.out.println("X-Real-IP:"+xRealIP+"RemoteAddr："+remote);
         System.out.println("token:"+token);
         JWTUtil.getUsername(token);
         User user= service.selectUserByName(JWTUtil.getUsername(token));
