@@ -84,23 +84,22 @@ public class UserPageController {
         String token=request.getHeader("Authorization");
         boolean flag=false;
         if (userBean.getName().equals(JWTUtil.getUsername(token))){
+            System.out.println(userBean);
             flag = userService.updateById(userBean);
         }
         if (flag) {
             return new ResponseBean(200,"修改成功",null);
         } else {
-            return new ResponseBean(200,"用户名错误 修改失败",null);
+            return new ResponseBean(401,"用户名错误 修改失败",null);
         }
 
     }
     @RequiresAuthentication
     @PostMapping("/api/QueryUserInfo")
-    public ResponseBean selectUI(@RequestParam String name,HttpServletRequest request){
+    public ResponseBean selectUI(HttpServletRequest request){
         String token=request.getHeader("Authorization");
         User user = null;
-        if (name.equals(JWTUtil.getUsername(token))){
-            user = userService.selectUserByName(name);
-        }
+        user = userService.selectUserByName(JWTUtil.getUsername(token));
         if (user!=null){
             return new ResponseBean(200,"查询成功",user);
         }else {

@@ -772,16 +772,16 @@
 							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="form-group label-floating">
 									<label class="control-label">你的账户</label>
-									<input class="form-control" disabled="disabled" placeholder="" type="text" value="">
+									<input class="form-control" disabled="disabled" placeholder="" type="text"  id="name">
 								</div>
 								<div class="form-group label-floating">
 									<label class="control-label">你的昵称</label>
-									<input class="form-control" placeholder="" type="text" value="James" id="nickName">
+									<input class="form-control" placeholder="" type="text" v id="nickName">
 								</div>
 					
 								<div class="form-group label-floating">
 									<label class="control-label">你的邮箱</label>
-									<input class="form-control" placeholder="" type="email" value="jspiegel@yourmail.com" id="email">
+									<input class="form-control" placeholder="" type="email"  id="email">
 								</div>
 					
 								
@@ -794,7 +794,7 @@
 								</div>
 								<div class="form-group date-time-picker label-floating">
 									<label class="control-label">你的生日</label>
-									<input name="datetimepicker" value="10/24/1984"  id="birth"/>
+									<input name="datetimepicker"   id="birth"/>
 									<span class="input-group-addon">
 															<svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
 														</span>
@@ -805,7 +805,7 @@
 							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="form-group label-floating">
 									<label class="control-label">介绍一下你自己</label>
-									<textarea class="form-control" placeholder="" id="signature">性别人男，爱好女，有车有房，父母双亡</textarea>
+									<textarea class="form-control" placeholder="" id="signature"></textarea>
 								</div>
 					
 
@@ -829,10 +829,10 @@
 							</div>
 							
 							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-								<button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
+								<button class="btn btn-secondary btn-lg full-width" onclick="QueryUserInfo()" type="button">恢复所有属性</button>
 							</div>
 							<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-								<button class="btn btn-primary btn-lg full-width">Save all Changes</button>
+								<button class="btn btn-primary btn-lg full-width" onclick="ChangeUserInfo()" type="button">保存所有更改</button>
 							</div>
 					
 						</div>

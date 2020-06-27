@@ -1,6 +1,7 @@
 package com.melcoc.bluewhale.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.melcoc.bluewhale.domain.LUser;
 import com.melcoc.bluewhale.domain.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -27,7 +28,7 @@ public interface UserDao extends BaseMapper<User> {
 
     int deleteById(Integer id);
 
-    int updateById(User USer);
+    int updateById(@Param(Constants.ENTITY) User user);
 
     @Select("SELECT * FROM user where name=#{username}")
     User selectByUserName(@Param("username") String username);
