@@ -48,9 +48,9 @@ public class LoginController {
     public ResponseBean pTest(HttpServletRequest request){
         String token=request.getHeader("Authorization");
         String xRealIP = request.getHeader("X-Real-IP");
-        String xForwardedFor = request.getHeader("X-Forwarded-For");
+        String[] xForwardedFor = request.getHeader("X-Forwarded-For").split(",");
         String remote = request.getRemoteAddr();
-        String realIP = String.valueOf(request.getHeader("X-Forwarded-For").split(",",1));
+        String realIP = xForwardedFor[0];
         System.out.println("X-Real-IP:"+xRealIP+"\r\nRemoteAddr："+remote+"\r\nX-Forwarded-For:"+xForwardedFor+"\r\nRealIP"+realIP);
         System.out.println("token:"+token);
         JWTUtil.getUsername(token);
