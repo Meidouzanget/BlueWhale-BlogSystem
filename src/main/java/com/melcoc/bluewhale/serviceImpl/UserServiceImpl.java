@@ -95,8 +95,8 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public boolean updateByIduUrl(int userId, String avatar) {
-        if (controllDao.updateByIduUrl(userId,avatar)==1){
+    public boolean updateByIduUrl(String name, String avatar) {
+        if (controllDao.updateByIduUrl(name,avatar)==1){
             return true;
         }else{
             return false;

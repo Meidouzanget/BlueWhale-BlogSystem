@@ -30,8 +30,8 @@ public interface UserService {
      */
 
     boolean updateById(User user);
-
-    boolean updateByIduUrl(int userId,String avatar);
+    //上传头像
+    boolean updateByIduUrl(String name,String avatar);
 
     int selectUserId(String name);
 

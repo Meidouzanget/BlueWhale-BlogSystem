@@ -36,75 +36,79 @@ public class UserPageController {
     private QiniuServiceImpl qiniuService;
 
     @PostMapping("/api/ArticleOfUser")
-    public ResponseBean userPage(@RequestParam String username, HttpServletRequest request){
+    public ResponseBean userPage(@RequestParam String username, HttpServletRequest request) {
         System.out.println(username);
-        String token=request.getHeader("Authorization");
-        System.out.println("token:"+token);
+        String token = request.getHeader("Authorization");
+        System.out.println("token:" + token);
         List<Article> list = articleService.selectArticleByUserName(username);
-        if (list== null){
-            return new ResponseBean(200,"success",list);
-        }else
-            return new ResponseBean(400,"failure",null);
+        if (list != null) {
+            return new ResponseBean(200, "success", list);
+        } else
+            return new ResponseBean(400, "failure", null);
 
     }
-    @PostMapping("/updateByIduUrl")
-    public String updateByIduUrl(Integer userId,String base64Date)  {
-        String avatar=null;
-        try{
-            avatar=  qiniu.getPublicUrl( qiniuService.put64image(base64Date));
+    @RequiresAuthentication
+    @PostMapping("/api/updateByIduUrl")
+    public ResponseBean updateByIduUrl(@RequestParam String base64Data,HttpServletRequest request) {
+        String avatar = null;
+        try {
+            avatar = qiniu.getPublicUrl(qiniuService.put64image(base64Data));
             System.out.printf(avatar);
-            userService.updateByIduUrl(userId,avatar);
+            String token = request.getHeader("Authorization");
+            System.out.println(JWTUtil.getUsername(token));
+            userService.updateByIduUrl(JWTUtil.getUsername(token), avatar);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
 
-        return avatar;
+        return new ResponseBean(200, "头像上传成功", avatar);
     }
 
     @RequiresAuthentication
     @PostMapping("/api/ChangePassword")
-    public ResponseBean changePW(@RequestParam String nPassword, @RequestParam String oPassword, HttpServletRequest request){
-        String token=request.getHeader("Authorization");
-        System.out.println("token:"+token);
+    public ResponseBean changePW(@RequestParam String nPassword, @RequestParam String oPassword, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        System.out.println("token:" + token);
         LUser lUserBean = userService.selectlUserByName(JWTUtil.getUsername(token));
         if (lUserBean.getPassword().equals(DigestUtils.sha256Hex(oPassword))) {
             lUserBean.setPassword(DigestUtils.sha256Hex(nPassword));
             userService.changePassword(lUserBean);
-            return new ResponseBean(200,"成功修改密码",JWTUtil.sign(lUserBean.getName(), DigestUtils.sha256Hex(nPassword)));
-        }else {
-            return new ResponseBean(401,"旧密码不匹配",null);
+            return new ResponseBean(200, "成功修改密码", JWTUtil.sign(lUserBean.getName(), DigestUtils.sha256Hex(nPassword)));
+        } else {
+            return new ResponseBean(401, "旧密码不匹配", null);
         }
     }
 
     @RequiresAuthentication
     @PostMapping("/api/ChangeUserInfo")
-    public ResponseBean changeUI(@RequestBody User userBean,HttpServletRequest request){
-        String token=request.getHeader("Authorization");
-        boolean flag=false;
-        if (userBean.getName().equals(JWTUtil.getUsername(token))){
+    public ResponseBean changeUI(@RequestBody User userBean, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        boolean flag = false;
+        if (userBean.getName().equals(JWTUtil.getUsername(token))) {
             flag = userService.updateById(userBean);
         }
         if (flag) {
-            return new ResponseBean(200,"修改成功",null);
+            return new ResponseBean(200, "修改成功", null);
         } else {
-            return new ResponseBean(200,"用户名错误 修改失败",null);
+            return new ResponseBean(200, "用户名错误 修改失败", null);
         }
 
     }
+
     @RequiresAuthentication
     @PostMapping("/api/QueryUserInfo")
-    public ResponseBean selectUI(@RequestParam String name,HttpServletRequest request){
-        String token=request.getHeader("Authorization");
+    public ResponseBean selectUI(@RequestParam String name, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
         User user = null;
-        if (name.equals(JWTUtil.getUsername(token))){
+        if (name.equals(JWTUtil.getUsername(token))) {
             user = userService.selectUserByName(name);
         }
-        if (user!=null){
-            return new ResponseBean(200,"查询成功",user);
-        }else {
-            return new ResponseBean(404,"查询失败",null);
+        if (user != null) {
+            return new ResponseBean(200, "查询成功", user);
+        } else {
+            return new ResponseBean(404, "查询失败", null);
         }
 
     }
