@@ -47,20 +47,23 @@ public class UserPageController {
             return new ResponseBean(400,"failure",null);
 
     }
-    @PostMapping("/updateByIduUrl")
-    public String updateByIduUrl(Integer userId,String base64Date)  {
-        String avatar=null;
-        try{
-            avatar=  qiniu.getPublicUrl( qiniuService.put64image(base64Date));
+    @RequiresAuthentication
+    @PostMapping("/api/updateByIduUrl")
+    public ResponseBean updateByIduUrl(@RequestParam String base64Data,HttpServletRequest request) {
+        String avatar = null;
+        try {
+            avatar = qiniu.getPublicUrl(qiniuService.put64image(base64Data));
             System.out.printf(avatar);
-            userService.updateByIduUrl(userId,avatar);
+            String token = request.getHeader("Authorization");
+            System.out.println(JWTUtil.getUsername(token));
+            userService.updateByIduUrl(JWTUtil.getUsername(token), avatar);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
 
-        return avatar;
+        return new ResponseBean(200, "头像上传成功", avatar);
     }
 
     @RequiresAuthentication
