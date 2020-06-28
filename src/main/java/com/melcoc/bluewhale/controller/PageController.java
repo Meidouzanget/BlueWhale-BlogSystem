@@ -1,5 +1,7 @@
 package com.melcoc.bluewhale.controller;
 
+import com.melcoc.bluewhale.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
+    @Autowired
+    UserService userService;
     /**
      * 登录页
      * @return
@@ -28,8 +32,12 @@ public class PageController {
      */
     @RequestMapping("/u/{username}")
     public String profilePage(@PathVariable String username, Model model) {
-        model.addAttribute("username",username);
-        return "ProfilePage";
+        if (userService.selectUserByName(username)!=null) {
+            model.addAttribute("username", username);
+            return "ProfilePage";
+        }else {
+            return "redirect:/";
+        }
     }
     /**
      * 修改密码页
