@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Async
 @Service
 public class GreatServiceImpl implements GreatService {
 
@@ -19,7 +20,7 @@ public class GreatServiceImpl implements GreatService {
      * 查询是否有该用户对该文章的点赞记录
      */
 
-    @Async
+
     @Override
     public List<Great> findByAidAndUid(int aId, int uId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
@@ -30,7 +31,7 @@ public class GreatServiceImpl implements GreatService {
     /**
      * 删除记录
      */
-    @Async
+
     @Override
     public int delete(int id) {
         return greatDao.deleteById(id);
@@ -41,7 +42,7 @@ public class GreatServiceImpl implements GreatService {
      * @param great
      * @return
      */
-    @Async
+
     @Override
     public int saveAndFlush(Great great) {
         return greatDao.insert(great);

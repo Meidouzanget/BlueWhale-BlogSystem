@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Async
 @Service
 public class CommentReplyServiceImpl implements CommentReplyService {
     @Autowired
     CommentReplyDao commentReplyDao;
 
 
-    @Async
+
     @Override
     public List<CommentReply> selectCommentReplyAll(int commentId,int userId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
@@ -27,7 +28,7 @@ public class CommentReplyServiceImpl implements CommentReplyService {
         return commentReplyDao.selectList(wrapper);
     }
 
-    @Async
+
     @Override
     public int insertCommentReply(CommentReply commentReply) {
         return commentReplyDao.insert(commentReply);

@@ -8,6 +8,7 @@ import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@Async
 public class RegController {
     @Autowired
     UserServiceImpl userService;

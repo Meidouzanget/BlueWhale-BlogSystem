@@ -14,6 +14,7 @@ import okhttp3.RequestBody;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,7 @@ import java.util.UUID;
 
 @Api("微博Controller")
 @RestController
+@Async
 public class ArticleController {
     @Autowired
     UserServiceImpl userService;
@@ -175,7 +177,7 @@ public class ArticleController {
     @PostMapping("/api/selectUserAll")
     public List<Article> selectUserAll(String name){
         List<Article> list = articleService.selectArticleByUserName(name);
-        System.out.println(list);
+
         return list;
     }
 
@@ -197,7 +199,6 @@ public class ArticleController {
     @PostMapping("/api/articleUser")
     public List<Article> articleUser(){
         List<Article> list=articleService.articleUser();
-        System.out.println(list);
         return list;
     }
 }

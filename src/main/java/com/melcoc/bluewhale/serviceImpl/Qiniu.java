@@ -2,10 +2,12 @@ package com.melcoc.bluewhale.serviceImpl;
 
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+@Async
 @Service
 public class Qiniu {
 

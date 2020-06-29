@@ -12,6 +12,7 @@ import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import java.util.List;
 
 
 @RestController
+@Async
 public class UserPageController {
     @Autowired
     private UserServiceImpl userService;
