@@ -263,7 +263,6 @@ function Great(greatId) {
     })
 
 
-
 }
 
 $(function () {

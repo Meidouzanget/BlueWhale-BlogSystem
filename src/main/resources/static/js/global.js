@@ -19,6 +19,7 @@ $(function () {
                     $("#Notlogged").css("display","none");
                     $(".profile-page").prop("href","/u/"+data.data.name);
                     $("#control-center").css("display","flex");
+                    $(".is-empty").removeClass("is-empty");
             }
         }
     })

@@ -51,7 +51,7 @@ public class PageController {
      */
     @RequestMapping("/userInfo")
     public String personalInformation() {
-        return "personalInformation";
+        return "PersonalInformation";
     }
 
 
