@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.util.Map;
 
-@Async
+@Async("taskExecutor")
 @Service
 public class MailServiceImpl {
 

@@ -9,15 +9,14 @@ import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
-@Async
 public class CommentController {
     @Autowired
     UserServiceImpl userService;
@@ -37,9 +36,9 @@ public class CommentController {
     @RequiresAuthentication
     @ApiOperation("发表评论")
     @PostMapping("/api/addComment")
-    public  Comment addComment(HttpServletRequest request, @Param("answerId") int answerId, String content){
+    public  Comment addComment(HttpServletRequest request, @Param("answerId") int answerId, String content) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
-        int userId=  userService.selectUserId(JWTUtil.getUsername(token));
+        int userId=  userService.selectUserId(JWTUtil.getUsername(token)).get();
         Comment comment=new Comment();
         comment.setUserId(userId);
         comment.setAnswerId(answerId);//文章ID
@@ -55,8 +54,8 @@ public class CommentController {
      */
     @ApiOperation("查询最新一条评论")
     @PostMapping("/api/userComment")
-    public  List<Comment> userComment(int answerId){
-        List<Comment> list= commentService.userComment(answerId);
+    public  List<Comment> userComment(int answerId) throws ExecutionException, InterruptedException {
+        List<Comment> list= commentService.userComment(answerId).get();
         return list;
     }
 
@@ -76,8 +75,8 @@ public class CommentController {
      */
     @ApiOperation("查询")
     @PostMapping("/api/selectAllComment")
-    public   List<Comment>  selectAllComment(@Param("answerId") int answerId){
-        List<Comment> list= commentService.userCommentList(answerId);
+    public   List<Comment>  selectAllComment(@Param("answerId") int answerId) throws ExecutionException, InterruptedException {
+        List<Comment> list= commentService.userCommentList(answerId).get();
         System.out.println(list);
 
         return list;

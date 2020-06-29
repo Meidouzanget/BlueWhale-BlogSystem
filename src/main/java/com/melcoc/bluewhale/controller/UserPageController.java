@@ -12,7 +12,6 @@ import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 @RestController
-@Async
 public class UserPageController {
     @Autowired
     private UserServiceImpl userService;
@@ -38,11 +37,11 @@ public class UserPageController {
     private QiniuServiceImpl qiniuService;
 
     @PostMapping("/api/ArticleOfUser")
-    public ResponseBean userPage(@RequestParam String username, HttpServletRequest request){
+    public ResponseBean userPage(@RequestParam String username, HttpServletRequest request) throws ExecutionException, InterruptedException {
         System.out.println(username);
         String token=request.getHeader("Authorization");
         System.out.println("token:"+token);
-        List<Article> list = articleService.selectArticleByUserName(username);
+        List<Article> list = articleService.selectArticleByUserName(username).get();
         if (list== null){
             return new ResponseBean(200,"success",list);
         }else
@@ -70,10 +69,10 @@ public class UserPageController {
 
     @RequiresAuthentication
     @PostMapping("/api/ChangePassword")
-    public ResponseBean changePW(@RequestParam String nPassword, @RequestParam String oPassword, HttpServletRequest request){
+    public ResponseBean changePW(@RequestParam String nPassword, @RequestParam String oPassword, HttpServletRequest request) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
         System.out.println("token:"+token);
-        LUser lUserBean = userService.selectlUserByName(JWTUtil.getUsername(token));
+        LUser lUserBean = userService.selectlUserByName(JWTUtil.getUsername(token)).get();
         if (lUserBean.getPassword().equals(DigestUtils.sha256Hex(oPassword))) {
             lUserBean.setPassword(DigestUtils.sha256Hex(nPassword));
             userService.changePassword(lUserBean);
@@ -85,13 +84,13 @@ public class UserPageController {
 
     @RequiresAuthentication
     @PostMapping("/api/ChangeUserInfo")
-    public ResponseBean changeUI(@RequestBody User userBean,HttpServletRequest request){
+    public ResponseBean changeUI(@RequestBody User userBean,HttpServletRequest request) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
         boolean flag=false;
 
         if (userBean.getName().equals(JWTUtil.getUsername(token))){
             System.out.println(userBean);
-            flag = userService.updateById(userBean);
+            flag = userService.updateById(userBean).get();
         }
         if (flag) {
             return new ResponseBean(200,"修改成功",null);
@@ -102,10 +101,10 @@ public class UserPageController {
     }
     @RequiresAuthentication
     @PostMapping("/api/QueryUserInfo")
-    public ResponseBean selectUI(HttpServletRequest request){
+    public ResponseBean selectUI(HttpServletRequest request) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
         User user = null;
-        user = userService.selectUserByName(JWTUtil.getUsername(token));
+        user = userService.selectUserByName(JWTUtil.getUsername(token)).get();
         if (user!=null){
             return new ResponseBean(200,"查询成功",user);
         }else {

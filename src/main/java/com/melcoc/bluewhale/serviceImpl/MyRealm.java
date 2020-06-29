@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class MyRealm extends AuthorizingRealm
@@ -44,7 +45,14 @@ public class MyRealm extends AuthorizingRealm
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = JWTUtil.getUsername(principals.toString());
-        LUser user = userServiceImpl.getUserWithPermission(username);
+        LUser user = null;
+        try {
+            user = userServiceImpl.getUserWithPermission(username).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
         simpleAuthorizationInfo.addRole(user.getRole().getRname());
@@ -71,7 +79,14 @@ public class MyRealm extends AuthorizingRealm
             throw new AuthenticationException("Token invalid");
         }
 
-        LUser userBean = userServiceImpl.getUserWithPermission(username);
+        LUser userBean = null;
+        try {
+            userBean = userServiceImpl.getUserWithPermission(username).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         if (userBean == null) {
             throw new AuthenticationException("目标用户不存在");
         }

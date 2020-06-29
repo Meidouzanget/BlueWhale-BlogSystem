@@ -8,15 +8,14 @@ import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.serviceImpl.UserServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.ExecutionException;
 
 @RestController
-@Async
 public class RegController {
     @Autowired
     UserServiceImpl userService;
@@ -29,7 +28,7 @@ public class RegController {
                       @RequestParam("birth") String birth,
                       @RequestParam("sex") Integer sex,
                             HttpServletRequest request
-                      ){
+                      ) throws ExecutionException, InterruptedException {
         System.out.println(nickName+":"+username+":"+email+":"+password+birth+sex);
         LUser lUserBean = new LUser();
         User userBean = new User();
@@ -47,8 +46,8 @@ public class RegController {
             realIP = xForwardedFor[0];
         }
 
-        if (userService.getUserNameNoRepeat(username)){//检测用户名重复
-            if (userService.getUserEmailNoRepeat(email)){//检测邮件地址是否重复
+        if (userService.getUserNameNoRepeat(username).get()){//检测用户名重复
+            if (userService.getUserEmailNoRepeat(email).get()){//检测邮件地址是否重复
                 //写入
                 System.out.println(realIP);
                 userBean.setNickName(nickName);
@@ -61,10 +60,10 @@ public class RegController {
                 lUserBean.setName(username);
                 lUserBean.setPassword(DigestUtils.sha256Hex(password));
 
-                if (userService.register(userBean,lUserBean)){
+                if (userService.register(userBean,lUserBean).get()){
                     System.out.println("验证成功");
-                    LUser lUserBean2= userService.selectlUserByName(username);
-                    User userBean2 =userService.selectUserByName(username);
+                    LUser lUserBean2= userService.selectlUserByName(username).get();
+                    User userBean2 =userService.selectUserByName(username).get();
                     System.out.println(lUserBean2.getUid()+" "+userBean.getUserId());
 
                     if (lUserBean2.getUid()==userBean2.getUserId()) {

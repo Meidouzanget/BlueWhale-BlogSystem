@@ -4,17 +4,16 @@ import com.melcoc.bluewhale.domain.CommentReply;
 import com.melcoc.bluewhale.serviceImpl.CommentReplyServiceImpl;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/commentReply")
-@Async
 public class CommentReplyController {
 
     @Autowired
@@ -49,8 +48,8 @@ public class CommentReplyController {
      * 查询
      */
     @RequestMapping("/selectAllComment")
-    public  String selectAllComment(@Param("commentId") int commentId,@Param("userId") int userId, Model model){
-        List<CommentReply> list= commentReplyService.selectCommentReplyAll(commentId,userId);
+    public  String selectAllComment(@Param("commentId") int commentId,@Param("userId") int userId, Model model) throws ExecutionException, InterruptedException {
+        List<CommentReply> list= commentReplyService.selectCommentReplyAll(commentId,userId).get();
         Model model1=model.addAttribute("commentReplyList",list);
         System.out.println(list);
         System.out.println(model1);

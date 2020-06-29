@@ -7,10 +7,13 @@ import com.melcoc.bluewhale.domain.Comment;
 import com.melcoc.bluewhale.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Async
+import java.util.concurrent.Future;
+
+@Async("taskExecutor")
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -19,35 +22,39 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    public List<Comment> selectCommentAll(int answerId) {
+    public Future<List> selectCommentAll(int answerId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("answer_id",answerId);
         wrapper.eq("deleted",0);
-        return commentDao.selectList(wrapper);
+        return new AsyncResult<>(commentDao.selectList(wrapper));
     }
 
 
     @Override
-    public int insertComment(Comment comment) {
-        return commentDao.insert(comment);
+    public Future<Integer> insertComment(Comment comment) {
+
+        return new AsyncResult<>(commentDao.insert(comment));
     }
 
 
     @Override
-    public int deletedComment(Integer commentId) {
-        return commentDao.deletedComment(commentId);
+    public Future<Integer> deletedComment(Integer commentId) {
+
+        return new AsyncResult<>(commentDao.deletedComment(commentId));
     }
 
 
     @Override
-    public List<Comment> userCommentList(int answerId) {
-        return commentDao.userCommentList(answerId);
+    public Future<List<Comment>> userCommentList(int answerId) {
+
+        return new AsyncResult<>(commentDao.userCommentList(answerId));
     }
 
 
     @Override
-    public List<Comment> userComment(int answerId) {
-        return commentDao.userComment(answerId);
+    public Future<List<Comment>> userComment(int answerId) {
+
+        return new AsyncResult<>(commentDao.userComment(answerId));
     }
 
 

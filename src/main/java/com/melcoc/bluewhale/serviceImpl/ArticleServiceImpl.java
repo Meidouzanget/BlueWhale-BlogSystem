@@ -6,12 +6,14 @@ import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 @Service
-@Async
+@Async("taskExecutor")
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
@@ -20,59 +22,63 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public List<Article> selectArticleAll() {
+    public Future<List> selectArticleAll() {
       QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("deleted",0);
         wrapper.orderByDesc("a_id");
-        return articleDao.selectList(wrapper);
+        List<Article> list = articleDao.selectList(wrapper);
+        return new AsyncResult<>(list);
     }
 
 
     @Override
-    public int insertArticle(Article article) {
-        return articleDao.insertArticle(article);
-    }
-
-
-
-
-    @Override
-    public int deletedArticle(Integer aId,Integer userId) {
-
-        return articleDao.deletedArticle(aId,userId);
+    public Future<Integer> insertArticle(Article article) {
+        return new AsyncResult<>(articleDao.insertArticle(article));
     }
 
 
 
 
     @Override
-    public Article findByIdForUpdate(int aid) {
+    public Future<Integer> deletedArticle(Integer aId, Integer userId) {
+        return new AsyncResult<>(articleDao.deletedArticle(aId,userId));
+    }
 
-        return articleDao.findByIdForUpdate(aid);
+
+
+
+    @Override
+    public Future<Article> findByIdForUpdate(int aid) {
+        Article article =articleDao.findByIdForUpdate(aid);
+        return new AsyncResult<>(article);
     }
 
 
     @Override
-    public int saveAndFlush(Article article) {
-        return articleDao.saveAndFlush(article);
+    public Future<Integer> saveAndFlush(Article article) {
+
+        return new AsyncResult<>(articleDao.saveAndFlush(article));
     }
 
 
     @Override
-    public List<Article> selectArticleByUserName(String name) {
-        return articleDao.selectArticleByUserName(name);
+    public Future<List> selectArticleByUserName(String name) {
+        List<Article> list =articleDao.selectArticleByUserName(name);
+        return new AsyncResult<>(list);
     }
 
 
     @Override
-    public List<Article> articleUserList() {
-        return articleDao.articleUserList();
+    public Future<List> articleUserList() {
+        List<Article> list = articleDao.articleUserList();
+        return new AsyncResult<>(list);
     }
 
 
     @Override
-    public List<Article> articleUser() {
-        return articleDao.articleUser();
+    public Future<List> articleUser() {
+        List<Article> list =articleDao.articleUser();
+        return new AsyncResult<>(list);
     }
 
 

@@ -7,10 +7,13 @@ import com.melcoc.bluewhale.domain.Great;
 import com.melcoc.bluewhale.service.GreatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Async
+import java.util.concurrent.Future;
+
+@Async("taskExecutor")
 @Service
 public class GreatServiceImpl implements GreatService {
 
@@ -18,23 +21,25 @@ public class GreatServiceImpl implements GreatService {
     GreatDao greatDao;
     /**
      * 查询是否有该用户对该文章的点赞记录
+     * @return
      */
 
 
     @Override
-    public List<Great> findByAidAndUid(int aId, int uId) {
+    public Future<List<Great>> findByAidAndUid(int aId, int uId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("a_id",aId);
         wrapper.eq("u_id",uId);
-        return greatDao.selectList(wrapper);
+        return new AsyncResult<>(greatDao.selectList(wrapper));
     }
     /**
      * 删除记录
+     * @return
      */
 
     @Override
-    public int delete(int id) {
-        return greatDao.deleteById(id);
+    public Future<Integer> delete(int id) {
+        return new AsyncResult<>( greatDao.deleteById(id));
     }
 
     /**
@@ -44,7 +49,7 @@ public class GreatServiceImpl implements GreatService {
      */
 
     @Override
-    public int saveAndFlush(Great great) {
-        return greatDao.insert(great);
+    public Future<Integer> saveAndFlush(Great great) {
+        return new AsyncResult<>(greatDao.insert(great));
     }
 }

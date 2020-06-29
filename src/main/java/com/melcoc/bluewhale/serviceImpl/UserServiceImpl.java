@@ -9,10 +9,13 @@ import com.melcoc.bluewhale.domain.User;
 import com.melcoc.bluewhale.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.Future;
+
 @SuppressWarnings("ALL")
-@Async
+@Async("taskExecutor")
 @Service
 public class UserServiceImpl implements UserService
 {
@@ -27,102 +30,102 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public LUser getUserWithPermission(String account)
+    public Future<LUser> getUserWithPermission(String account)
     {
-        return dao.getUserWithPermission(account);
+        return new AsyncResult<>(dao.getUserWithPermission(account));
     }
 
     //查询用户名是否重复
 
     @Override
-    public boolean getUserNameNoRepeat(String username) {
+    public Future<Boolean> getUserNameNoRepeat(String username) {
         if (controllDao.RepeatUserNameQuery(username) == 0){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-        return false;
+            return new AsyncResult<>( false);
         }
     }
 
     //查询用户邮箱是否重复
 
     @Override
-    public boolean getUserEmailNoRepeat(String email) {
+    public Future<Boolean> getUserEmailNoRepeat(String email) {
         if (controllDao.RepeatUserEmailQuery(email) == 0){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-            return false;
+            return new AsyncResult<>( false);
         }
     }
 
     //注册
 
     @Override
-    public boolean register(User userBean, LUser lUserBean) {
+    public Future<Boolean> register(User userBean, LUser lUserBean) {
         if (controllDao.insert(userBean)==1 && dao.insert(lUserBean)==1){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-            return false;
+            return new AsyncResult<>( false);
         }
     }
 
 
     @Override
-    public boolean changePassword(LUser lUser) {
+    public Future<Boolean> changePassword(LUser lUser) {
         if (dao.updateById(lUser) == 1){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-            return false;
+            return new AsyncResult<>( false);
         }
     }
 
 
     @Override
-    public User selectUserByName(String username) {
-        return controllDao.selectByUserName(username);
+    public Future<User> selectUserByName(String username) {
+        return new AsyncResult<>( controllDao.selectByUserName(username));
     }
 
 
     @Override
-    public LUser selectlUserByName(String username) {
-        return controllDao.selectBylUserName(username);
+    public Future<LUser> selectlUserByName(String username) {
+        return new AsyncResult<>( controllDao.selectBylUserName(username));
     }
 
 
     @Override
-    public boolean insertUserrole(LUserrole lUserrole) {
+    public Future<Boolean> insertUserrole(LUserrole lUserrole) {
         if (lUserroleDao.insert(lUserrole)==1){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-            return false;
+            return new AsyncResult<>( false);
         }
     }
 
 
     @Override
-    public boolean updateById(User user) {
+    public Future<Boolean> updateById(User user) {
         if (controllDao.updateById(user) == 1){
-            return true;
+            return new AsyncResult<>( true);
         }else {
-            return false;
+            return new AsyncResult<>( false);
         }
     }
 
 
 
     @Override
-    public boolean updateByIduUrl(String name, String avatar) {
+    public Future<Boolean> updateByIduUrl(String name, String avatar) {
         if (controllDao.updateByIduUrl(name,avatar)==1){
-            return true;
+            return new AsyncResult<>( true);
         }else{
-            return false;
+            return new AsyncResult<>( false);
         }
 
     }
 
 
     @Override
-    public int selectUserId(String name) {
-        return controllDao.selectUserId(name);
+    public Future<Integer> selectUserId(String name) {
+        return new AsyncResult<>( controllDao.selectUserId(name));
     }
 
 

@@ -14,7 +14,6 @@ import okhttp3.RequestBody;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,10 +24,10 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 @Api("微博Controller")
 @RestController
-@Async
 public class ArticleController {
     @Autowired
     UserServiceImpl userService;
@@ -56,9 +55,9 @@ public class ArticleController {
     @RequiresAuthentication
     @ApiOperation("发布微博")
     @PostMapping("/api/addArticle")
-    public Article addArticle(String content, String base64Date,HttpServletRequest request) {
+    public Article addArticle(String content, String base64Date,HttpServletRequest request) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
-      int userId=  userService.selectUserId(JWTUtil.getUsername(token));
+      int userId=  userService.selectUserId(JWTUtil.getUsername(token)).get();
         Article article=new Article();
         article.setUserId(userId);
         article.setName(JWTUtil.getUsername(token));
@@ -78,7 +77,7 @@ public class ArticleController {
 
 
         articleService.insertArticle(article);//发布微博
-        List<Article> list = articleService.selectArticleAll();
+        List<Article> list = articleService.selectArticleAll().get();
         System.out.println(list);
 
         return article;
@@ -91,16 +90,16 @@ public class ArticleController {
      */
     @ApiOperation("点赞")
     @PostMapping("/api/great")
-    public String great(@Param("aId") int aId, @Param("uId") int uId) {
+    public String great(@Param("aId") int aId, @Param("uId") int uId) throws ExecutionException, InterruptedException {
         //查询是否有该用户对该文章的点赞记录
-        List<Great> list = greatService.findByAidAndUid(aId, uId);
+        List<Great> list = greatService.findByAidAndUid(aId, uId).get();
         if (list != null && list.size() > 0) {
             //如果找到了这条记录，则删除该记录，同时文章的点赞数减1
             Great great = list.get(0);
             //删除记录
             greatService.delete(great.getId());
             //文章点赞数减1，查询时使用Mysql行级锁解决并发覆盖问题
-            Article article = articleService.findByIdForUpdate(aId);
+            Article article = articleService.findByIdForUpdate(aId).get();
             article.setGreatNum(article.getGreatNum() - 1);
             articleService.saveAndFlush(article);
         } else {
@@ -111,12 +110,12 @@ public class ArticleController {
             //添加记录
             greatService.saveAndFlush(great);
             //文章点赞数加1，查询时使用Mysql行级锁解决并发覆盖问题
-            Article article = articleService.findByIdForUpdate(aId);
+            Article article = articleService.findByIdForUpdate(aId).get();
             article.setGreatNum(article.getGreatNum() + 1);
             articleService.saveAndFlush(article);
 
         }
-        List<Article> list2 = articleService.selectArticleAll();
+        List<Article> list2 = articleService.selectArticleAll().get();
         return "点赞成功";
     }
 
@@ -126,10 +125,10 @@ public class ArticleController {
     @RequiresAuthentication
     @ApiOperation("逻辑删除")
     @PostMapping("/api/deldeArticle")
-    public int deldeArticle(@Param("aId") int aId ,HttpServletRequest request) {
+    public int deldeArticle(@Param("aId") int aId ,HttpServletRequest request) throws ExecutionException, InterruptedException {
         String token=request.getHeader("Authorization");
-        int userId=  userService.selectUserId(JWTUtil.getUsername(token));
-       int i= articleService.deletedArticle(aId,userId);
+        int userId=  userService.selectUserId(JWTUtil.getUsername(token)).get();
+       int i= articleService.deletedArticle(aId,userId).get();
         return i;
     }
 
@@ -176,8 +175,14 @@ public class ArticleController {
     @ApiOperation("单用户文章的全查询")
     @PostMapping("/api/selectUserAll")
     public List<Article> selectUserAll(String name){
-        List<Article> list = articleService.selectArticleByUserName(name);
-
+        List<Article> list = null;
+        try {
+            list = articleService.selectArticleByUserName(name).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
@@ -186,8 +191,8 @@ public class ArticleController {
      */
     @ApiOperation("用户表 文章表查询")
     @PostMapping("/api/articleUserList")
-    public List<Article> articleUserList(){
-        List<Article> list=articleService.articleUserList();
+    public List<Article> articleUserList() throws ExecutionException, InterruptedException {
+        List<Article> list=articleService.articleUserList().get();
         System.out.println(list);
         return list;
     }
@@ -197,8 +202,9 @@ public class ArticleController {
      */
     @ApiOperation("最新一条文章")
     @PostMapping("/api/articleUser")
-    public List<Article> articleUser(){
-        List<Article> list=articleService.articleUser();
+    public List<Article> articleUser() throws ExecutionException, InterruptedException {
+        List<Article> list=articleService.articleUser().get();
+        System.out.println(list);
         return list;
     }
 }

@@ -7,11 +7,13 @@ import com.melcoc.bluewhale.domain.CommentReply;
 import com.melcoc.bluewhale.service.CommentReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
-@Async
+@Async("taskExecutor")
 @Service
 public class CommentReplyServiceImpl implements CommentReplyService {
     @Autowired
@@ -20,18 +22,19 @@ public class CommentReplyServiceImpl implements CommentReplyService {
 
 
     @Override
-    public List<CommentReply> selectCommentReplyAll(int commentId,int userId) {
+    public Future<List<CommentReply>> selectCommentReplyAll(int commentId, int userId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("comment_id",commentId);
         wrapper.eq("user_id",userId);
         wrapper.eq("deleted",1);
-        return commentReplyDao.selectList(wrapper);
+        return new AsyncResult<>(commentReplyDao.selectList(wrapper));
     }
 
 
     @Override
-    public int insertCommentReply(CommentReply commentReply) {
-        return commentReplyDao.insert(commentReply);
+    public Future<Integer> insertCommentReply(CommentReply commentReply) {
+
+        return new AsyncResult<>(commentReplyDao.insert(commentReply));
     }
 
 

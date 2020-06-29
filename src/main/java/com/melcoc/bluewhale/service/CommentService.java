@@ -2,31 +2,33 @@ package com.melcoc.bluewhale.service;
 
 
 import com.melcoc.bluewhale.domain.Comment;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 public interface CommentService {
     /**
      * 全查
      * @return
      */
-    List<Comment> selectCommentAll(int answerId);
+    Future<List> selectCommentAll(int answerId);
     /**
      * 添加
+     * @return
      */
-    int insertComment(Comment comment);
+    Future<Integer> insertComment(Comment comment);
     /**
      * 逻辑删除
+     * @return
      */
-    int deletedComment(Integer commentId);
+    Future deletedComment(Integer commentId);
 
     /**
      * 带用户表的全查
      * @param answerId
      * @return
      */
-    List<Comment> userCommentList(int answerId);
+    Future<List<Comment>> userCommentList(int answerId);
 
-    List<Comment> userComment(int answerId);
+    Future<List<Comment>> userComment(int answerId);
 }
