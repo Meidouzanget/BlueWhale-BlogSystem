@@ -51,7 +51,10 @@ function getToken(){
         datatype: 'json',
         success: function (data) {
             console.log(data);
-            $("#addform").css("display","block")
+            $("#addform").css("display","block");
+            $("#formimg").attr("src",data.data.avatar);
+            $("#topAvatar").attr("src",data.data.avatar);
+            console.log("avatar:"+data.data.avatar);
         }
     })
 }
@@ -86,7 +89,7 @@ function addcomment(answerId) {
                             $("#"+comments+"").prepend("\t\t\t\t\t<ul class=\"comments-list\" >\n" +
                                 "\t\t\t\t\t\t<li class=\"comment-item\">\n" +
                                 "\t\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                                "\t\t\t\t\t\t\t\t<img src=\"img/author-page.jpg\" alt=\"author\">\n" +
+                                "\t\t\t\t\t\t\t\t<img src=\""+data.avatar+"\" alt=\"author\">\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t\t<div class=\"author-date\">\n" +
                                 "\t\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"02-ProfilePage.html\">"+data[0].nickName+"</a>\n" +
@@ -148,7 +151,7 @@ function comments(answerId) {
                 $("#"+comments+"").append("\t\t\t\t\t<ul class=\"comments-list\" >\n" +
                     "\t\t\t\t\t\t<li class=\"comment-item\">\n" +
                     "\t\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                    "\t\t\t\t\t\t\t\t<img src=\"img/author-page.jpg\" alt=\"author\">\n" +
+                    "\t\t\t\t\t\t\t\t<img src=\""+item.avatar+"\" alt=\"author\">\n" +
                     "\t\t\t\t\t\n" +
                     "\t\t\t\t\t\t\t\t<div class=\"author-date\">\n" +
                     "\t\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"02-ProfilePage.html\">"+item.nickName+"</a>\n" +
@@ -176,7 +179,7 @@ function comments(answerId) {
             $("#"+comments+"").append("<form class=\"comment-form inline-items\" >\n" +
                 "\t\t\t\t\t\n" +
                 "\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                "\t\t\t\t\t\t\t<img src=\"img/author-page.jpg\" alt=\"author\">\n" +
+                "\t\t\t\t\t\t\t<img src=\""+data[0].avatar+"\" alt=\"author\">\n" +
                 "\t\t\t\t\t\n" +
                 "\t\t\t\t\t\t\t<div class=\"form-group with-icon-right \">\n" +
                 "\t\t\t\t\t\t\t\t<textarea class=\"form-control\" placeholder=\"\" id='commentContent'></textarea>\n" +
@@ -326,7 +329,7 @@ $(function () {
                                         "\t\t\t\t<article class=\"hentry post\">\n" +
                                         "\n" +
                                         "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                                        "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
+                                        "\t\t\t\t\t\t<img src=\""+data[0].avatar+"\" alt=\"author\">\n" +
                                         "\n" +
                                         "\t\t\t\t\t\t<div class=\"author-date\">\n" +
                                         "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+data[0].nickName+"</a>\n" +
@@ -421,7 +424,7 @@ $(function () {
                         "\t\t\t\t<article class=\"hentry post\">\n" +
                         "\n" +
                         "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                        "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
+                        "\t\t\t\t\t\t<img src=\""+item.avatar+"\" alt=\"author\">\n" +
                         "\n" +
                         "\t\t\t\t\t\t<div class=\"author-date\">\n" +
                         "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+item.nickName+"</a>\n" +

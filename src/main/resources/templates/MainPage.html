@@ -166,7 +166,7 @@
 			<div class="control-block">
 				<div class="author-page author vcard inline-items">
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/author-page.jpg}" class="avatar">
+						<img alt="author" src="" style="width: 36px;height: 36px" >
 						<span class="icon-status online"></span>
 					</div>
 					<a href="ProfilePage.html" class="author-name fn">
@@ -236,7 +236,7 @@
 				<li class="inline-items js-chat-open">
 
 					<div class="author-thumb">
-						<img alt="author" th:src="@{/img/avatar67-sm.jpg}" class="avatar">
+						<img alt="" src="" >
 						<span class="icon-status online"></span>
 					</div>
 
@@ -642,7 +642,7 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" th:src="@{/img/author-page.jpg}" class="avatar">
+					<img alt="author" src=""  style="width: 36px;height: 36px;" id="topAvatar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -661,7 +661,7 @@
 								</li>
 
 								<li>
-									<a href="#">
+									<a href="#" onclick="logout()">
 										<svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
 										<span>登出</span>
@@ -1101,7 +1101,7 @@
 						<div class="tab-pane active" id="home-1"  role="tabpanel" aria-expanded="true">
 							<form  method="post"  id="articlefrom">
 								<div class="author-thumb">
-									<img th:src="@{/img/author-page.jpg}" alt="author">
+									<img src="" style="width: 40px;height: 40px" alt="author" id="formimg">
 								</div>
 								<div class="form-group with-icon label-floating is-empty" >
 									<label class="control-label">分享你的动态...</label>

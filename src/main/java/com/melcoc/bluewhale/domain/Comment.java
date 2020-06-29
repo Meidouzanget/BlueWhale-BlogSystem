@@ -21,7 +21,11 @@ public class Comment {
     private String name;
     @TableField(exist = false)
     private String nickName;
+    @TableField(exist = false)
+    private String avatar;
 
+    public Comment() {
+    }
 
     @Override
     public String toString() {
@@ -37,6 +41,7 @@ public class Comment {
                 ", deleted=" + deleted +
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 
@@ -128,10 +133,15 @@ public class Comment {
         this.nickName = nickName;
     }
 
-    public Comment() {
+    public String getAvatar() {
+        return avatar;
     }
 
-    public Comment(int commentId, int answerId, int userId, String content, int state, int greatCount, LocalDateTime createTime, LocalDateTime updateTime, int deleted, String name, String nickName) {
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Comment(int commentId, int answerId, int userId, String content, int state, int greatCount, LocalDateTime createTime, LocalDateTime updateTime, int deleted, String name, String nickName, String avatar) {
         this.commentId = commentId;
         this.answerId = answerId;
         this.userId = userId;
@@ -143,5 +153,6 @@ public class Comment {
         this.deleted = deleted;
         this.name = name;
         this.nickName = nickName;
+        this.avatar = avatar;
     }
 }

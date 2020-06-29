@@ -23,6 +23,8 @@ public class Article {
     private String name;
     @TableField(exist = false)
     private String nickName;
+    @TableField(exist = false)
+    private String avatar;
 
 
     @Override
@@ -37,6 +39,7 @@ public class Article {
                 ", url='" + url + '\'' +
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 
@@ -112,10 +115,18 @@ public class Article {
         this.nickName = nickName;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public Article() {
     }
 
-    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum, String url, String name, String nickName) {
+    public Article(int aId, int userId, LocalDateTime createTime, String content, int deleted, int greatNum, String url, String name, String nickName, String avatar) {
         this.aId = aId;
         this.userId = userId;
         this.createTime = createTime;
@@ -125,5 +136,6 @@ public class Article {
         this.url = url;
         this.name = name;
         this.nickName = nickName;
+        this.avatar = avatar;
     }
 }
