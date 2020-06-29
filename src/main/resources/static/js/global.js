@@ -15,14 +15,10 @@ $(function () {
                 $("#username").html("@"+data.data.name).css("font-size","10px");
                 console.log(data.data.nickName);
                 console.log(login_flag)
-                if (login_flag){
                     $("#addform").css("display","block");
                     $("#Notlogged").css("display","none");
                     $(".profile-page").prop("href","/u/"+data.data.name);
-                }else {
-                    $("#control-center").css("display","none");
-
-                }
+                    $("#control-center").css("display","flex");
             }
         }
     })
