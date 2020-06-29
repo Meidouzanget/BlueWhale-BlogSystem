@@ -1,12 +1,12 @@
 package com.melcoc.bluewhale.serviceImpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.melcoc.bluewhale.dao.ArticleDao;
 import com.melcoc.bluewhale.dao.CommentDao;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.domain.Comment;
 import com.melcoc.bluewhale.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +16,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentDao commentDao;
 
+    @Async
     @Override
     public List<Comment> selectCommentAll(int answerId) {
         QueryWrapper wrapper = new QueryWrapper<Article>();
@@ -24,21 +25,25 @@ public class CommentServiceImpl implements CommentService {
         return commentDao.selectList(wrapper);
     }
 
+    @Async
     @Override
     public int insertComment(Comment comment) {
         return commentDao.insert(comment);
     }
 
+    @Async
     @Override
     public int deletedComment(Integer commentId) {
         return commentDao.deletedComment(commentId);
     }
 
+    @Async
     @Override
     public List<Comment> userCommentList(int answerId) {
         return commentDao.userCommentList(answerId);
     }
 
+    @Async
     @Override
     public List<Comment> userComment(int answerId) {
         return commentDao.userComment(answerId);

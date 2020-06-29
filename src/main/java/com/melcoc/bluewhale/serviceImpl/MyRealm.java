@@ -13,6 +13,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class MyRealm extends AuthorizingRealm
     /**
      * 大坑！，必须重写此方法，不然Shiro会报错
      */
+    @Async
     @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof JWTToken;

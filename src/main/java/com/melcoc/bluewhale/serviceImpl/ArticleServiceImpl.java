@@ -5,6 +5,7 @@ import com.melcoc.bluewhale.dao.ArticleDao;
 import com.melcoc.bluewhale.domain.Article;
 import com.melcoc.bluewhale.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ArticleServiceImpl implements ArticleService {
     ArticleDao articleDao;
 
 
+    @Async
     @Override
     public List<Article> selectArticleAll() {
       QueryWrapper wrapper = new QueryWrapper<Article>();
@@ -24,6 +26,7 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.selectList(wrapper);
     }
 
+    @Async
     @Override
     public int insertArticle(Article article) {
         return articleDao.insertArticle(article);
@@ -31,6 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 
 
+    @Async
     @Override
     public int deletedArticle(Integer aId,Integer userId) {
 
@@ -39,27 +43,32 @@ public class ArticleServiceImpl implements ArticleService {
 
 
 
+    @Async
     @Override
     public Article findByIdForUpdate(int aid) {
 
         return articleDao.findByIdForUpdate(aid);
     }
 
+    @Async
     @Override
     public int saveAndFlush(Article article) {
         return articleDao.saveAndFlush(article);
     }
 
+    @Async
     @Override
     public List<Article> selectArticleByUserName(String name) {
         return articleDao.selectArticleByUserName(name);
     }
 
+    @Async
     @Override
     public List<Article> articleUserList() {
         return articleDao.articleUserList();
     }
 
+    @Async
     @Override
     public List<Article> articleUser() {
         return articleDao.articleUser();
