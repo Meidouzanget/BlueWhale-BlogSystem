@@ -30,14 +30,19 @@ public class LoginController {
         System.out.println(username+":"+password);
         String passwordHex = DigestUtils.sha256Hex(password);
         LUser lUserBean;
+        User UserBean;
         if (service.getUserWithPermission(username) == null){
-            return new ResponseBean(401, "登录失败", null);
+            return new ResponseBean(401, "用户不存在", null);
         }else {
             lUserBean = service.getUserWithPermission(username);
         }
 
         if (lUserBean.getPassword().equals(passwordHex)) {
-            return new ResponseBean(200, "登录成功", JWTUtil.sign(lUserBean.getName(), passwordHex));
+            if (service.selectUserByName(username).getStatus() == 0) {
+                return new ResponseBean(200, "登录成功", JWTUtil.sign(lUserBean.getName(), passwordHex));
+            }else {
+                return new ResponseBean(401, "用户被封禁", null);
+            }
         } else {
             throw new UnauthorizedException();
         }

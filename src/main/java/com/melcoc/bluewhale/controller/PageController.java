@@ -49,7 +49,7 @@ public class PageController {
     /**
      * 个人信息页
      */
-    @RequestMapping("/personalInformation")
+    @RequestMapping("/userInfo")
     public String personalInformation() {
         return "personalInformation";
     }

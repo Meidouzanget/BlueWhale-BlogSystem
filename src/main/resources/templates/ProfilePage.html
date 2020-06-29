@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Profile Page</title>
+    <title th:text="${username}+'的个人空间 -蓝鲸社区'"> </title>
 
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -123,7 +125,7 @@
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/u/{username}}">
+                    <a class="profile-page" href="">
                         <svg class="olymp-newsfeed-icon left-menu-icon" data-original-title="个人空间" data-placement="right"
                              data-toggle="tooltip">
                             <use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use>
@@ -165,7 +167,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/u/{id}">
+                    <a class="profile-page" href="">
                         <svg class="olymp-newsfeed-icon left-menu-icon" data-original-title="NEWSFEED" data-placement="right"
                              data-toggle="tooltip">
                             <use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use>
@@ -285,11 +287,11 @@
 
     <div class="header-content-wrapper">
 
-        <div class="control-block">
+        <div class="control-block" id="control-center">
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" class="avatar" th:src="@{/img/author-page.jpg}">
+                    <img alt="author" id="topAvatar"  src="" style="width: 36px;height: 36px;">
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -299,21 +301,17 @@
 
                             <ul class="account-settings">
                                 <li>
-                                    <a href="29-YourAccount-AccountSettings.html">
+                                    <a href="/">
 
-                                        <svg class="olymp-menu-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
-                                        </svg>
+                                        <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
                                         <span>账户设置</span>
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#">
-                                        <svg class="olymp-logout-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use>
-                                        </svg>
+                                    <a href="#" onclick="logout()">
+                                        <svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
                                         <span>登出</span>
                                     </a>
@@ -327,12 +325,10 @@
                 </div>
                 <a class="author-name fn" href="ProfilePage.html">
                     <div class="author-title">
-                        James Spiegel
-                        <svg class="olymp-dropdown-arrow-icon">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
-                        </svg>
+                        <span id="nickname"></span>
+                        <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                     </div>
-                    <span class="author-subtitle">SPACE COWBOY</span>
+                    <span class="author-subtitle" id="username"></span>
                 </a>
             </div>
 
@@ -830,7 +826,7 @@
                             <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="personalInformation">账户设置</a>
+                                        <a href="/userInfo">账户设置</a>
                                     </li>
 
 

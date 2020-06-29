@@ -1,6 +1,5 @@
 $(function () {
     var login_flag = false;
-    var nickname = "";
     $.ajax({
         type: 'POST',
         url: 'api/pTest',
@@ -11,15 +10,21 @@ $(function () {
             console.log(data);
             if (data.code === 200){
                 login_flag = true;
-                $("#nickname").html(data.data.nickName);
+                $("#nickname").html(data.data.nickName).css("font-size","15px");
+                $("#topAvatar").attr("src",data.data.avatar);
+                $("#username").html("@"+data.data.name).css("font-size","10px");
                 console.log(data.data.nickName);
+                console.log(login_flag)
+                if (login_flag){
+                    $("#addform").css("display","block");
+                    $("#Notlogged").css("display","none");
+                    $(".profile-page").prop("href","/u/"+data.data.name);
+                }else {
+                    $("#control-center").css("display","none");
+
+                }
             }
         }
     })
-    if (login_flag){
-        $(".news-feed-form").css("display","none");
-    }else {
-        $("#Notlogged").css("display","none");
 
-    }
 })

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>蓝鲸博客 - 登录</title>
+    <title>登录 - 蓝鲸博客</title>
 
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -517,6 +519,7 @@ $("#loginBtn").click(function () {
             if(data.code===200)
             {
                 console.log(data.msg);
+                $("#LoginBox-Warn").css("display","block").html(data.msg);
                 localStorage["token"]=data.data;
                 let d = new Date();
                 d.setTime(d.getTime() + (3*24*60*60*1000));
@@ -525,7 +528,7 @@ $("#loginBtn").click(function () {
                 window.location.href="/";
             }else {
                 console.log(data.msg);
-                $("#LoginBox-Warn").val(data.msg).css("display","block");
+                $("#LoginBox-Warn").css("display","block").html(data.msg);
             }
         }
     })
