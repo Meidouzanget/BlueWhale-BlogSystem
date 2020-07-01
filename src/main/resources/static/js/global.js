@@ -12,6 +12,7 @@ $(function () {
                 login_flag = true;
                 $("#nickname").html(data.data.nickName).css("font-size","15px");
                 $("#topAvatar").attr("src",data.data.avatar);
+                $("#formImg").attr("src",data.data.avatar);
                 $("#username").html("@"+data.data.name).css("font-size","10px");
                 console.log(data.data.nickName);
                 console.log(login_flag)
