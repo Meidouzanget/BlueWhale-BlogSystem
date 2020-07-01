@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Future;
 
-@SuppressWarnings("ALL")
+
 @Async("taskExecutor")
 @Service
 public class UserServiceImpl implements UserService

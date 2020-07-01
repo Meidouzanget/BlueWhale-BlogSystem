@@ -448,6 +448,19 @@
 <script type="text/javascript">
 $(
 		function () {
+            $.ajax({
+                type: 'POST',
+                url: 'api/pTest',
+                //从localStorage获取存储的token
+                headers : {'Authorization':localStorage["token"]},
+                datatype: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.code === 200) {
+                        window.location.href="/";
+                    }
+                }
+            });
             $("#regNow").click(
                 function () {
                     //注册区域切换逻辑
@@ -476,6 +489,22 @@ $(
 		}
 );
 $("#regBtn").click(function () {
+    if($("#reg-nickname").parent().hasClass("is-empty")){
+        alert("昵称不能为空");
+        return false;
+    };
+    if($("#reg-username")){
+        alert("用户名不能为空");
+        return false;
+    };
+    if($("#reg-email")){
+        alert("邮箱不能为空");
+        return false;
+    };
+    if($("#reg-password")){
+        alert("密码不能为空");
+        return false;
+    };
 
     let nickname = $("#reg-nickname").val();
     let username = $("#reg-username").val();
@@ -505,6 +534,14 @@ $("#regBtn").click(function () {
     })
 });
 $("#loginBtn").click(function () {
+    if($("#login-username").parent().hasClass("is-empty")){
+        alert("不能为空");
+        return false;
+    };
+    if($("#login-password").parent().hasClass("is-empty")){
+        alert("不能为空");
+        return false;
+    };
     let username = $("#login-username").val();
     let password = $("#login-password").val();
     $.ajax({

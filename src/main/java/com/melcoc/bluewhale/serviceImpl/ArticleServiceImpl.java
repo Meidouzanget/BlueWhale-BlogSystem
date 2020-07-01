@@ -22,10 +22,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public Future<List> selectArticleAll() {
+    public Future<List<Article>> selectArticleAll() {
       QueryWrapper wrapper = new QueryWrapper<Article>();
         wrapper.eq("deleted",0);
         wrapper.orderByDesc("a_id");
+        wrapper.last("limit 25");
         List<Article> list = articleDao.selectList(wrapper);
         return new AsyncResult<>(list);
     }

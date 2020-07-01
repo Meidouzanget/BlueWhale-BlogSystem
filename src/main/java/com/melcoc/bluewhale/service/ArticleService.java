@@ -12,7 +12,7 @@ public interface ArticleService {
      * @return
      */
 
-    Future<List> selectArticleAll();
+    Future<List<Article>> selectArticleAll();
     /**
      * 添加
      */
