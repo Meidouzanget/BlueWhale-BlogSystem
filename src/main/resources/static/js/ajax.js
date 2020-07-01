@@ -41,23 +41,6 @@ function packup(answerId){
     console.log(comments)
     $("#"+comments+"").empty();;
 }
-//获取登录用户
-// function getToken(){
-//     $.ajax({
-//         type: 'POST',
-//         url: 'api/pTest',
-//         //从localStorage获取存储的token
-//         headers : {'Authorization':localStorage["token"]},
-//         datatype: 'json',
-//         success: function (data) {
-//             console.log(data);
-//             $("#addform").css("display","block");
-//             $("#formimg").attr("src",data.data.avatar);
-//             $("#topAvatar").attr("src",data.data.avatar);
-//             console.log("avatar:"+data.data.avatar);
-//         }
-//     })
-// }
 
 //发表评论
 function addcomment(answerId) {
@@ -236,7 +219,7 @@ function Great(greatId) {
 
     $.ajax({
         type: 'POST',
-        url: 'api/pTest',
+        url: '/api/pTest',
         //从localStorage获取存储的token
         headers : {'Authorization':localStorage["token"]},
         datatype: 'json',
@@ -485,10 +468,5 @@ $(function () {
 
 
     }
-
-
-
-
-
 
 })

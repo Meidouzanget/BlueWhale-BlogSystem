@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.concurrent.ExecutionException;
+
 @Controller
 public class PageController {
     @Autowired
@@ -31,8 +33,9 @@ public class PageController {
      * 个人页
      */
     @RequestMapping("/u/{username}")
-    public String profilePage(@PathVariable String username, Model model) {
-        if (userService.selectUserByName(username)!=null) {
+    public String profilePage(@PathVariable String username, Model model) throws ExecutionException, InterruptedException {
+        if (userService.selectUserByName(username).get()!=null) {
+            System.out.println(userService.selectUserByName(username).get());
             model.addAttribute("username", username);
             return "ProfilePage";
         }else {

@@ -57,7 +57,7 @@ public class UserPageController {
             System.out.printf(avatar);
             String token = request.getHeader("Authorization");
             System.out.println(JWTUtil.getUsername(token));
-            userService.updateByIduUrl(JWTUtil.getUsername(token), avatar);
+            userService.updateByIduUrl(JWTUtil.getUsername(token), avatar).get();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -75,7 +75,7 @@ public class UserPageController {
         LUser lUserBean = userService.selectlUserByName(JWTUtil.getUsername(token)).get();
         if (lUserBean.getPassword().equals(DigestUtils.sha256Hex(oPassword))) {
             lUserBean.setPassword(DigestUtils.sha256Hex(nPassword));
-            userService.changePassword(lUserBean);
+            userService.changePassword(lUserBean).get();
             return new ResponseBean(200,"成功修改密码",JWTUtil.sign(lUserBean.getName(), DigestUtils.sha256Hex(nPassword)));
         }else {
             return new ResponseBean(401,"旧密码不匹配",null);

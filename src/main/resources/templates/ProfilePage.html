@@ -112,7 +112,7 @@
                     <a class="js-sidebar-open" href="#">
                         <svg class="olymp-menu-icon left-menu-icon" data-original-title="打开菜单" data-placement="right"
                              data-toggle="tooltip">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-menu-icon"></use>
                         </svg>
                     </a>
                 </li>
@@ -120,7 +120,7 @@
                     <a href="/">
                         <svg class="olymp-happy-faces-icon left-menu-icon" data-original-title="好友动态" data-placement="right"
                              data-toggle="tooltip">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use>
                         </svg>
                     </a>
                 </li>
@@ -212,9 +212,9 @@
                         <img alt="author" class="avatar" th:src="@{/img/author-page.jpg}">
                         <span class="icon-status online"></span>
                     </div>
-                    <a class="author-name fn" href="ProfilePage.html">
+                    <a class="author-name fn" href="">
                         <div class="author-title">
-                            <div id="nickname"></div>
+                            <div></div>
                             <svg class="olymp-dropdown-arrow-icon">
                                 <use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
                             </svg>
@@ -323,7 +323,7 @@
 
                     </div>
                 </div>
-                <a class="author-name fn" href="ProfilePage.html">
+                <a class="author-name fn user" href="">
                     <div class="author-title">
                         <span id="nickname"></span>
                         <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
@@ -429,12 +429,12 @@
 							<input accept="image/*" class="sr-only" id="avatar-input" name="avatar-image" type="file">
 						</label>
                         <div class="author-content">
-                            <a class="h4 author-name" href="ProfilePage.html">
+                            <a class="h4 author-name" href="#">
                                 <div id="name">
 
                                 </div>
                             </a>
-                            <div class="country">San Francisco, CA</div>
+                            <div class="country" id="nickname2"></div>
                         </div>
                     </div>
                 </div>
@@ -457,7 +457,7 @@
             <a class="btn btn-control btn-more" data-container="newsfeed-items-grid" data-load-link="items-to-load.html" href="#"
                id="load-more-button">
                 <svg class="olymp-three-dots-icon">
-                    <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                    <use xlink:href="/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
                 </svg>
             </a>
         </div>
@@ -477,7 +477,7 @@
 
                     <!-- W-Personal-Info -->
 
-                    <ul class="widget w-personal-info item-block">
+                    <ul class="widget w-personal-info item-block" style="display: none">
                         <li>
                             <span class="title">关于我：</span>
                             <span class="text">Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56.</span>
@@ -520,7 +520,7 @@
         <div class="modal-content">
             <a aria-label="Close" class="close icon-close" data-dismiss="modal" href="#">
                 <svg class="olymp-close-icon">
-                    <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                    <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                 </svg>
             </a>
 
@@ -531,7 +531,7 @@
             <div class="modal-body">
                 <a class="upload-photo-item" href="#">
                     <svg class="olymp-computer-icon">
-                        <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                        <use xlink:href="/svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
                     </svg>
 
                     <h6>Upload Photo</h6>
@@ -541,7 +541,7 @@
                 <a class="upload-photo-item" data-target="#choose-from-my-photo" data-toggle="modal" href="#">
 
                     <svg class="olymp-photos-icon">
-                        <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-photos-icon"></use>
+                        <use xlink:href="/svg-icons/sprites/icons.svg#olymp-photos-icon"></use>
                     </svg>
 
                     <h6>Choose from My Photos</h6>
@@ -564,7 +564,7 @@
         <div class="modal-content">
             <a aria-label="Close" class="close icon-close" data-dismiss="modal" href="#">
                 <svg class="olymp-close-icon">
-                    <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                    <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                 </svg>
             </a>
             <div class="modal-header">
@@ -575,14 +575,14 @@
                     <li class="nav-item">
                         <a aria-expanded="true" class="nav-link active" data-toggle="tab" href="#home" role="tab">
                             <svg class="olymp-photos-icon">
-                                <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-photos-icon"></use>
+                                <use xlink:href="/svg-icons/sprites/icons.svg#olymp-photos-icon"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a aria-expanded="false" class="nav-link" data-toggle="tab" href="#profile" role="tab">
                             <svg class="olymp-albums-icon">
-                                <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-albums-icon"></use>
+                                <use xlink:href="/svg-icons/sprites/icons.svg#olymp-albums-icon"></use>
                             </svg>
                         </a>
                     </li>
@@ -752,7 +752,7 @@
 
     <a class="icon-close js-close-popup" href="">
         <svg class="olymp-close-icon">
-            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
         </svg>
     </a>
 
@@ -803,7 +803,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -835,7 +835,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -845,7 +845,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -877,7 +877,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -887,7 +887,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -919,7 +919,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -929,7 +929,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -961,7 +961,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -971,7 +971,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -1003,7 +1003,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -1013,7 +1013,7 @@
                 <td class="play">
                     <a class="play-icon" href="#">
                         <svg class="olymp-music-play-icon-big">
-                            <use xlink:href="static/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
+                            <use xlink:href="/svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
                         </svg>
                     </a>
                 </td>
@@ -1045,7 +1045,7 @@
                 <td class="remove">
                     <a class="remove-icon" href="#">
                         <svg class="olymp-close-icon">
-                            <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
+                            <use xlink:href="/svg-icons/sprites/icons.svg#olymp-close-icon"></use>
                         </svg>
                     </a>
                 </td>
@@ -1082,10 +1082,10 @@
             <h6 class="title">Chat</h6>
             <div class="more">
                 <svg class="olymp-three-dots-icon">
-                    <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                    <use xlink:href="/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
                 </svg>
                 <svg class="olymp-little-delete js-chat-open">
-                    <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-little-delete"></use>
+                    <use xlink:href="/svg-icons/sprites/icons.svg#olymp-little-delete"></use>
                 </svg>
             </div>
         </div>
@@ -1136,13 +1136,13 @@
                     <div class="add-options-message">
                         <a class="options-message" href="#">
                             <svg class="olymp-computer-icon">
-                                <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                <use xlink:href="/svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
                             </svg>
                         </a>
                         <div class="options-message smile-block">
 
                             <svg class="olymp-happy-sticker-icon">
-                                <use xlink:href="static/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use>
+                                <use xlink:href="/svg-icons/sprites/icons.svg#olymp-happy-sticker-icon"></use>
                             </svg>
 
                             <ul class="more-dropdown more-with-triangle triangle-bottom-right">
@@ -1259,7 +1259,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img alt="icon" th:src="@{/icon-chat23.png}">
+                                        <img alt="icon" th:src="@{/img/icon-chat23.png}">
                                     </a>
                                 </li>
                                 <li>
@@ -1360,8 +1360,6 @@
 
 <script th:src="@{/Bootstrap/dist/js/bootstrap.bundle.js}"></script>
 
-<script src="/js/global.js"></script>
-
 <!--弹出框-->
 <!--<script th:src="@{js/cropper.js}"></script>-->
 <script th:src="@{/js/cropper.js}"></script>
@@ -1456,6 +1454,7 @@
         });
     });
 </script>
+<script src="/js/global.js"></script>
 
 </body>
 </html>

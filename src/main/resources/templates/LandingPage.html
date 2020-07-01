@@ -450,7 +450,7 @@ $(
 		function () {
             $.ajax({
                 type: 'POST',
-                url: 'api/pTest',
+                url: '/api/pTest',
                 //从localStorage获取存储的token
                 headers : {'Authorization':localStorage["token"]},
                 datatype: 'json',

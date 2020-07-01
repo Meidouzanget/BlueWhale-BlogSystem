@@ -1,17 +1,3 @@
-//获取登录用户
-function getToken(){
-    $.ajax({
-        type: 'POST',
-        url: '/u/pTest',
-        //从localStorage获取存储的token
-        headers : {'Authorization':localStorage["token"]},
-        datatype: 'json',
-        success: function (data) {
-            console.log(data);
-            $("#name").append("<p>"+data.data.nickName+"</p>")
-        }
-    })
-}
 
 //逻辑删除
 function deleteArticle(answerId) {
@@ -153,12 +139,6 @@ function select() {
                 }
 
             })
-            //
-
-
-
-
-
 
 }
 
