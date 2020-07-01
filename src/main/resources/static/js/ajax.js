@@ -83,14 +83,14 @@ function addcomment(answerId) {
                                 "\t\t\t\t\t\t\t\t\t</div>\n" +
                                 "\t\t\t\t\t\t\t\t</div>\n" +
                                 "\t\t\t\t\t\n" +
-                                "\t\t\t\t\t\t\t\t<a href=\"#\" class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg></a>\n" +
+                                "\t\t\t\t\t\t\t\t<a href=\"#\" class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg></a>\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t</div>\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t<p>"+data[0].content+"</p>\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
-                                "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
+                                "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                                 "\t\t\t\t\t\t\t\t<span></span>\n" +
                                 "\t\t\t\t\t\t\t</a>\n" +
                                 // "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
@@ -145,14 +145,14 @@ function comments(answerId) {
                     "\t\t\t\t\t\t\t\t\t</div>\n" +
                     "\t\t\t\t\t\t\t\t</div>\n" +
                     "\t\t\t\t\t\n" +
-                    "\t\t\t\t\t\t\t\t<a href=\"#\" class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg></a>\n" +
+                    "\t\t\t\t\t\t\t\t<a href=\"#\" class=\"more\"><svg class=\"olymp-three-dots-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-three-dots-icon\"></use></svg></a>\n" +
                     "\t\t\t\t\t\n" +
                     "\t\t\t\t\t\t\t</div>\n" +
                     "\t\t\t\t\t\n" +
                     "\t\t\t\t\t\t\t<p>"+item.content+"</p>\n" +
                     "\t\t\t\t\t\n" +
                     "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
-                    "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
+                    "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                     "\t\t\t\t\t\t\t\t<span></span>\n" +
                     "\t\t\t\t\t\t\t</a>\n" +
                     // "\t\t\t\t\t\t\t<a href=\"#\" class=\"reply\">删除评论</a>\n" +
@@ -169,7 +169,7 @@ function comments(answerId) {
                 "\t\t\t\t\t\t\t\t<div class=\"add-options-message\">\n" +
                 "\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"options-message\" data-toggle=\"modal\" data-target=\"#update-header-photo\">\n" +
                 "\t\t\t\t\t\t\t\t\t\t<svg class=\"olymp-camera-icon\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t<use xlink:href=\"svg-icons/sprites/icons.svg#olymp-camera-icon\"></use>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t<use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-camera-icon\"></use>\n" +
                 "\t\t\t\t\t\t\t\t\t\t</svg>\n" +
                 "\t\t\t\t\t\t\t\t\t</a>\n" +
                 "\t\t\t\t\t\t\t\t</div>\n" +
@@ -335,13 +335,13 @@ $(function () {
                                         "\t\t\t\t\t<div class=\"post-additional-info inline-items\" >\n" +
                                         "\n" +
                                         "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+data[0].aId+")'>\n" +
-                                        "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
+                                        "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                                         // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
                                         "\t\t\t\t\t\t\t<span  id=\"Great"+data[0].aId+"\"  >"+data[0].greatNum+"</span>\n" +
                                         "\t\t\t\t\t\t</a>\n" +
                                         "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
                                         "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\"  onclick='comments("+data[0].aId+")'  >\n" +
-                                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
+                                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
                                         // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
                                         "\t\t\t\t\t\t\t\t<span>查看评论</span>\n" +
                                         "\t\t\t\t\t\t\t</a>\n" +
@@ -430,13 +430,13 @@ $(function () {
                         "\t\t\t\t\t<div class=\"post-additional-info inline-items\" >\n" +
                         "\n" +
                         "\t\t\t\t\t\t<a class=\"post-add-icon inline-items\"  id=\"Great\" onclick='Great("+item.aId+")'>\n" +
-                        "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
+                        "\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
                         // "\t\t\t\t\t\t\t<img src=\"/img/great.png\" >\n" +
                         "\t\t\t\t\t\t\t<span value=\""+item.greatNum+"\" id=\"Great"+item.aId+"\" >"+item.greatNum+"</span>\n" +
                         "\t\t\t\t\t\t</a>\n" +
                         "\t\t\t\t\t\t<div class=\"comments-shared\" id=\"a\">\n" +
                         "\t\t\t\t\t\t\t<a   class=\"post-add-icon inline-items\" id=\"commentShow\" onclick='comments("+item.aId+")'  >\n" +
-                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
+                        "\t\t\t\t\t\t\t\t<svg class=\"olymp-speech-balloon-icon\"><use xlink:href=\"/svg-icons/sprites/icons.svg#olymp-speech-balloon-icon\"></use></svg>\n" +
                         // "\t\t\t\t\t\t\t\t<img src=\"/img/comment.png\">\n" +
                         "\t\t\t\t\t\t\t<span>查看评论</span>\n" +
                         "\t\t\t\t\t\t\t</a>\n" +
