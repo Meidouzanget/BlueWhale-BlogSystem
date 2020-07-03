@@ -42,15 +42,15 @@ $(function () {
 
 
 function select() {
-
-
+        var username=$("#username").text();
+        console.log(username)
 
             $.ajax({
                 url: "/api/selectUserAll",
                 type: "post",
                 headers : {'Authorization':localStorage["token"]},
                 data:{
-
+                    name:username
                 },
                 dataType: "json",
                 success: function (data)//回调
@@ -63,7 +63,7 @@ function select() {
                             "\t\t\t\t<article class=\"hentry post\">\n" +
                             "\n" +
                             "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                            "\t\t\t\t\t\t<img src=\"/img/avatar10-sm.jpg\" alt=\"author\">\n" +
+                            "\t\t\t\t\t\t<img src=\""+item.avatar+"\" alt=\"author\">\n" +
                             "\n" +
                             "\t\t\t\t\t\t<div class=\"author-date\">\n" +
                             "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+item.nickName+"</a>\n" +
