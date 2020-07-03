@@ -46,8 +46,13 @@ function packup(answerId){
 function addcomment(answerId) {
     var comments="comments"+answerId;
     var commentContent=$("#commentContent").val();
+            console.log("commentContent:"+commentContent)
 
-
+    //今天的时间
+     var day2 = new Date();
+     day2.setTime(day2.getTime());
+     var s2 = day2.getFullYear()+"-" + (day2.getMonth()+1) + "-" + day2.getDate()+"T"+day2.getHours()+":"+day2.getMinutes()+":"+day2.getSeconds();
+     var flag=false;
             //发表评论
             $.ajax({
                 url: "/api/addComment",
@@ -60,6 +65,7 @@ function addcomment(answerId) {
                 },
                 dataType: "json",
                 success:function () {
+                    flag=true;
                     //查询最新一条评论
                     $.ajax({
                         url: "/api/userComment",
@@ -69,15 +75,16 @@ function addcomment(answerId) {
                         },
                         dataType: "json",
                         success:function (data) {
+                            console.log("data:"+data)
                             $("#"+comments+"").prepend("\t\t\t\t\t<ul class=\"comments-list\" >\n" +
                                 "\t\t\t\t\t\t<li class=\"comment-item\">\n" +
                                 "\t\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                                "\t\t\t\t\t\t\t\t<img src=\""+data.avatar+"\" alt=\"author\">\n" +
+                                "\t\t\t\t\t\t\t\t<img src=\""+data[0].avatar+"\" alt=\"author\">\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t\t<div class=\"author-date\">\n" +
                                 "\t\t\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"02-ProfilePage.html\">"+data[0].nickName+"</a>\n" +
                                 "\t\t\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
-                                "\t\t\t\t\t\t\t\t<time class=\"published\"  >\n" + data[0].createTime +
+                                "\t\t\t\t\t\t\t\t<time class=\"published\"  >\n" +  s2+
                                 "\n" +
                                 "\t\t\t\t\t\t\t\t\t\t</time>\n" +
                                 "\t\t\t\t\t\t\t\t\t</div>\n" +
@@ -87,7 +94,7 @@ function addcomment(answerId) {
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t</div>\n" +
                                 "\t\t\t\t\t\n" +
-                                "\t\t\t\t\t\t\t<p>"+data[0].content+"</p>\n" +
+                                "\t\t\t\t\t\t\t<p>"+commentContent+"</p>\n" +
                                 "\t\t\t\t\t\n" +
                                 "\t\t\t\t\t\t\t<a href=\"#\" class=\"post-add-icon inline-items\">\n" +
                                 "\t\t\t\t\t\t\t\t<svg class=\"olymp-heart-icon\"><use xlink:href=\"svg-icons/sprites/icons.svg#olymp-heart-icon\"></use></svg>\n" +
@@ -102,7 +109,9 @@ function addcomment(answerId) {
                 },error:function () {
                     console.log("评论失败")
                 }
+
             })
+    
             //
 
 
@@ -162,15 +171,15 @@ function comments(answerId) {
             $("#"+comments+"").append("<form class=\"comment-form inline-items\" >\n" +
                 "\t\t\t\t\t\n" +
                 "\t\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                "\t\t\t\t\t\t\t<img src=\""+data[0].avatar+"\" alt=\"author\">\n" +
+                // "\t\t\t\t\t\t\t<img src=\""+data[0].avatar+"\" alt=\"author\">\n" +
                 "\t\t\t\t\t\n" +
                 "\t\t\t\t\t\t\t<div class=\"form-group with-icon-right \">\n" +
                 "\t\t\t\t\t\t\t\t<textarea class=\"form-control\" placeholder=\"\" id='commentContent'></textarea>\n" +
                 "\t\t\t\t\t\t\t\t<div class=\"add-options-message\">\n" +
                 "\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"options-message\" data-toggle=\"modal\" data-target=\"#update-header-photo\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t<svg class=\"olymp-camera-icon\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t<use xlink:href=\"svg-icons/sprites/icons.svg#olymp-camera-icon\"></use>\n" +
-                "\t\t\t\t\t\t\t\t\t\t</svg>\n" +
+                // "\t\t\t\t\t\t\t\t\t\t<svg class=\"olymp-camera-icon\">\n" +
+                // "\t\t\t\t\t\t\t\t\t\t\t<use xlink:href=\"svg-icons/sprites/icons.svg#olymp-camera-icon\"></use>\n" +
+                // "\t\t\t\t\t\t\t\t\t\t</svg>\n" +   评论加图片
                 "\t\t\t\t\t\t\t\t\t</a>\n" +
                 "\t\t\t\t\t\t\t\t</div>\n" +
                 "\t\t\t\t\t\t\t</div>\n" +
@@ -250,7 +259,7 @@ function Great(greatId) {
 
 $(function () {
     select();
-    getToken();
+
     var result = "";
     //图片预览
     $("#imgBut").change(function () {
