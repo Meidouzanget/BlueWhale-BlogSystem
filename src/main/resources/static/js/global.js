@@ -1,3 +1,10 @@
+//登出
+function logout() {
+    localStorage["token"]="";
+    window.location.href="/Login";
+    alert("登出");
+}
+
 $(function () {
     var login_flag = false;
     $.ajax({

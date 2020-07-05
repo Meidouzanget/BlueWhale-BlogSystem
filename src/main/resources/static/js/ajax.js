@@ -30,7 +30,7 @@ function deleteArticle(answerId) {
 
 }
 //登出
-function logout() {
+function logoutmain() {
     localStorage["token"]="";
     window.location.reload();
     alert("登出");
