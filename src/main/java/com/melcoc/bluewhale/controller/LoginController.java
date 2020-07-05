@@ -7,7 +7,6 @@ import com.melcoc.bluewhale.jwt.JWTUtil;
 import com.melcoc.bluewhale.service.UserService;
 import io.swagger.annotations.Api;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +31,7 @@ public class LoginController {
         String passwordHex = DigestUtils.sha256Hex(password);
         LUser lUserBean;
         User UserBean;
-        if (service.getUserWithPermission(username) == null){
+        if (service.getUserWithPermission(username).get() == null){
             return new ResponseBean(401, "用户不存在", null);
         }else {
             lUserBean = service.getUserWithPermission(username).get();
@@ -45,7 +44,7 @@ public class LoginController {
                 return new ResponseBean(401, "用户被封禁", null);
             }
         } else {
-            throw new UnauthorizedException();
+            return new ResponseBean(401,"用户密码错误",null);
         }
     }
 

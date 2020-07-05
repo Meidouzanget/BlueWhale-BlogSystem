@@ -493,15 +493,15 @@ $("#regBtn").click(function () {
         alert("昵称不能为空");
         return false;
     };
-    if($("#reg-username")){
+    if($("#reg-username").parent().hasClass("is-empty")){
         alert("用户名不能为空");
         return false;
     };
-    if($("#reg-email")){
+    if($("#reg-email").parent().hasClass("is-empty")){
         alert("邮箱不能为空");
         return false;
     };
-    if($("#reg-password")){
+    if($("#reg-password").parent().hasClass("is-empty")){
         alert("密码不能为空");
         return false;
     };
