@@ -7,6 +7,7 @@ function logout() {
 
 $(function () {
     var login_flag = false;
+    var avataruname=$("#p-username").html();
     $.ajax({
         type: 'POST',
         url: '/api/pTest',
@@ -18,10 +19,8 @@ $(function () {
             if (data.code === 200){
                 login_flag = true;
                 $("#nickname").html(data.data.nickName).css("font-size","20px");
-                $("#nickname2").html(data.data.nickName).css("font-size","35px").css("font-weight","bold");
                 $("#topAvatar").attr("src",data.data.avatar);
                 $("#formImg").attr("src",data.data.avatar);
-                $("#avatar").prop("src",data.data.avatar);
                 $("#username").html("@"+data.data.name).css("font-size","10px");
                 $(".user").attr("href","/u/"+data.data.name);
                 console.log(data.data.nickName);
@@ -31,6 +30,20 @@ $(function () {
                     $(".profile-page").prop("href","/u/"+data.data.name);
                     $("#control-center").css("display","flex");
                     $(".is-empty").removeClass("is-empty");
+            }
+        }
+    })
+    $.ajax({
+        type: 'POST',
+        url: '/api/QueryAvatar',
+        data:{ username:avataruname },
+        datatype: 'json',
+        success: function (data) {
+            console.log(data);
+            if (data.code === 200){
+                $("#nickname2").html(data.data.name).css("font-size","35px").css("font-weight","bold");
+                $("#avatar").prop("src",data.data.avatar);
+
             }
         }
     })

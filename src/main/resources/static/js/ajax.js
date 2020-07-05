@@ -415,10 +415,10 @@ $(function () {
                         "\t\t\t\t<article class=\"hentry post\">\n" +
                         "\n" +
                         "\t\t\t\t\t<div class=\"post__author author vcard inline-items\">\n" +
-                        "\t\t\t\t\t\t<img src=\""+item.avatar+"\" alt=\"author\">\n" +
+                        "\t\t\t\t\t\t<img src=\""+item.avatar+"\" alt=\"author\"></a>\n" +
                         "\n" +
                         "\t\t\t\t\t\t<div class=\"author-date\">\n" +
-                        "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"#\">"+item.nickName+"</a>\n" +
+                        "\t\t\t\t\t\t\t<a class=\"h6 post__author-name fn\" href=\"/u/"+item.name+"\">"+item.nickName+"</a>\n" +
                         "\t\t\t\t\t\t\t<div class=\"post__date\">\n" +
                         "\t\t\t\t\t\t\t\t<time class=\"published\" datetime=\"2004-07-24T18:18\" >\n" + item.createTime +
                         "\n" +

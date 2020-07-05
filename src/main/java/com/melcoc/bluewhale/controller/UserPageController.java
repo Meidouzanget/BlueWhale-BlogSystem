@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 
@@ -110,6 +112,22 @@ public class UserPageController {
         }else {
             return new ResponseBean(404,"查询失败",null);
         }
+
+    }
+
+    @PostMapping("/api/QueryAvatar")
+    public ResponseBean selectAvatar(@RequestParam String username) throws ExecutionException, InterruptedException {
+        User user;
+        if (userService.selectUserByName(username).get()==null) {
+            return new ResponseBean(404,"none",null);
+        } else {
+            user = userService.selectUserByName(username).get();
+            Map map = new HashMap<>();
+            map.put("name",user.getNickName());
+            map.put("avatar",user.getAvatar());
+            return new ResponseBean(200,"ok",map);
+        }
+
 
     }
 

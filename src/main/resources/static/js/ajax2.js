@@ -42,7 +42,7 @@ $(function () {
 
 
 function select() {
-        var username=$("#username").text();
+        var username=$("#p-username").text();
         console.log(username)
 
             $.ajax({
